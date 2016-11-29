@@ -24,62 +24,62 @@
 						<div class="container">
 							<a href="#!" class="brand-logo">Gestantes</a>
 							<ul class="right hide-on-med-and-down">
-								<li class="active"><a href="">Pendientes</a></li>
-								<li><a href="">Prioritarias</a></li>
-								<li><a href="">Lista completa</a></li>
-								<li><a href="">Pasadas</a></li>
+								<li class='{% if request.resolver_match.view_name == "index" %}active{% endif %}'><a href="{% url 'index' %}">Pendientes</a></li>
+								<li class='{% if request.resolver_match.view_name == "prioritarias" %}active{% endif %}'><a href="{% url 'prioritarias' %}">Prioritarias</a></li>
+								<li class='{% if request.resolver_match.view_name == "completa" %}active{% endif %}'><a href="{% url 'completa' %}">Lista completa</a></li>
+								<li class='{% if request.resolver_match.view_name == "pasadas" %}active{% endif %}'><a href="{% url 'pasadas' %}">Pasadas</a></li>
 							</ul>
 						</div>
 					</div>
 			  	</nav>
 			</header>
 			<main>
-				<div class="container z-depth-1" id="table-container">
+				{% block before_main %}
+				<div class="container">
+					<div id="btn-new-container" class="center-align">
+						<a href="{% url 'nueva' %}" class="waves-effect waves-light indigo accent-2 btn-large">Nuevo registro</a>
+					</div>
+				</div>
+				{% endblock %}
+				<div class="container z-depth-1" id="main-container">
 					<div class="row">
 						<div class="col s10 offset-s1">
 							<div class="section row">
 								<div class="col s8">
-									<h5 class="indigo-text text-lighten-1">Gestantes que aún no terminan el proceso</h5>
+									<h5 class="indigo-text text-lighten-1">
+
+									{% block title %}
+
+									{% endblock %}
+
+									</h5>
+									
+									
+
+									<p>
+									{% block subtitle %}
+										Haga click en una fila para ver más información
+									{% endblock %}
+									</p>
 								</div>
-								<div class="search-table input-field col s4">
-									<input id="first_name" type="text" class="validate">
-							        <label for="first_name">Buscar</label>
-								</div>
+								
+								{% block search %}
+
+								{% endblock %}
+
 							</div>
 							<div class="section">
-								<table class="highlight">
-								  <thead>
-								    <tr>
-								        <th>Nombre</th>
-								        <th>Identificación</th>
-								        <th>Semana de gestación</th>
-								        <th>&nbsp</th>
-								    </tr>
-								  </thead>
-								  <tbody>
-								    <tr class="clickable-row" data-href="#">
-								      <td>Sulma Beatriz Ocampo</td>
-								      <td>123121657</td>
-								      <td>56</td>
-								    </tr>
-								    <tr class="clickable-row" data-href="#">
-								      <td>Alan</td>
-								      <td>Jellybean</td>
-								      <td>56</td>
-								    </tr>
-								    <tr class="clickable-row" data-href="#">
-								      <td>Jonathan</td>
-								      <td>Lollipop</td>
-								      <td>56</td>
-								    </tr>
-								  </tbody>
-								</table>
+
+							{% block content %}
+
+							{% endblock %}
+
 							</div>
 						</div>
 					</div>
 				</div>
 			</main>
-			
+			<div id="pad-10"></div>
 		</div>
 
 		<script src='{% static "appgestantes/assets/js/jquery-3.1.1.min.js" %}'></script>
@@ -87,3 +87,4 @@
 		<script src='{% static "appgestantes/assets/js/materialize.min.js" %}'></script>
 	</body>
 </html>
+

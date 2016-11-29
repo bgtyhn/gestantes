@@ -1,0 +1,130 @@
+{% extends 'appgestantes/_base.html' %}
+
+{% load static %}
+
+{% block before_main %} 
+	<div id="pad-10"></div>
+{% endblock %}
+
+{% block title %}
+	Registrar nueva gestante
+{% endblock %}
+
+{% block subtitle %}
+	Llene los campos para crear un nuevo registro.
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col s12">
+		<h4 class="indigo-text text-lighten-1">Información general</h4>	
+	</div>
+</div>
+<div class="divider"></div><br>
+<form id="gest-form-create">
+	<div class="row">
+		<div class="col s6">
+			<div class="input-field">
+				<input id="nombre" type="text" class="validate" required>
+          		<label for="nombre">Nombre completo</label>
+			</div>	
+			<div class="input-field">
+				<input id="fecha_ingreso_programa" type="date" class="datepicker" placeholder="Fecha de ingreso al programa" required>
+			</div>	
+			<div class="input-field">
+				<input id="fecha_nacimiento" type="date" class="datepicker" placeholder="Fecha de nacimiento" required>
+			</div>	
+			<div class="input-field">
+				<input id="identificacion" type="number" class="validate" required>
+          		<label for="identificacion">Número de identificación</label>
+			</div>
+			<div class="input-field">
+				<select id="captacion">
+				    <option value="" disabled selected>Escoger captación</option>
+				    <option value="Médico">Médico</option>
+				    <option value="Enfermera">Enfermera</option>
+				    <option value="Atención primaria en salud">Atención primaria en salud</option>
+			    </select>
+			    <label for="captacion">Captación</label>
+		    </div>
+		</div>
+		<div class="col s6">
+			<div class="input-field">
+				<input id="semana_ingreso" type="number" class="validate" required>
+          		<label for="semana_ingreso">Semana de gestación al ingresar</label>
+			</div>
+			<div class="input-field">
+				<input id="fecha_ultima_menstruacion" type="date" class="datepicker" placeholder="Fecha de la última menstruación" required>
+			</div>
+			<div class="input-field">
+				<input id="fecha_probable_parto" type="date" class="datepicker" placeholder="Fecha probable de parto" required>
+			</div>
+			<div class="input-field">
+				<input type="checkbox" class="filled-in" id="confiable" />
+      			<label for="confiable">Confiable</label>
+      			<div class="section"></div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col s12">
+			<h4 class="indigo-text text-lighten-1">Primer control</h4>	
+		</div>
+	</div>
+	<div class="divider"></div><br><br>
+	<div class="row">
+		<div class="col s6">
+			<input id="fecha_paraclinicos" type="date" class="datepicker" placeholder="Fecha de paraclinicos" required>
+		</div>
+		<div class="col s6">
+			<input id="fecha_odontologia" type="date" class="datepicker" placeholder="Fecha de odontología" required>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s6">
+			<input type="checkbox" class="filled-in" id="micronutrientes">
+  			<label for="micronutrientes">Micronutrientes</label>
+		</div>
+		<div class="col s6">
+			<input id="fecha_citologia" type="date" class="datepicker" placeholder="Fecha de citología" required>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s6">
+			<input id="fecha_pretest" type="date" class="datepicker" placeholder="Fecha de pretest" required>
+		</div>
+		<div class="col s6">
+			<input id="citologia_resultado" type="text" class="validate" placeholder="Resultado de la citología" required>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s6">
+			<input id="fecha_postest" type="date" class="datepicker" placeholder="Fecha de postest" required>
+		</div>
+		<div class="col s6">
+			<input type="checkbox" class="filled-in" id="DPTa">
+  			<label for="DPTa">DPTa</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s6">
+			<div class="input-field">
+				<input type="checkbox" class="filled-in" id="IAMI" />
+      			<label for="IAMI">IAMI</label>
+      			<div class="section"></div>
+			</div>
+		</div>
+	</div>
+	<div class="divider"></div><br><br>
+	<div class="row">
+		<div class="col s12 center-align">
+			<button class="indigo accent-2 btn-large waves-effect waves-light" type="submit" name="action">
+				Guardar
+			  	<i class="material-icons right">send</i>
+			</button>
+		</div>
+	</div>
+</form>
+
+{% endblock %}

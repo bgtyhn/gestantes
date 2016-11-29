@@ -1,5 +1,6 @@
-#table-container{
-	margin-top: 8vh;
+#main-container{
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .clickable-row{
@@ -9,6 +10,15 @@
 
 .clickable-row:hover{
 	color: #7986cb;
+}
+
+#btn-new-container{
+	margin-top: 4vh;
+	margin-bottom: 4vh;
+}
+
+#pad-10{
+	height: 10vh;
 }
 
 /* label color */
@@ -37,4 +47,35 @@
 /* icon prefix focus color */
 .search-table .prefix.active {
  color: #000;
+}
+
+.container{
+	width: 85%;
+}
+
+.picker__date-display, .picker__weekday-display{
+    background-color: #7986cb;
+}
+
+div.picker__day.picker__day--infocus.picker__day--selected.picker__day--highlighted {
+    background-color: #7986cb;
+}
+
+button.picker__today, button.picker__close {
+    color: #7986cb;
+}
+
+.picker__day.picker__day--today{
+    color: #7986cb;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }

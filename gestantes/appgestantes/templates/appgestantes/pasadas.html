@@ -1,0 +1,46 @@
+{% extends 'appgestantes/_base.html' %}
+
+{% load static %}
+
+{% block title %}
+	Gestantes que ya terminaron el proceso
+{% endblock %}
+
+{% block search %}
+
+<div class="search-table input-field col s4">
+	<input id="first_name" type="text" class="validate">
+    <label for="first_name">Buscar</label>
+</div>
+
+{% endblock %}
+
+{% block content %}
+	<table class="highlight">
+	  <thead>
+	    <tr>
+	        <th>Nombre</th>
+	        <th>Identificación</th>
+	        <th>Semana de gestación</th>
+	        <th>&nbsp</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr class="clickable-row" data-href="#">
+	      <td>Sulma Beatriz Ocampo</td>
+	      <td>123121657</td>
+	      <td>56</td>
+	    </tr>
+	    <tr class="clickable-row" data-href="#">
+	      <td>Alan</td>
+	      <td>Jellybean</td>
+	      <td>56</td>
+	    </tr>
+	    <tr class="clickable-row" data-href="#">
+	      <td>Jonathan</td>
+	      <td>Lollipop</td>
+	      <td>56</td>
+	    </tr>
+	  </tbody>
+	</table>		
+{% endblock %}
