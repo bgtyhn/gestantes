@@ -5,6 +5,6 @@ from .models import *
 
 
 def index(request):
-    template = loader.get_template('appgestantes/index.html')
+    template = loader.get_template('appgestantes/home.html')
     context = {}
     return HttpResponse(template.render(context, request))

@@ -1,0 +1,40 @@
+#table-container{
+	margin-top: 8vh;
+}
+
+.clickable-row{
+	cursor: pointer;
+	cursor: hand;
+}
+
+.clickable-row:hover{
+	color: #7986cb;
+}
+
+/* label color */
+.search-table label {
+ color: #616161 ;
+}
+/* label focus color */
+.search-table input[type=text]:focus + label {
+ color: #bdbdbd  ;
+}
+/* label underline focus color */
+.search-table input[type=text]:focus {
+ border-bottom: 1px solid #bdbdbd  ;
+ box-shadow: 0 1px 0 0 #bdbdbd  ;
+}
+/* valid color */
+.search-table input[type=text].valid {
+ border-bottom: 1px solid #000;
+ box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.search-table input[type=text].invalid {
+ border-bottom: 1px solid #000;
+ box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.search-table .prefix.active {
+ color: #000;
+}

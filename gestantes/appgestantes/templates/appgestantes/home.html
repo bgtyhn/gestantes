@@ -1,0 +1,89 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Gestantes</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href='{% static "appgestantes/assets/css/materialize.min.css" %}'>
+		<link rel="stylesheet" href='{% static "appgestantes/assets/css/main.css" %}'>
+	</head>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+
+			<header>
+				<nav class="indigo lighten-2">
+					<div class="nav-wrapper">
+						<div class="container">
+							<a href="#!" class="brand-logo">Gestantes</a>
+							<ul class="right hide-on-med-and-down">
+								<li class="active"><a href="">Pendientes</a></li>
+								<li><a href="">Prioritarias</a></li>
+								<li><a href="">Lista completa</a></li>
+								<li><a href="">Pasadas</a></li>
+							</ul>
+						</div>
+					</div>
+			  	</nav>
+			</header>
+			<main>
+				<div class="container z-depth-1" id="table-container">
+					<div class="row">
+						<div class="col s10 offset-s1">
+							<div class="section row">
+								<div class="col s8">
+									<h5 class="indigo-text text-lighten-1">Gestantes que aún no terminan el proceso</h5>
+								</div>
+								<div class="search-table input-field col s4">
+									<input id="first_name" type="text" class="validate">
+							        <label for="first_name">Buscar</label>
+								</div>
+							</div>
+							<div class="section">
+								<table class="highlight">
+								  <thead>
+								    <tr>
+								        <th>Nombre</th>
+								        <th>Identificación</th>
+								        <th>Semana de gestación</th>
+								        <th>&nbsp</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								    <tr class="clickable-row" data-href="#">
+								      <td>Sulma Beatriz Ocampo</td>
+								      <td>123121657</td>
+								      <td>56</td>
+								    </tr>
+								    <tr class="clickable-row" data-href="#">
+								      <td>Alan</td>
+								      <td>Jellybean</td>
+								      <td>56</td>
+								    </tr>
+								    <tr class="clickable-row" data-href="#">
+								      <td>Jonathan</td>
+								      <td>Lollipop</td>
+								      <td>56</td>
+								    </tr>
+								  </tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+			
+		</div>
+
+		<script src='{% static "appgestantes/assets/js/jquery-3.1.1.min.js" %}'></script>
+		<script src='{% static "appgestantes/assets/js/main.js" %}'></script>
+		<script src='{% static "appgestantes/assets/js/materialize.min.js" %}'></script>
+	</body>
+</html>
