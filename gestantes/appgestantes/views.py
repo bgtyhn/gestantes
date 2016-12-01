@@ -28,3 +28,8 @@ def nueva(request):
     template = loader.get_template('appgestantes/nueva_gestante.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
+def detalle(request):
+    template = loader.get_template('appgestantes/detalle.html')
+    context = {}
+    return HttpResponse(template.render(context, request))

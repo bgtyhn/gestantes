@@ -51,5 +51,15 @@ $(function(){
 		min: true
 	})
 
+	$("#fecha_citologia").pickadate({
+		selectMonths: true,
+		selectYears: 4
+	})
+
+	$("#fecha_odontologia").pickadate({
+		selectMonths: true,
+		selectYears: 2
+	})
+
 	$('select').material_select();
 })

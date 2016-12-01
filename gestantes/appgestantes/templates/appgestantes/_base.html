@@ -22,7 +22,7 @@
 				<nav class="indigo lighten-2">
 					<div class="nav-wrapper">
 						<div class="container">
-							<a href="#!" class="brand-logo">Gestantes</a>
+							<a href="{% url 'index' %}" class="brand-logo">Gestantes</a>
 							<ul class="right hide-on-med-and-down">
 								<li class='{% if request.resolver_match.view_name == "index" %}active{% endif %}'><a href="{% url 'index' %}">Pendientes</a></li>
 								<li class='{% if request.resolver_match.view_name == "prioritarias" %}active{% endif %}'><a href="{% url 'prioritarias' %}">Prioritarias</a></li>
@@ -79,9 +79,7 @@
 					</div>
 				</div>
 			</main>
-			<div id="pad-10"></div>
-		</div>
-
+		<div class="pad-10"></div>
 		<script src='{% static "appgestantes/assets/js/jquery-3.1.1.min.js" %}'></script>
 		<script src='{% static "appgestantes/assets/js/main.js" %}'></script>
 		<script src='{% static "appgestantes/assets/js/materialize.min.js" %}'></script>

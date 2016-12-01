@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Gestantes</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href='{% static "appgestantes/assets/css/materialize.min.css" %}'>
+		<link rel="stylesheet" href='{% static "appgestantes/assets/css/main.css" %}'>
+	</head>
+	<body>
+		<header>
+			<nav class="nav-extended indigo lighten-2">
+				<div class="nav-wrapper">
+					<div class="container">
+						<a href="{% url 'index' %}" class="brand-logo">Gestantes</a>
+						<ul class="right hide-on-med-and-down">
+							<li><a href="{% url 'index' %}">Pendientes</a></li>
+							<li><a href="{% url 'prioritarias' %}">Prioritarias</a></li>
+							<li><a href="{% url 'completa' %}">Lista completa</a></li>
+							<li><a href="{% url 'pasadas' %}">Pasadas</a></li>
+						</ul>
+						<ul class="tabs tabs-transparent tabs-fixed-width">
+					        <li class="tab"><a href="#test1">Test 1</a></li>
+					        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
+					        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
+					        <li class="tab"><a href="#test4">Test 4</a></li>
+				      	</ul>
+					</div>
+				</div>
+		  	</nav>
+		</header>
+		<div class="pad-5"></div>
+		<main>
+			<div class="container z-depth-1" id="main-container">
+				<h4>Nombre de la gestante</h4>
+				<div id="test1" class="col s12">Test 1</div>
+				<div id="test2" class="col s12">Test 2</div>
+				<div id="test3" class="col s12">Test 3</div>
+				<div id="test4" class="col s12">Test 4</div>
+
+			</div>
+		</main>
+		<div class="pad-10"></div>
+		<script src='{% static "appgestantes/assets/js/jquery-3.1.1.min.js" %}'></script>
+		<script src='{% static "appgestantes/assets/js/main.js" %}'></script>
+		<script src='{% static "appgestantes/assets/js/materialize.min.js" %}'></script>
+	</body>
+</html>

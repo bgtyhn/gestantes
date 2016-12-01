@@ -17,9 +17,38 @@
 	margin-bottom: 4vh;
 }
 
-#pad-10{
+.pad-10{
 	height: 10vh;
 }
+
+.pad-5{
+  height: 5vh;
+}
+
+.picker--opened .picker__frame {
+    top: 5vh;
+}
+
+.picker__weekday-display {
+	font-weight: 400;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+  color: #9e9e9e;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #9e9e9e;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #9e9e9e;
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: #9e9e9e;
+  opacity: 1;
+}
+
+/* Input stylyng */
 
 /* label color */
 .search-table label {
