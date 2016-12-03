@@ -1,0 +1,105 @@
+{% extends 'appgestantes/tabs_detalle/_base_tab.html' %}
+
+{% block edit_link %}
+
+	#
+
+{% endblock %}
+
+<!--url editar arriba-->
+
+{% block fields_left %}
+
+<div class="detail-field">
+	<p> VDRL </p>
+	<h5 class="light">
+		{% if tercer_trimestre.VDRL %}
+			{{tercer_trimestre.VDRL}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Factores de riesgo VIH </p>
+	<h5 class="light">
+		{% if tercer_trimestre.factores_riesgo_VIH %}
+			{{tercer_trimestre.factores_riesgo_VIH}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+	{% if tercer_trimestre.factores_riesgo_VIH and tercer_trimestre.factores_riesgo_VIH == "Si" %}
+		<div class="row">
+			<div class="col s9 offset-s1">
+				<p> Fecha </p>
+				<h5 class="light">
+					{% if tercer_trimestre.fecha_VIH %}
+						{{tercer_trimestre.fecha_VIH}}
+					{% else %}
+						&nbsp
+					{% endif %}
+				</h5>
+				<p> Resultado </p>
+				<h5 class="light">
+					{% if tercer_trimestre.reactivo_VIH %}
+						{{tercer_trimestre.reactivo_VIH}}
+					{% else %}
+						&nbsp
+					{% endif %}
+				</h5>
+			</div>
+		</div>
+	{% endif %}
+</div>
+<div class="detail-field">
+	<p> Parcial de orina </p>
+	<h5 class="light">
+		{% if tercer_trimestre.parcial_orina %}
+			{{tercer_trimestre.parcial_orina}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+
+{% endblock %}
+
+{% block fields_right %}
+
+<div class="detail-field">
+	<p> Fecha de ecografía única</p>
+	<h5 class="light">
+		{% if tercer_trimestre.ecografia_unica_fecha %}
+			{{tercer_trimestre.ecografia_unica_fecha}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Semanas de ecografía única</p>
+	<h5 class="light">
+		{% if tercer_trimestre.ecografia_unica_semanas %}
+			{{tercer_trimestre.ecografia_unica_semanas}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Micronutrientes </p>
+	<h5 class="light">
+		{% if tercer_trimestre.micronutrientes %}
+			{{tercer_trimestre.micronutrientes}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+
+{% endblock %}
+
+{% block bottom %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="col s10 offset-s1">
+		<div class="row">
+			<div class="col s8">
+				<h4 class="indigo-text text-lighten-1">{{ gestante.nombre }}</h4>
+			</div>
+			<div class="col s4">
+				<div class="right">
+					<a href="{% block edit_link %} {% endblock %}" class="waves-effect waves-light btn btn-detail-edit">Modificar sección</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s6">
+				<div class="section">
+					{% block fields_left %}
+					{% endblock %}
+				</div>
+			</div>
+			<div class="col s6">
+				<div class="section">
+					{% block fields_right %}
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+			{% block bottom %}
+			{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,203 @@
+{% extends 'appgestantes/tabs_detalle/_base_tab.html' %}
+
+{% block edit_link %}
+
+	#
+
+{% endblock %}
+
+<!--url editar arriba-->
+
+{% block fields_left %}
+
+<div class="detail-field">
+	<p> Cuadro hemático </p>
+	<h5 class="light">
+		{% if primer_trimestre.cuadro_hematico %}
+			{{primer_trimestre.cuadro_hematico}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+	{% if primer_trimestre.cuadro_hematico and primer_trimestre.cuadro_hematico == "Anormal"%}
+		<div class="row">
+			<div class="col s9 offset-s1">
+				<p> Motivos </p>
+				<ul class="collection">
+					<li class="collection-item">
+						Observación 1
+					</li>
+					<li class="collection-item">
+						Observación 2
+					</li>
+				</ul>
+			</div>
+		</div>
+	{% endif %}
+</div>
+<div class="detail-field">
+	<p> Parcial de orina </p>
+	<h5 class="light">
+		{% if primer_trimestre.parcial_orina %}
+			{{primer_trimestre.parcial_orina}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> RH </p>
+	<h5 class="light">
+		{% if primer_trimestre.RH %}
+			{{primer_trimestre.RH}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> VDRL </p>
+	<h5 class="light">
+		{% if primer_trimestre.VDRL %}
+			{{primer_trimestre.VDRL}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Factores de riesgo VIH </p>
+	<h5 class="light">
+		{% if primer_trimestre.VIH %}
+			{{primer_trimestre.VIH}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Micronutrientes </p>
+	<h5 class="light">
+		{% if primer_trimestre.micronutrientes %}
+			{{primer_trimestre.micronutrientes}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Antígeno hepatitis B </p>
+	<h5 class="light">
+		{% if primer_trimestre.antigeno_hepatitisB %}
+			{{primer_trimestre.antigeno_hepatitisB}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Toxoplasmosis iGg </p>
+	<h5 class="light">
+		{% if primer_trimestre.toxoplasmosis_IGG %}
+			{{primer_trimestre.toxoplasmosis_IGG}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Toxoplasmosis iGm </p>
+	<h5 class="light">
+		{% if primer_trimestre.toxoplasmosis_IGM %}
+			{{primer_trimestre.toxoplasmosis_IGM}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+
+{% endblock %}
+
+{% block fields_right %}
+
+<div class="detail-field">
+	<p> Fecha de frotis </p>
+	<h5 class="light">
+		{% if primer_trimestre.frotis_fecha %}
+			{{primer_trimestre.frotis_fecha}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Resultado frotis </p>
+	<h5 class="light">
+		{% if primer_trimestre.frotis_tipo %}
+			{{primer_trimestre.frotis_tipo}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+	{% if primer_trimestre.frotis_tipo and primer_trimestre.frotis_tipo == "Reactivo" %}
+		<div class="row">
+			<div class="col s9 offset-s1">
+				<p> Motivos </p>
+				<ul class="collection">
+					<li class="collection-item">
+						Observación 1
+					</li>
+					<li class="collection-item">
+						Observación 2
+					</li>
+				</ul>
+			</div>
+		</div>
+	{% endif %}
+</div>
+<div class="detail-field">
+	<p> Factores de riesgo diabetes gestacional </p>
+	<h5 class="light">
+		{% if primer_trimestre.factores_riesgo_diabetes_gestacional %}
+			{{primer_trimestre.factores_riesgo_diabetes_gestacional}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+	{% if primer_trimestre.factores_riesgo_diabetes_gestacional and primer_trimestre.factores_riesgo_diabetes_gestacional == "Si" %}
+		<div class="row">
+			<div class="col s9 offset-s1">
+				<p> Fecha </p>
+				<h5 class="light">{{factores_diabetes_fecha}}</h5>
+				<p> Resultado </p>
+				<h5 class="light">{{primer_trimestre.numero_factores_diabetes}} mg/dl</h5>
+			</div>
+		</div>
+	{% endif %}
+</div>
+<div class="detail-field">
+	<p> Fecha de ecografía </p>
+	<h5 class="light">
+		{% if primer_trimestre.ecografia_fecha %}
+			{{primer_trimestre.ecografia_fecha}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Semanas ecografía </p>
+	<h5 class="light">
+		{% if primer_trimestre.ecografia_semanas %}
+			{{primer_trimestre.ecografia_semanas}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+
+{% endblock %}
+
+{% block bottom %}
+
+{% endblock %}

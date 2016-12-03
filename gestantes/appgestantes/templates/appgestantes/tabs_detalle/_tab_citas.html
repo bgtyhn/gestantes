@@ -1,0 +1,149 @@
+{% extends 'appgestantes/tabs_detalle/_base_tab.html' %}
+
+{% block edit_link %}
+
+	#
+
+{% endblock %}
+
+<!--url editar arriba-->
+
+{% block fields_left %} {% endblock %}
+{% block fields_right %} {% endblock %}
+
+{% block bottom %}
+
+<div class="section">
+	<div class="appt-detail-field">
+		<p> Fecha de parto </p>
+		<h5 class="light"><small><strong>Estado:</strong>
+			{% if citas.fecha_parto.estado %}
+				{{citas.fecha_parto.estado}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		<h5 class="light"><small><strong>Fecha:</strong>
+			{% if citas.fecha_parto.fecha %}
+				{{citas.fecha_parto.fecha}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		{% if citas.fecha_parto.estado and citas.fecha_parto.estado == "Atendida" %}
+			<h5 class="light"><small><strong>Información adicional:</strong>
+				{% if citas.fecha_parto.info_adicional %}
+					{{citas.fecha_parto.info_adicional}}
+				{% else %}
+					&nbsp
+				{% endif %}
+			</small></h5>
+		{% endif %}
+	</div>
+	<div class="appt-detail-field">
+		<p> Recién nacido </p>
+		<h5 class="light"><small><strong>Estado:</strong>
+			{% if citas.recien_nacido.estado %}
+				{{citas.recien_nacido.estado}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		<h5 class="light"><small><strong>Fecha:</strong>
+			{% if citas.recien_nacido.fecha %}
+				{{citas.recien_nacido.fecha}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		{% if citas.recien_nacido.estado and citas.recien_nacido.estado == "Atendida" %}
+			<h5 class="light"><small><strong>Información adicional:</strong>
+				{% if citas.recien_nacido.info_adicional %}
+					{{citas.recien_nacido.info_adicional}}
+				{% else %}
+					&nbsp
+				{% endif %}
+			</small></h5>
+		{% endif %}
+	</div>
+	<div class="appt-detail-field">
+		<p> Puerperio </p>
+		<h5 class="light"><small><strong>Estado:</strong>
+			{% if citas.puerperio.estado %}
+				{{citas.puerperio.estado}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		<h5 class="light"><small><strong>Fecha:</strong>
+			{% if citas.puerperio.fecha %}
+				{{citas.puerperio.fecha}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		{% if citas.puerperio.estado and citas.puerperio.estado == "Atendida" %}
+			<h5 class="light"><small><strong>Información adicional:</strong>
+				{% if citas.puerperio.info_adicional %}
+					{{citas.puerperio.info_adicional}}
+				{% else %}
+					&nbsp
+				{% endif %}
+			</small></h5>
+		{% endif %}
+	</div>
+	<div class="appt-detail-field">
+		<p> Crecimiento y desarrollo </p>
+		<h5 class="light"><small><strong>Estado:</strong>
+			{% if citas.crecimiento_desarrollo.estado %}
+				{{citas.crecimiento_desarrollo.estado}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		<h5 class="light"><small><strong>Fecha:</strong>
+			{% if citas.crecimiento_desarrollo.fecha %}
+				{{citas.crecimiento_desarrollo.fecha}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		{% if citas.crecimiento_desarrollo.estado and citas.crecimiento_desarrollo.estado == "Atendida" %}
+			<h5 class="light"><small><strong>Información adicional:</strong>
+				{% if citas.crecimiento_desarrollo.info_adicional %}
+					{{citas.crecimiento_desarrollo.info_adicional}}
+				{% else %}
+					&nbsp
+				{% endif %}
+			</small></h5>
+		{% endif %}
+	</div>
+	<div class="appt-detail-field">
+		<p> Planificación familiar </p>
+		<h5 class="light"><small><strong>Estado:</strong>
+			{% if citas.planificacion_familiar.estado %}
+				{{citas.planificacion_familiar.estado}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		<h5 class="light"><small><strong>Fecha:</strong>
+			{% if citas.planificacion_familiar.fecha %}
+				{{citas.planificacion_familiar.fecha}}
+			{% else %}
+				&nbsp
+			{% endif %}
+		</small></h5>
+		{% if citas.planificacion_familiar.estado and citas.planificacion_familiar.estado == "Atendida" %}
+			<h5 class="light"><small><strong>Información adicional:</strong>
+				{% if citas.planificacion_familiar.info_adicional %}
+					{{citas.planificacion_familiar.info_adicional}}
+				{% else %}
+					&nbsp
+				{% endif %}
+			</small></h5>
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

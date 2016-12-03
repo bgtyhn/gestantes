@@ -113,7 +113,7 @@ class PrimerTrimestre(models.Model):
 	frotis_fecha = models.DateField(blank=True, null=True)
 	frotis_tipo = models.CharField(max_length = 15, choices = FROTIS)
 	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES)
-	#fecha_factores_diabetes
+	fecha_factores_diabetes = models.DateField(blank=True, null=True)
 	numero_factores_diabetes = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	ecografia_fecha = models.DateField(blank=True, null=True)
 	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 

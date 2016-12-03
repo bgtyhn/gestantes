@@ -1,0 +1,123 @@
+{% extends 'appgestantes/tabs_detalle/_base_tab.html' %}
+
+{% block edit_link %}
+
+	#
+
+{% endblock %}
+
+<!--url editar arriba-->
+
+{% block fields_left %}
+
+<div class="detail-field">
+	<p> Fecha de paraclínicos</p>
+	<h5 class="light">
+		{% if primer_control.fecha_paraclinicos %}
+			{{primer_control.fecha_paraclinicos}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Fecha de odontología </p>
+	<h5 class="light">
+		{% if primer_control.odontologia_fecha %}
+			{{primer_control.odontologia_fecha}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Micronutrientes </p>
+	<h5 class="light">
+		{% if primer_control.micronutrientes %}
+			{{primer_control.micronutrientes}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Fecha de pretest </p>
+	<h5 class="light">
+		{% if primer_control.pretest_fecha %}
+			{{primer_control.pretest_fecha}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Fecha de postest </p>
+	<h5 class="light">
+		{% if primer_control.fecha_postest %}
+			{{primer_control.fecha_postest}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+
+{% endblock %}
+
+{% block fields_right %}
+
+<div class="detail-field">
+	<p> Fecha de citología </p>
+	<h5 class="light">
+		{% if primer_control.citologia_fecha %}
+			{{primer_control.citologia_fecha}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Resultado de citología </p>
+	<h5 class="light">
+		{% if primer_control.citologia_resultado %}
+			{{primer_control.citologia_resultado}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> IAMI </p>
+	<h5 class="light">
+		{% if primer_control.iami %}
+			{{primer_control.iami}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> DPTa </p>
+	<h5 class="light">
+		{% if primer_control.DPTa %}
+			{{primer_control.DPTa}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+
+{% endblock %}
+
+{% block bottom %}
+
+<h5 class="light">Riesgos</h5>
+<ul class="collection">
+	<li class="collection-item">
+		Observación 1
+	</li>
+	<li class="collection-item">
+		Observación 2
+	</li>
+</ul>
+
+{% endblock %}

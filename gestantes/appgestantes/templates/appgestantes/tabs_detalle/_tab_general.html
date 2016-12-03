@@ -1,0 +1,80 @@
+{% extends 'appgestantes/tabs_detalle/_base_tab.html' %}
+
+{% block edit_link %}
+
+	#
+
+{% endblock %}
+
+<!--url editar arriba-->
+
+{% block fields_left %}
+
+	<div class="detail-field">
+		<p> Fecha probable de parto </p>
+		<h5 class="light">
+			{{ gestante.fecha_probable_parto }}
+		</h5>
+		<h5>
+			<small>
+				confiable: {{ gestante.confiable }}
+			</small>
+		</h5>
+	</div>
+	<div class="detail-field">
+		<p> Semana de gestación al ingresar </p>
+		<h5 class="light">
+			{{gestante.semana_ingreso}}
+		</h5>
+	</div>
+	<div class="detail-field">
+		<p> Fecha de la ultima menstruación </p>
+		<h5 class="light">
+			{{gestante.fecha_ultima_menstruacion}}
+		</h5>
+	</div>
+	<div class="detail-field">
+		<p> Fecha de ingreso al programa </p>
+		<h5 class="light">
+			{{gestante.fecha_ingreso_programa}}
+		</h5>
+	</div>
+
+{% endblock %}
+
+{% block fields_right %}
+
+	<div class="detail-field">
+		<p> Número de identificación </p>
+		<h5 class="light">
+			{{gestante.identificacion}}
+		</h5>
+	</div>
+	<div class="detail-field">
+		<p> Fecha de nacimiento </p>
+		<h5 class="light">
+			{{gestante.fecha_nacimiento}}
+		</h5>
+	</div>
+	<div class="detail-field">
+		<p> Captación </p>
+		<h5 class="light">
+			{{gestante.captacion}}
+		</h5>
+	</div>
+
+{% endblock %}
+
+{% block bottom %}
+
+	<h5 class="light">Observaciones</h5>
+	<ul class="collection">
+		<li class="collection-item">
+			Observación 1
+		</li>
+		<li class="collection-item">
+			Observación 2
+		</li>
+	</ul>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'appgestantes/tabs_detalle/_base_tab.html' %}
+
+{% block edit_link %}
+
+	#
+
+{% endblock %}
+
+<!--url editar arriba-->
+
+{% block fields_left %}
+
+<div class="detail-field">
+	<p> VDRL </p>
+	<h5 class="light">
+		{% if segundo_trimestre.VDRL %}
+			{{segundo_trimestre.VDRL}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Factores de riesgo diabetes gestacional </p>
+	<h5 class="light">
+		{% if segundo_trimestre.factores_riesgo_diabetes_gestacional %}
+			{{segundo_trimestre.factores_riesgo_diabetes_gestacional}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+	{% if segundo_trimestre.factores_riesgo_diabetes_gestacional and segundo_trimestre.factores_riesgo_diabetes_gestacional == "Si" %}
+		<div class="row">
+			<div class="col s9 offset-s1">
+				<p> Fecha </p>
+				<h5 class="light">31/31/3131</h5>
+				<p> Resultado </p>
+				<h5 class="light">42 mg/dl</h5>
+			</div>
+		</div>
+	{% endif %}
+</div>
+<div class="detail-field">
+	<p> Micronutrientes </p>
+	<h5 class="light">
+		{% if segundo_trimestre.micronutrientes %}
+			{{segundo_trimestre.micronutrientes}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+
+{% endblock %}
+
+{% block fields_right %}
+
+<div class="detail-field">
+	<p> Parcial de orina </p>
+	<h5 class="light">
+		{% if segundo_trimestre.parcial_horina %}
+			{{segundo_trimestre.parcial_horina}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Fecha de ecografía </p>
+	<h5 class="light">
+		{% if segundo_trimestre.ecografia_fecha %}
+			{{segundo_trimestre.ecografia_fecha}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+<div class="detail-field">
+	<p> Semanas de ecografía </p>
+	<h5 class="light">
+		{% if segundo_trimestre.ecografia_semanas %}
+			{{segundo_trimestre.ecografia_semanas}}
+		{% else %}
+			&nbsp
+		{% endif %}
+	</h5>
+</div>
+
+{% endblock %}
+
+{% block bottom %}
+
+{% endblock %}
