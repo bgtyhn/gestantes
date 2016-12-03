@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
@@ -53,13 +54,13 @@ ANTIGENO = (
 )
 
 TOXOPLASMOSIS_IGG = (
-	('IGG Positiva', 'IGG Positiva'),
+	('IGG Positiva', '|'),
 	('IGG Negativa', 'IGG Negativa'),
 )
 
 TOXOPLASMOSIS_IGM = (
-	('IGM Positiva', 'IGG Positiva'),
-	('IGM Negativa', 'IGG Negativa'),
+	('IGM Positiva', 'IGM Positiva'),
+	('IGM Negativa', 'IGM Negativa'),
 )
 
 TIPO_CITA = (
@@ -75,13 +76,15 @@ ESTADO_CITA = (
 	('Atendida', 'Atendida'),
 )
 
+NUMERIC = RegexValidator(r'^[0-9]*$', 'Solo se permiten números')
+
 class Gestante(models.Model):
 	nombre = models.CharField(max_length=100)
 	fecha_ingreso_programa = models.DateField() #verificar
 	fecha_nacimiento = models.DateField()
 	identificacion = models.CharField(max_length = 15)
 	captacion = models.CharField(max_length = 40, choices = CAPTACION)
-	semana_ingreso = models.CharField(max_length = 10) #verificar solo numero
+	semana_ingreso = models.CharField(max_length = 10, validators=[NUMERIC]) #verificar solo numero
 	fecha_ultima_menstruacion = models.DateField() #verificar <= hoy
 	fecha_probable_parto = models.DateField()
 	confiable = models.CharField(max_length = 20)
@@ -104,36 +107,58 @@ class Riesgo(models.Model):
 
 class PrimerTrimestre(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)
-	cuadro_hematico = models.CharField(max_length = 10, choices = CUADRO_HEMATICO) #hacer otra tabla lista
+	cuadro_hematico = models.CharField(max_length = 10, choices = CUADRO_HEMATICO)
 	parcial_orina = models.CharField(max_length = 40, choices = PARCIAL_ORINA)
 	RH = models.TextField()
 	VDRL = models.CharField(max_length = 20, choices = VDRL)
 	VIH = models.CharField(max_length = 20, choices = VIH)
 	frotis_fecha = models.DateField()
-	frotis_tipo = models.CharField(max_length = 15, choices = FROTIS) #hacer otra tabla lista
-	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES) # otra tabla con un numero
+	frotis_tipo = models.CharField(max_length = 15, choices = FROTIS)
+	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES)
 	ecografia_fecha = models.DateField()
-	ecografia_semanas = models.CharField(max_length = 5) #verificar solo numero
+	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	#mirar fecha parto con la ecografia
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
 	antigeno_hepatitisB = models.CharField(max_length = 15, choices = ANTIGENO)
 	toxoplasmosis_IGG = models.CharField(max_length = 20, choices = TOXOPLASMOSIS_IGG)
 	toxoplasmosis_IGM = models.CharField(max_length = 20, choices = TOXOPLASMOSIS_IGM)
 
+class ListaMotivosCHPT(models.Model):
+	primer_trimestre = models.ForeignKey(PrimerTrimestre, on_delete = models.CASCADE)
+	motivo = models.TextField()
+
+class ListaMotivosFrotisPT(models.Model):
+	primer_trimestre = models.ForeignKey(PrimerTrimestre, on_delete = models.CASCADE)
+	motivo = models.TextField()
+
+class NumeroFactorRiegoPT(models.Model):
+	primer_trimestre = models.ForeignKey(PrimerTrimestre, on_delete = models.CASCADE)
+	numero = models.CharField(max_length = 3, validators=[NUMERIC])
+
 class SegundoTrimestre(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)
 	VDRL = models.CharField(max_length = 20, choices = VDRL)
-	parcial_horina = models.CharField(max_length = 40, choices = PARCIAL_ORINA) #otra tabla
+	parcial_horina = models.CharField(max_length = 40, choices = PARCIAL_ORINA)
+	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES)
 	ecografia_fecha = models.DateField()
-	ecografia_semanas = models.CharField(max_length = 5) #verificar solo numero
+	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
+
+class FactoresRiesgoDGST(models.Model):
+	segundo_trimestre = models.ForeignKey(SegundoTrimestre, on_delete = models.CASCADE)
+	fecha = models.DateField()
+	estado = models.CharField(max_length = 15, choices = FROTIS)
+
+class NumeroFactorRiesgoST(models.Model):
+	segundo_trimestre = models.ForeignKey(SegundoTrimestre, on_delete = models.CASCADE)
+	numero = models.CharField(max_length = 3)
 
 class TercerTrimestre(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)
 	VDRL = models.CharField(max_length = 20, choices = VDRL)
 	parcial_orina = models.CharField(max_length = 40, choices = PARCIAL_ORINA)
 	factores_riesgo_VIH = models.CharField(max_length = 3, choices = SI_OPCIONES)
-	ecografia_unica_semanas = models.CharField(max_length = 5) #verificar numero
+	ecografia_unica_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	ecografia_unica_fecha = models.DateField()
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
 
