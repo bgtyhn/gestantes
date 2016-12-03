@@ -4,8 +4,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.validators import RegexValidator
 
-# Create your models here.
-
 CAPTACION = (
 	('Médico','Médico'),
 	('Enfermera','Enfermera'),
@@ -115,6 +113,8 @@ class PrimerTrimestre(models.Model):
 	frotis_fecha = models.DateField()
 	frotis_tipo = models.CharField(max_length = 15, choices = FROTIS)
 	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES)
+	#fecha_factores_diabetes
+	numero_factores_diabetes = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	ecografia_fecha = models.DateField()
 	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	#mirar fecha parto con la ecografia
@@ -130,10 +130,6 @@ class ListaMotivosCHPT(models.Model):
 class ListaMotivosFrotisPT(models.Model):
 	primer_trimestre = models.ForeignKey(PrimerTrimestre, on_delete = models.CASCADE)
 	motivo = models.TextField()
-
-class NumeroFactorRiegoPT(models.Model):
-	primer_trimestre = models.ForeignKey(PrimerTrimestre, on_delete = models.CASCADE)
-	numero = models.CharField(max_length = 3, validators=[NUMERIC])
 
 class SegundoTrimestre(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)
@@ -158,6 +154,8 @@ class TercerTrimestre(models.Model):
 	VDRL = models.CharField(max_length = 20, choices = VDRL)
 	parcial_orina = models.CharField(max_length = 40, choices = PARCIAL_ORINA)
 	factores_riesgo_VIH = models.CharField(max_length = 3, choices = SI_OPCIONES)
+	fecha_VIH = models.DateField()
+	reactivo_VIH = models.CharField(max_length = 40, choices = VIH)
 	ecografia_unica_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	ecografia_unica_fecha = models.DateField()
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
