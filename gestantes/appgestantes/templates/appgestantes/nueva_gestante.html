@@ -21,18 +21,18 @@
 	</div>
 </div>
 <div class="divider"></div><br>
-<form id="gest-form-create">
+<form id="gest-form-create" action="" method="post" >{% csrf_token %}
 	<div class="row">
 		<div class="col s6">
 			<div class="input-field">
 				{% if form.nombre.errors %}
-					<input id="{{ form.nombre.id_for_label }}" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="text" class="validate" data-position="top" data-tooltip='{{ form.nombre.errors.as_text }}' required>
+					<input id="{{ form.nombre.id_for_label }}" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.nombre.errors.as_text }}' >
 	          		<label for="nombre">Nombre completo</label>
 	          	{% else %}
-	          		{% if form.name.value != none %}
-	          			<input id="{{ form.nombre.id_for_label }}" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="text" class="validate" data-position="top" data-tooltip='{{ form.nombre.errors.as_text }}' required>
+	          		{% if form.nombre.value != none %}
+	          			<input id="{{ form.nombre.id_for_label }}" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="text" class="validate" >
 	          		{% else %}
-	          			<input id="{{ form.nombre.id_for_label }}" name="{{ form.nombre.html_name }}" type="text" class="validate" required>
+	          			<input id="{{ form.nombre.id_for_label }}" name="{{ form.nombre.html_name }}" type="text" class="validate" >
 	          		{% endif %}
 	          		<label for="nombre">Nombre completo</label>
 	          	{% endif %}
@@ -41,42 +41,42 @@
 			</div>	
 			<div class="input-field">
 				{% if form.fecha_ingreso_programa.errors %}
-					<input id="{{ form.fecha_ingreso_programa.id_for_label }}" value="{{ form.fecha_ingreso_programa.value }}" name="{{ form.fecha_ingreso_programa.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_ingreso_programa.errors.as_text }}'  placeholder="Fecha de ingreso al programa" required>
+					<input id="fecha_ingreso_programa" value="{{ form.fecha_ingreso_programa.value }}" name="{{ form.fecha_ingreso_programa.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_ingreso_programa.errors.as_text }}'  placeholder="Fecha de ingreso al programa" >
 	          	{% else %}
 	          		{% if form.fecha_ingreso_programa.value != none %}
-	          			<input id="{{ form.fecha_ingreso_programa.id_for_label }}" value="{{ form.fecha_ingreso_programa.value }}" name="{{ form.fecha_ingreso_programa.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_ingreso_programa.errors.as_text }}' placeholder="Fecha de ingreso al programa" required>
+	          			<input id="fecha_ingreso_programa" value="{{ form.fecha_ingreso_programa.value }}" name="{{ form.fecha_ingreso_programa.html_name }}" type="date" class="datepicker"  placeholder="Fecha de ingreso al programa" >
 	          		{% else %}
-	          			<input id="{{ form.fecha_ingreso_programa.id_for_label }}" name="{{ form.fecha_ingreso_programa.html_name }}" placeholder="Fecha de ingreso al programa"  type="date" class="datepicker" required>
+	          			<input id="fecha_ingreso_programa" name="{{ form.fecha_ingreso_programa.html_name }}" placeholder="Fecha de ingreso al programa"  type="date" class="datepicker" >
 	          		{% endif %}
 	          	{% endif %}
 			</div>	
 			<div class="input-field">
 				{% if form.fecha_nacimiento.errors %}
-					<input id="{{ form.fecha_nacimiento.id_for_label }}" value="{{ form.fecha_nacimiento.value }}" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_nacimiento.errors.as_text }}'  placeholder="Fecha de nacimiento" required>
+					<input id="fecha_nacimiento" value="{{ form.fecha_nacimiento.value }}" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_nacimiento.errors.as_text }}'  placeholder="Fecha de nacimiento" >
 	          	{% else %}
 	          		{% if form.fecha_nacimiento.value != none %}
-	          			<input id="{{ form.fecha_nacimiento.id_for_label }}" value="{{ form.fecha_nacimiento.value }}" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_nacimiento.errors.as_text }}' placeholder="Fecha de nacimiento" required>
+	          			<input id="fecha_nacimiento" value="{{ form.fecha_nacimiento.value }}" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker" placeholder="Fecha de nacimiento" >
 	          		{% else %}
-	          			<input id="{{ form.fecha_nacimiento.id_for_label }}" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker" placeholder="Fecha de nacimiento" required>
+	          			<input id="fecha_nacimiento" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker" placeholder="Fecha de nacimiento" >
 	          		{% endif %}
 	          	{% endif %}
 			</div>	
 			<div class="input-field">
 				{% if form.identificacion.errors %}
-					<input id="{{ form.identificacion.id_for_label }}" value="{{ form.identificacion.value }}" name="{{ form.identificacion.html_name }}" type="text" class="validate" data-position="top" data-tooltip='{{ form.identificacion.errors.as_text }}' required>
+					<input id="{{ form.identificacion.id_for_label }}" value="{{ form.identificacion.value }}" name="{{ form.identificacion.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.identificacion.errors.as_text }}' >
 	          		<label for="{{ form.identificacion.id_for_label }}">Número de identificación</label>
 	          	{% else %}
-	          		{% if form.name.value != none %}
-	          			<input id="{{ form.identificacion.id_for_label }}" value="{{ form.identificacion.value }}" name="{{ form.identificacion.html_name }}" type="text" class="validate" data-position="top" data-tooltip='{{ form.identificacion.errors.as_text }}' required>
+	          		{% if form.identificacion.value != none %}
+	          			<input id="{{ form.identificacion.id_for_label }}" value="{{ form.identificacion.value }}" name="{{ form.identificacion.html_name }}" type="text" class="validate">
 	          		{% else %}
-	          			<input id="{{ form.identificacion.id_for_label }}" name="{{ form.identificacion.html_name }}" type="text" class="validate" required>
+	          			<input id="{{ form.identificacion.id_for_label }}" name="{{ form.identificacion.html_name }}" type="text" class="validate" >
 	          		{% endif %}
 	          		<label for="{{ form.identificacion.id_for_label }}">Número de identificación</label>
 	          	{% endif %}
 			</div>
 			<div class="input-field">
 				{% if form.captacion.errors %}
-					<select id="{{ form.captacion.id_for_label }}"  data-position="top" data-tooltip='{{ form.captacion.errors.as_text }}' id="{{form.captacion.id_for_label}}" name="{{form.captacion.html_name}}">
+					<select id="{{ form.captacion.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.captacion.errors.as_text }}' id="{{form.captacion.id_for_label}}" name="{{form.captacion.html_name}}">
 				{% else %}
 					<select id="{{ form.captacion.id_for_label }}" id="{{form.captacion.id_for_label}}" name="{{form.captacion.html_name}}">
 				{% endif %}
@@ -94,36 +94,36 @@
 		<div class="col s6">
 			<div class="input-field">
 				{% if form.semana_ingreso.errors %}
-					<input id="{{ form.semana_ingreso.id_for_label }}" value="{{ form.semana_ingreso.value }}" name="{{ form.semana_ingreso.html_name }}" type="text" class="validate" data-position="top" data-tooltip='{{ form.semana_ingreso.errors.as_text }}' required>
+					<input id="{{ form.semana_ingreso.id_for_label }}" value="{{ form.semana_ingreso.value }}" name="{{ form.semana_ingreso.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.semana_ingreso.errors.as_text }}' >
 	          		<label for="{{ form.semana_ingreso.id_for_label }}">Semana de gestación al ingresar</label>
 	          	{% else %}
-	          		{% if form.name.value != none %}
-	          			<input id="{{ form.semana_ingreso.id_for_label }}" value="{{ form.semana_ingreso.value }}" name="{{ form.semana_ingreso.html_name }}" type="text" class="validate" data-position="top" data-tooltip='{{ form.semana_ingreso.errors.as_text }}' required>
+	          		{% if form.semana_ingreso.value != none %}
+	          			<input id="{{ form.semana_ingreso.id_for_label }}" value="{{ form.semana_ingreso.value }}" name="{{ form.semana_ingreso.html_name }}" type="text" class="validate" >
 	          		{% else %}
-	          			<input id="{{ form.semana_ingreso.id_for_label }}" name="{{ form.semana_ingreso.html_name }}" type="text" class="validate" required>
+	          			<input id="{{ form.semana_ingreso.id_for_label }}" name="{{ form.semana_ingreso.html_name }}" type="text" class="validate" >
 	          		{% endif %}
 	          		<label for="{{ form.semana_ingreso.id_for_label }}">Semana de gestación al ingresar</label>
 	          	{% endif %}
 			</div>
 			<div class="input-field">
 				{% if form.fecha_ultima_menstruacion.errors %}
-					<input id="{{ form.fecha_ultima_menstruacion.id_for_label }}" value="{{ form.fecha_ultima_menstruacion.value }}" name="{{ form.fecha_ultima_menstruacion.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_ultima_menstruacion.errors.as_text }}'  placeholder="fecha ultima menstruacion" required>
+					<input id="fecha_ultima_menstruacion" value="{{ form.fecha_ultima_menstruacion.value }}" name="{{ form.fecha_ultima_menstruacion.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_ultima_menstruacion.errors.as_text }}'  placeholder="fecha ultima menstruacion" >
 	          	{% else %}
 	          		{% if form.fecha_ultima_menstruacion.value != none %}
-	          			<input id="{{ form.fecha_ultima_menstruacion.id_for_label }}" value="{{ form.fecha_ultima_menstruacion.value }}" name="{{ form.fecha_ultima_menstruacion.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_ultima_menstruacion.errors.as_text }}' placeholder="fecha ultima menstruacion" required>
+	          			<input id="fecha_ultima_menstruacion" value="{{ form.fecha_ultima_menstruacion.value }}" name="{{ form.fecha_ultima_menstruacion.html_name }}" type="date" class="datepicker" placeholder="fecha ultima menstruacion" >
 	          		{% else %}
-	          			<input id="{{ form.fecha_ultima_menstruacion.id_for_label }}" name="{{ form.fecha_ultima_menstruacion.html_name }}" type="date" class="datepicker" placeholder="fecha ultima menstruacion" required>
+	          			<input id="fecha_ultima_menstruacion" name="{{ form.fecha_ultima_menstruacion.html_name }}" type="date" class="datepicker" placeholder="fecha ultima menstruacion" >
 	          		{% endif %}
 	          	{% endif %}
 			</div>
 			<div class="input-field">
 				{% if form.fecha_probable_parto.errors %}
-					<input id="{{ form.fecha_probable_parto.id_for_label }}" value="{{ form.fecha_probable_parto.value }}" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_probable_parto.errors.as_text }}'  placeholder="Fecha probable de parto" required>
+					<input id="fecha_probable_parto" value="{{ form.fecha_probable_parto.value }}" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_probable_parto.errors.as_text }}'  placeholder="Fecha probable de parto" >
 	          	{% else %}
 	          		{% if form.fecha_probable_parto.value != none %}
-	          			<input id="{{ form.fecha_probable_parto.id_for_label }}" value="{{ form.fecha_probable_parto.value }}" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_probable_parto.errors.as_text }}' placeholder="Fecha probable de parto" required>
+	          			<input id="fecha_probable_parto" value="{{ form.fecha_probable_parto.value }}" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" placeholder="Fecha probable de parto" >
 	          		{% else %}
-	          			<input id="{{ form.fecha_probable_parto.id_for_label }}" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" placeholder="Fecha probable de parto" required>
+	          			<input id="fecha_probable_parto" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" placeholder="Fecha probable de parto" >
 	          		{% endif %}
 	          	{% endif %}
 			</div>
@@ -156,23 +156,23 @@
 	<div class="row">
 		<div class="col s6">
 			{% if form.fecha_paraclinicos.errors %}
-					<input id="{{ form.fecha_paraclinicos.id_for_label }}" value="{{ form.fecha_paraclinicos.value }}" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_paraclinicos.errors.as_text }}'  placeholder="Fecha de paraclinicos" required>
+					<input id="fecha_paraclinicos" value="{{ form.fecha_paraclinicos.value }}" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_paraclinicos.errors.as_text }}'  placeholder="Fecha de paraclinicos" >
           	{% else %}
           		{% if form.fecha_paraclinicos.value != none %}
-          			<input id="{{ form.fecha_paraclinicos.id_for_label }}" value="{{ form.fecha_paraclinicos.value }}" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_paraclinicos.errors.as_text }}' placeholder="Fecha de paraclinicos" required>
+          			<input id="fecha_paraclinicos" value="{{ form.fecha_paraclinicos.value }}" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker" placeholder="Fecha de paraclinicos" >
           		{% else %}
-          			<input id="{{ form.fecha_paraclinicos.id_for_label }}" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker" placeholder="Fecha de paraclinicos" required>
+          			<input id="fecha_paraclinicos" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker" placeholder="Fecha de paraclinicos" >
           		{% endif %}
           	{% endif %}
 		</div>
 		<div class="col s6">
 			{% if form.odontologia_fecha.errors %}
-					<input id="{{ form.odontologia_fecha.id_for_label }}" value="{{ form.odontologia_fecha.value }}" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.odontologia_fecha.errors.as_text }}'  placeholder="Fecha de odontología" required>
+					<input id="fecha_odontologia" value="{{ form.odontologia_fecha.value }}" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.odontologia_fecha.errors.as_text }}'  placeholder="Fecha de odontología" >
           	{% else %}
           		{% if form.odontologia_fecha.value != none %}
-          			<input id="{{ form.odontologia_fecha.id_for_label }}" value="{{ form.odontologia_fecha.value }}" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.odontologia_fecha.errors.as_text }}' placeholder="Fecha de odontología" required>
+          			<input id="fecha_odontologia" value="{{ form.odontologia_fecha.value }}" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de odontología" >
           		{% else %}
-          			<input id="{{ form.odontologia_fecha.id_for_label }}" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de odontología" required>
+          			<input id="fecha_odontologia" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de odontología" >
           		{% endif %}
           	{% endif %}
 		</div>
@@ -180,6 +180,7 @@
 	<div class="row">
 		<div class="col s6">
 			{% if form.micronutrientes.errors %}
+				asd
 					{% if form.micronutrientes.value == 'Si' %}
 						<input type="checkbox" name="{{ form.micronutrientes.html_name}}" value="{{ form.micronutrientes.value }}" class="filled-in" id="micronutrientes"  checked >
 					{% else %}
@@ -196,12 +197,12 @@
 		</div>
 		<div class="col s6">
 			{% if form.citologia_fecha.errors %}
-					<input id="{{ form.citologia_fecha.id_for_label }}" value="{{ form.citologia_fecha.value }}" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.citologia_fecha.errors.as_text }}'  placeholder="Fecha de citología" required>
+					<input id="fecha_citologia" value="{{ form.citologia_fecha.value }}" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.citologia_fecha.errors.as_text }}'  placeholder="Fecha de citología" >
           	{% else %}
           		{% if form.citologia_fecha.value != none %}
-          			<input id="{{ form.citologia_fecha.id_for_label }}" value="{{ form.citologia_fecha.value }}" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.citologia_fecha.errors.as_text }}' placeholder="Fecha de citología" required>
+          			<input id="fecha_citologia" value="{{ form.citologia_fecha.value }}" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de citología" >
           		{% else %}
-          			<input id="{{ form.citologia_fecha.id_for_label }}" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de citología" required>
+          			<input id="fecha_citologia" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de citología" >
           		{% endif %}
           	{% endif %}
 		</div>
@@ -209,23 +210,23 @@
 	<div class="row">
 		<div class="col s6">
 			{% if form.pretest_fecha.errors %}
-					<input id="{{ form.pretest_fecha.id_for_label }}" value="{{ form.pretest_fecha.value }}" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.pretest_fecha.errors.as_text }}'  placeholder="Fecha de pretest" required>
+					<input id="fecha_pretest" value="{{ form.pretest_fecha.value }}" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.pretest_fecha.errors.as_text }}'  placeholder="Fecha de pretest" >
           	{% else %}
           		{% if form.pretest_fecha.value != none %}
-          			<input id="{{ form.pretest_fecha.id_for_label }}" value="{{ form.pretest_fecha.value }}" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.pretest_fecha.errors.as_text }}' placeholder="Fecha de pretest" required>
+          			<input id="fecha_pretest" value="{{ form.pretest_fecha.value }}" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker"  placeholder="Fecha de pretest" >
           		{% else %}
-          			<input id="{{ form.pretest_fecha.id_for_label }}" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de pretest" required>
+          			<input id="fecha_pretest" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de pretest" >
           		{% endif %}
           	{% endif %}
 		</div>
 		<div class="col s6">
 			{% if form.citologia_resultado.errors %}
-					<input id="{{ form.citologia_resultado.id_for_label }}" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate" data-position="top" data-tooltip='{{ form.citologia_resultado.errors.as_text }}' placeholder="Resultado de la citología"  required>
+					<input id="{{ form.citologia_resultado.id_for_label }}" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.citologia_resultado.errors.as_text }}' placeholder="Resultado de la citología"  >
 	          	{% else %}
-	          		{% if form.name.value != none %}
-	          			<input id="{{ form.citologia_resultado.id_for_label }}" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate" data-position="top" data-tooltip='{{ form.citologia_resultado.errors.as_text }}' placeholder="Resultado de la citología" required>
+	          		{% if form.citologia_resultado.value != none %}
+	          			<input id="{{ form.citologia_resultado.id_for_label }}" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate" placeholder="Resultado de la citología" >
 	          		{% else %}
-	          			<input id="{{ form.citologia_resultado.id_for_label }}" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate" placeholder="Resultado de la citología"  required>
+	          			<input id="{{ form.citologia_resultado.id_for_label }}" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate" placeholder="Resultado de la citología"  >
 	          		{% endif %}
 	          	{% endif %}
 		</div>
@@ -233,12 +234,12 @@
 	<div class="row">
 		<div class="col s6">
 			{% if form.fecha_postest.errors %}
-					<input id="{{ form.fecha_postest.id_for_label }}" value="{{ form.fecha_postest.value }}" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker" data-position="top" data-tooltip='{{ form.fecha_postest.errors.as_text }}'  placeholder="Fecha de postest" required>
+					<input id="fecha_posttest" value="{{ form.fecha_postest.value }}" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_postest.errors.as_text }}'  placeholder="Fecha de postest" >
           	{% else %}
           		{% if form.fecha_postest.value != none %}
-          			<input id="{{ form.fecha_postest.id_for_label }}" value="{{ form.fecha_postest.value }}" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker"  data-position="top" data-tooltip='{{ form.fecha_postest.errors.as_text }}' placeholder="Fecha de postest" required>
+          			<input id="fecha_posttest" value="{{ form.fecha_postest.value }}" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker"  placeholder="Fecha de postest" >
           		{% else %}
-          			<input id="{{ form.fecha_postest.id_for_label }}" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker" placeholder="Fecha de postest" required>
+          			<input id="fecha_posttest" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker" placeholder="Fecha de postest" >
           		{% endif %}
           	{% endif %}
 		</div>

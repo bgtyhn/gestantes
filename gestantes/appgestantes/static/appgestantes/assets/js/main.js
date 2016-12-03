@@ -12,8 +12,8 @@ $(function(){
 	    clear: 'Borrar',
 	    close: 'Cerrar',
 	    firstDay: 1,
-	    format: 'dddd!, d !de mmmm !de yyyy',
-	    formatSubmit: 'yyyy/mm/dd'
+	    format: 'yyyy-mm-dd',
+	    formatSubmit: 'yyyy-mm-dd'
 	});
 
     $('#fecha_ingreso_programa').pickadate({
@@ -48,6 +48,12 @@ $(function(){
 	$("#fecha_pretest").pickadate({
 		selectMonths: true,
 		selectYears: 4,
+		min: true
+	})
+
+	$("#fecha_posttest").pickadate({
+	    selectMonths: true,
+		selectYears: 2,
 		min: true
 	})
 

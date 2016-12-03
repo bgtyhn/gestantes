@@ -205,6 +205,7 @@ class Pasadas(ListView):
 class Nueva(FormView):
     template_name = 'appgestantes/nueva_gestante.html'
     form_class = forms.GestanteForm
+    success_url = '/detalle/'
 
     def get_context_data(self, **kwargs):
         context = super(Nueva, self).get_context_data(**kwargs)
@@ -213,7 +214,7 @@ class Nueva(FormView):
 
     def form_valid(self, form):
         
-
+        print(form)
         gestante = Gestante(nombre = form.cleaned_data['nombre'],
             fecha_ingreso_programa = form.cleaned_data['fecha_ingreso_programa'],
             fecha_nacimiento = form.cleaned_data['fecha_nacimiento'],
@@ -241,7 +242,7 @@ class Nueva(FormView):
         primer_control.save(commit = False)
         primer_control.gestante = gestante
         primer_control.save()
-
+        self.success_url = self.success_url + gestante.pk + '/'
         return super(Nueva, self).form_valid(form)
 
 def detalle(request):
