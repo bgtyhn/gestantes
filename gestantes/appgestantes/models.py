@@ -89,13 +89,13 @@ class Gestante(models.Model):
 
 class PrimerControl(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)
-	fecha_paraclinicos = models.DateField() # > hoy
+	fecha_paraclinicos = models.DateField(blank=True, null=True) # > hoy
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
-	pretest_fecha = models.DateField() # > hoy
-	fecha_postest = models.DateField() # > hoy
+	pretest_fecha = models.DateField(blank=True, null=True) # > hoy
+	fecha_postest = models.DateField(blank=True, null=True) # > hoy
 	iami = models.CharField(max_length = 3, choices = SI_OPCIONES)
-	odontologia_fecha = models.DateField()
-	citologia_fecha = models.DateField()
+	odontologia_fecha = models.DateField(blank=True, null=True)
+	citologia_fecha = models.DateField(blank=True, null=True)
 	citologia_resultado = models.TextField()
 	DPTa = models.CharField(max_length = 3, choices = SI_OPCIONES)
 
@@ -110,12 +110,12 @@ class PrimerTrimestre(models.Model):
 	RH = models.TextField()
 	VDRL = models.CharField(max_length = 20, choices = VDRL)
 	VIH = models.CharField(max_length = 20, choices = VIH)
-	frotis_fecha = models.DateField()
+	frotis_fecha = models.DateField(blank=True, null=True)
 	frotis_tipo = models.CharField(max_length = 15, choices = FROTIS)
 	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES)
 	#fecha_factores_diabetes
 	numero_factores_diabetes = models.CharField(max_length = 5, validators=[NUMERIC]) 
-	ecografia_fecha = models.DateField()
+	ecografia_fecha = models.DateField(blank=True, null=True)
 	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	#mirar fecha parto con la ecografia
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
@@ -136,13 +136,13 @@ class SegundoTrimestre(models.Model):
 	VDRL = models.CharField(max_length = 20, choices = VDRL)
 	parcial_horina = models.CharField(max_length = 40, choices = PARCIAL_ORINA)
 	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES)
-	ecografia_fecha = models.DateField()
+	ecografia_fecha = models.DateField(blank=True, null=True)
 	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
 
 class FactoresRiesgoDGST(models.Model):
 	segundo_trimestre = models.ForeignKey(SegundoTrimestre, on_delete = models.CASCADE)
-	fecha = models.DateField()
+	fecha = models.DateField(blank=True, null=True)
 	estado = models.CharField(max_length = 15, choices = FROTIS)
 
 class NumeroFactorRiesgoST(models.Model):
@@ -154,17 +154,17 @@ class TercerTrimestre(models.Model):
 	VDRL = models.CharField(max_length = 20, choices = VDRL)
 	parcial_orina = models.CharField(max_length = 40, choices = PARCIAL_ORINA)
 	factores_riesgo_VIH = models.CharField(max_length = 3, choices = SI_OPCIONES)
-	fecha_VIH = models.DateField()
+	fecha_VIH = models.DateField(blank=True, null=True)
 	reactivo_VIH = models.CharField(max_length = 40, choices = VIH)
 	ecografia_unica_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
-	ecografia_unica_fecha = models.DateField()
+	ecografia_unica_fecha = models.DateField(blank=True, null=True)
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
 
 class Cita(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)
 	tipo_cita = models.CharField(max_length = 40, choices = TIPO_CITA)
 	estado = models.CharField(max_length = 15, choices = ESTADO_CITA)
-	fecha = models.DateField()
+	fecha = models.DateField(blank=True, null=True)
 	info_adicional = models.TextField()
 
 class Observacion(models.Model):
