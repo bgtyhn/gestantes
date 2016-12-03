@@ -85,7 +85,7 @@ class Gestante(models.Model):
 	semana_ingreso = models.CharField(max_length = 10, validators=[NUMERIC]) #verificar solo numero
 	fecha_ultima_menstruacion = models.DateField() #verificar <= hoy
 	fecha_probable_parto = models.DateField()
-	confiable = models.CharField(max_length = 20)
+	confiable = models.CharField(max_length = 20, default = 'No')
 
 class PrimerControl(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)
@@ -93,11 +93,11 @@ class PrimerControl(models.Model):
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
 	pretest_fecha = models.DateField(blank=True, null=True) # > hoy
 	fecha_postest = models.DateField(blank=True, null=True) # > hoy
-	iami = models.CharField(max_length = 3, choices = SI_OPCIONES)
+	iami = models.CharField(max_length = 3, default = 'No' ,choices = SI_OPCIONES)
 	odontologia_fecha = models.DateField(blank=True, null=True)
 	citologia_fecha = models.DateField(blank=True, null=True)
 	citologia_resultado = models.TextField()
-	DPTa = models.CharField(max_length = 3, choices = SI_OPCIONES)
+	DPTa = models.CharField(max_length = 3, default = 'No' , choices = SI_OPCIONES)
 
 class Riesgo(models.Model):
 	primerControl = models.ForeignKey(PrimerControl, on_delete = models.CASCADE)
@@ -118,7 +118,7 @@ class PrimerTrimestre(models.Model):
 	ecografia_fecha = models.DateField(blank=True, null=True)
 	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	#mirar fecha parto con la ecografia
-	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
+	micronutrientes = models.CharField(max_length = 3, default = 'No' ,choices = SI_OPCIONES)
 	antigeno_hepatitisB = models.CharField(max_length = 15, choices = ANTIGENO)
 	toxoplasmosis_IGG = models.CharField(max_length = 20, choices = TOXOPLASMOSIS_IGG)
 	toxoplasmosis_IGM = models.CharField(max_length = 20, choices = TOXOPLASMOSIS_IGM)

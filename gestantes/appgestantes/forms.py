@@ -89,13 +89,13 @@ class GestanteForm(forms.Form):
 	semana_ingreso = forms.CharField(error_messages = errores_defecto) #verificar solo numero
 	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto) #verificar <= hoy
 	fecha_probable_parto = forms.DateField(error_messages = errores_defecto)
-	confiable = forms.CharField(error_messages = errores_defecto)
+	confiable = forms.CharField(error_messages = errores_defecto, required = False)
 	fecha_paraclinicos = forms.DateField(error_messages = errores_defecto) # > hoy
-	micronutrientes = forms.CharField(error_messages = errores_defecto)
+	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
 	pretest_fecha = forms.DateField(error_messages = errores_defecto) # > hoy
 	fecha_postest = forms.DateField(error_messages = errores_defecto) # > hoy
-	iami = forms.CharField(error_messages = errores_defecto)
+	iami = forms.CharField(error_messages = errores_defecto, required = False)
 	odontologia_fecha = forms.DateField(error_messages = errores_defecto)
 	citologia_fecha = forms.DateField(error_messages = errores_defecto)
 	citologia_resultado = forms.CharField(error_messages = errores_defecto)
-	DPTa = forms.CharField(error_messages = errores_defecto)
+	DPTa = forms.CharField(error_messages = errores_defecto, required = False)

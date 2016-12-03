@@ -16,6 +16,7 @@ from . import forms
 from django.db.models.functions import Value
 from django.db.models import CharField
 from datetime import datetime
+from django.core.exceptions import ObjectDoesNotExist
 
 from .models import *
 
@@ -228,6 +229,7 @@ class Nueva(FormView):
         gestante.save()
 
         primer_control = PrimerControl(
+            gestante = gestante,
             fecha_paraclinicos = form.cleaned_data['fecha_paraclinicos'],
             micronutrientes = form.cleaned_data['micronutrientes'],
             pretest_fecha = form.cleaned_data['pretest_fecha'],
@@ -238,14 +240,35 @@ class Nueva(FormView):
             citologia_resultado = form.cleaned_data['citologia_resultado'],
             DPTa = form.cleaned_data['DPTa']
         )
-
-        primer_control.save(commit = False)
-        primer_control.gestante = gestante
         primer_control.save()
-        self.success_url = self.success_url + gestante.pk + '/'
+        self.success_url = self.success_url + str(gestante.pk) + '/'
         return super(Nueva, self).form_valid(form)
 
-def detalle(request):
-    template = loader.get_template('appgestantes/detalle.html')
-    context = {}
-    return HttpResponse(template.render(context, request))
+class Detalle(DetailView):
+    model = Gestante
+    template_name = 'appgestantes/detalle.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Detalle, self).get_context_data(**kwargs)
+        gestante = context['object']
+        try:
+            context['primer_control'] = PrimerControl.objects.get(gestante_id = gestante.id)
+        except ObjectDoesNotExist:
+            context['primer_control'] = ""
+        try:
+            context['primer_trimestre'] = PrimerTrimestre.objects.get(gestante_id = gestante.id)
+        except ObjectDoesNotExist:
+            context['primer_trimestre'] = ""
+        try:
+            context['segundo_trimestre'] = SegundoTrimestre.objects.get(gestante_id = gestante.id)
+        except ObjectDoesNotExist:
+            context['segundo_trimestre'] = ""
+
+        try:
+            context['tercer_trimestre'] = TercerTrimestre.objects.get(gestante_id = gestante.id)
+        except ObjectDoesNotExist:
+            context['tercer_trimestre'] = ""
+
+        context['citas'] = Cita.objects.filter(gestante_id = gestante.id)
+
+        return context
