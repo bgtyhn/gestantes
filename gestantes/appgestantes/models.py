@@ -52,7 +52,7 @@ ANTIGENO = (
 )
 
 TOXOPLASMOSIS_IGG = (
-	('IGG Positiva', '|'),
+	('IGG Positiva', 'IGG Positiva'),
 	('IGG Negativa', 'IGG Negativa'),
 )
 
@@ -113,8 +113,9 @@ class PrimerTrimestre(models.Model):
 	frotis_fecha = models.DateField(blank=True, null=True)
 	frotis_tipo = models.CharField(max_length = 15, choices = FROTIS)
 	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES)
+	estado_factores_diabetes = models.CharField(max_length = 15, choices = FROTIS, blank=True, null=True)
 	fecha_factores_diabetes = models.DateField(blank=True, null=True)
-	numero_factores_diabetes = models.CharField(max_length = 5, validators=[NUMERIC]) 
+	numero_factores_diabetes = models.CharField(max_length = 5, validators=[NUMERIC], blank=True, null=True) 
 	ecografia_fecha = models.DateField(blank=True, null=True)
 	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	#mirar fecha parto con la ecografia
@@ -136,18 +137,13 @@ class SegundoTrimestre(models.Model):
 	VDRL = models.CharField(max_length = 20, choices = VDRL)
 	parcial_horina = models.CharField(max_length = 40, choices = PARCIAL_ORINA)
 	factores_riesgo_diabetes_gestacional = models.CharField(max_length = 3, choices = SI_OPCIONES)
+	fecha_factores_diabetes = models.DateField(blank=True, null=True)
+	estado_factores_diabetes = models.CharField(max_length = 15, choices = FROTIS, blank=True, null=True)
+	fecha_factores_diabetes = models.DateField(blank=True, null=True)
+	numero_factores_diabetes = models.CharField(max_length = 5, validators=[NUMERIC], blank=True, null=True)
 	ecografia_fecha = models.DateField(blank=True, null=True)
 	ecografia_semanas = models.CharField(max_length = 5, validators=[NUMERIC]) 
 	micronutrientes = models.CharField(max_length = 3, choices = SI_OPCIONES)
-
-class FactoresRiesgoDGST(models.Model):
-	segundo_trimestre = models.ForeignKey(SegundoTrimestre, on_delete = models.CASCADE)
-	fecha = models.DateField(blank=True, null=True)
-	estado = models.CharField(max_length = 15, choices = FROTIS)
-
-class NumeroFactorRiesgoST(models.Model):
-	segundo_trimestre = models.ForeignKey(SegundoTrimestre, on_delete = models.CASCADE)
-	numero = models.CharField(max_length = 3)
 
 class TercerTrimestre(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)

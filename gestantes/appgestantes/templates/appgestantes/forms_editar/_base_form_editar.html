@@ -1,0 +1,83 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Gestantes</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href='{% static "appgestantes/assets/css/materialize.min.css" %}'>
+		<link rel="stylesheet" href='{% static "appgestantes/assets/css/main.css" %}'>
+	</head>
+	<body>
+		<header>
+			<nav class="nav-extended indigo lighten-2">
+				<div class="nav-wrapper">
+					<div class="container">
+						<a href="{% url 'index' %}" class="brand-logo">Gestantes</a>
+						<ul class="right hide-on-med-and-down">
+							<li><a href="{% url 'index' %}">Pendientes</a></li>
+							<li><a href="{% url 'prioritarias' %}">Prioritarias</a></li>
+							<li><a href="{% url 'completa' %}">Lista completa</a></li>
+							<li><a href="{% url 'pasadas' %}">Pasadas</a></li>
+						</ul>
+						<ul class="tabs tabs-transparent">
+					        <li class="tab"><a class="disabled">Información general</a></li>
+				      	</ul>
+					</div>
+				</div>
+		  	</nav>
+		</header>
+		<div class="pad-5"></div>
+		<main>
+			<div class="container z-depth-1" id="main-container">
+				<div class="row">
+					<div class="col s10 offset-s1">
+						<div class="row">
+							<div class="col s8">
+								<h4 class="indigo-text text-lighten-1">Nombre gestante: <small>nombre sección</small></h4>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col s6">
+								<div class="section">
+									<div class="input-field">
+										<input id="fecha_probable_parto" type="text" class="datepicker">
+										<label for="fecha_probable_parto">Fecha probable de parto</label>
+									</div>
+								</div>
+							</div>
+							<div class="col s6">
+								<div class="section">
+									<div class="input-field">
+										<input id="identificacion" type="text" class="validate">
+										<label for="identificacion">Número de identificación</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col s12">
+							{% block bottom %}
+							{% endblock %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<div class="pad-10"></div>
+		{% include "appgestantes/global_scripts.html" %}
+		
+		<script src='{% static "appgestantes/assets/js/editar_general.js" %}'></script>
+
+	</body>
+</html>

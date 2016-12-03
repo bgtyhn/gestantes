@@ -18,6 +18,7 @@ from django.db.models.functions import Value
 from django.db.models import CharField
 from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import render
 
 from .models import *
 
@@ -271,10 +272,16 @@ class Detalle(DetailView):
             context['tercer_trimestre'] = ""
 
         context['citas'] = {}
-        context['citas']['fecha_parto'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Fecha parto')
-        context['citas']['recien_nacido'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Recien nacido')
-        context['citas']['puerperio'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Puerperio')
-        context['citas']['crecimiento_desarrollo'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Crecimiento y Desarrollo')
-        context['citas']['planificacion_familiar'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Planificación Familiar')
+        citasGestante = Cita.objects.filter(gestante_id = gestante.id)
+        context['citas']['fecha_parto'] = citasGestante.get(tipo_cita = 'Fecha parto')
+        context['citas']['recien_nacido'] = citasGestante.get(tipo_cita = 'Recien nacido')
+        context['citas']['puerperio'] = citasGestante.get(tipo_cita = 'Puerperio')
+        context['citas']['crecimiento_desarrollo'] = citasGestante.get(tipo_cita = 'Crecimiento y Desarrollo')
+        context['citas']['planificacion_familiar'] = citasGestante.get(tipo_cita = 'Planificación Familiar')
+
+        print(context['citas'])
 
         return context
+
+def editar(request):
+    return render(request, 'appgestantes/forms_editar/_base_form_editar.html')

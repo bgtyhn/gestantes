@@ -69,12 +69,11 @@
 
 	<h5 class="light">Observaciones</h5>
 	<ul class="collection">
-		<li class="collection-item">
-			Observación 1
-		</li>
-		<li class="collection-item">
-			Observación 2
-		</li>
+		{% for observacion in gestante.observacion_set.all %}
+			<li class="collection-item">
+				{{observacion.texto}}
+			</li>
+		{% endfor %}
 	</ul>
 
 {% endblock %}

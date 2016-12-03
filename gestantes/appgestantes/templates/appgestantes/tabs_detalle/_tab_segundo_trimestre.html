@@ -33,9 +33,13 @@
 		<div class="row">
 			<div class="col s9 offset-s1">
 				<p> Fecha </p>
-				<h5 class="light">31/31/3131</h5>
-				<p> Resultado </p>
-				<h5 class="light">42 mg/dl</h5>
+				<h5 class="light">{{segundo_trimestre.fecha_factores_diabetes}}</h5>
+				<p> Estado </p>
+				<h5 class="light">{{segundo_trimestre.estado_factores_diabetes}}</h5>
+				{% if segundo_trimestre.estado_factores_diabetes == "Alterado" %}
+					<p> Resultado </p>
+					<h5 class="light">{{segundo_trimestre.numero_factores_diabetes}} mg/dl</h5>
+				{% endif %}
 			</div>
 		</div>
 	{% endif %}

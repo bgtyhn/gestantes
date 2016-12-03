@@ -24,12 +24,11 @@
 			<div class="col s9 offset-s1">
 				<p> Motivos </p>
 				<ul class="collection">
-					<li class="collection-item">
-						Observación 1
-					</li>
-					<li class="collection-item">
-						Observación 2
-					</li>
+					{% for mch in primer_trimestre.listamotivoschpt_set.all %}
+						<li class="collection-item">
+							{{mch.motivo}}
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
@@ -139,17 +138,16 @@
 			&nbsp
 		{% endif %}
 	</h5>
-	{% if primer_trimestre.frotis_tipo and primer_trimestre.frotis_tipo == "Reactivo" %}
+	{% if primer_trimestre.frotis_tipo and primer_trimestre.frotis_tipo == "Alterado" %}
 		<div class="row">
 			<div class="col s9 offset-s1">
 				<p> Motivos </p>
 				<ul class="collection">
-					<li class="collection-item">
-						Observación 1
-					</li>
-					<li class="collection-item">
-						Observación 2
-					</li>
+					{% for mfrotis in primer_trimestre.listamotivosfrotispt_set.all %}
+						<li class="collection-item">
+							{{mfrotis.motivo}}
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
@@ -168,9 +166,13 @@
 		<div class="row">
 			<div class="col s9 offset-s1">
 				<p> Fecha </p>
-				<h5 class="light">{{factores_diabetes_fecha}}</h5>
-				<p> Resultado </p>
-				<h5 class="light">{{primer_trimestre.numero_factores_diabetes}} mg/dl</h5>
+				<h5 class="light">{{primer_trimestre.fecha_factores_diabetes}}</h5>
+				<p> Estado </p>
+				<h5 class="light">{{primer_trimestre.estado_factores_diabetes}}</h5>
+				{% if primer_trimestre.estado_factores_diabetes == "Alterado" %}
+					<p> Resultado </p>
+					<h5 class="light">{{primer_trimestre.numero_factores_diabetes}} mg/dl</h5>
+				{% endif %}
 			</div>
 		</div>
 	{% endif %}
