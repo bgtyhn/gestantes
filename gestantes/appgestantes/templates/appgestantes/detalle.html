@@ -25,11 +25,13 @@
 							<li><a href="{% url 'completa' %}">Lista completa</a></li>
 							<li><a href="{% url 'pasadas' %}">Pasadas</a></li>
 						</ul>
-						<ul class="tabs tabs-transparent tabs-fixed-width">
-					        <li class="tab"><a href="#test1">Test 1</a></li>
-					        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-					        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-					        <li class="tab"><a href="#test4">Test 4</a></li>
+						<ul class="tabs tabs-transparent">
+					        <li class="tab"><a class="active" href="#tab_informacion_general">Información general</a></li>
+					        <li class="tab"><a href="#tab_primer_control">Primer control</a></li>
+					        <li class="tab"><a href="#tab_primer_trimestre">Primer trimestre</a></li>
+					        <li class="tab"><a href="#tab_segundo_trimestre">Segundo trimestre</a></li>
+					        <li class="tab"><a href="#tab_tercer_trimestre">Tercer trimestre</a></li>
+					        <li class="tab"><a href="#tab_citas">Citas</a></li>
 				      	</ul>
 					</div>
 				</div>
@@ -38,12 +40,395 @@
 		<div class="pad-5"></div>
 		<main>
 			<div class="container z-depth-1" id="main-container">
-				<h4>Nombre de la gestante</h4>
-				<div id="test1" class="col s12">Test 1</div>
-				<div id="test2" class="col s12">Test 2</div>
-				<div id="test3" class="col s12">Test 3</div>
-				<div id="test4" class="col s12">Test 4</div>
-
+				<div id="tab_informacion_general" class="col s12">
+					<div class="row">
+						<div class="col s10 offset-s1">
+							<div class="row">
+								<div class="col s8">
+									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+								</div>
+								<div class="col s4">
+									<div class="right">
+										<a class="waves-effect waves-light btn btn-detail-edit">Modificar sección</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> Fecha probable de parto </p>
+											<h5 class="light">31/31/3131<small> (no) confiable</small></h5>
+										</div>
+										<div class="detail-field">
+											<p> Semana de gestación al ingresar </p>
+											<h5 class="light">42</h5>
+										</div>
+										<div class="detail-field">
+											<p> Fecha de la ultima menstruación </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Fecha de ingreso al programa </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> Número de identificación </p>
+											<h5 class="light">1234566879</h5>
+										</div>
+										<div class="detail-field">
+											<p> Fecha de nacimiento </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Captación </p>
+											<h5 class="light">Médico</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<h5 class="light">Observaciones</h5>
+									<ul class="collection">
+										<li class="collection-item">
+											Observación 1
+										</li>
+										<li class="collection-item">
+											Observación 2
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab_primer_control" class="col s12">
+					<div class="row">
+						<div class="col s10 offset-s1">
+							<div class="row">
+								<div class="col s8">
+									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+								</div>
+								<div class="col s4">
+									<div class="right">
+										<a class="waves-effect waves-light btn btn-detail-edit">Modificar sección</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> Fecha de paraclínicos</p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Fecha de odontología </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Micronutrientes </p>
+											<h5 class="light">Sí/No</h5>
+										</div>
+										<div class="detail-field">
+											<p> Fecha de pretest </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Fecha de postest </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> Fecha de citología </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Resultado de citología </p>
+											<h5 class="light">Resultado</h5>
+										</div>
+										<div class="detail-field">
+											<p> IAMI </p>
+											<h5 class="light">Sí/No</h5>
+										</div>
+										<div class="detail-field">
+											<p> DPTa </p>
+											<h5 class="light">Sí/No</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab_primer_trimestre" class="col s12">
+					<div class="row">
+						<div class="col s10 offset-s1">
+							<div class="row">
+								<div class="col s8">
+									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+								</div>
+								<div class="col s4">
+									<div class="right">
+										<a class="waves-effect waves-light btn btn-detail-edit">Modificar sección</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> Cuadro hemático </p>
+											<h5 class="light">(A)normal</h5>
+										</div>
+										<div class="detail-field">
+											<p> Parcial de orina </p>
+											<h5 class="light">Normal/En tratamiento</h5>
+										</div>
+										<div class="detail-field">
+											<p> RH </p>
+											<h5 class="light">O+</h5>
+										</div>
+										<div class="detail-field">
+											<p> VDRL </p>
+											<h5 class="light">(No) reactivo</h5>
+										</div>
+										<div class="detail-field">
+											<p> Factores de riesgo VIH </p>
+											<h5 class="light">(No) reactivo</h5>
+										</div>
+										<div class="detail-field">
+											<p> Micronutrientes </p>
+											<h5 class="light">Sí/No</h5>
+										</div>
+										<div class="detail-field">
+											<p> Antígeno hepatitis B </p>
+											<h5 class="light">#ElAntígeno</h5>
+										</div>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> Fecha de frotis </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Resultado frotis </p>
+											<h5 class="light">(No) reactivo</h5>
+										</div>
+										<div class="detail-field">
+											<p> Factores de riesgo diabetes gestacional </p>
+											<h5 class="light">Sí/No</h5>
+										</div>
+										<div class="detail-field">
+											<p> Fecha de ecografía </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Semanas ecografía </p>
+											<h5 class="light">42</h5>
+										</div>
+										<div class="detail-field">
+											<p> Toxoplasmosis iGg </p>
+											<h5 class="light">Positivo</h5>
+										</div>
+										<div class="detail-field">
+											<p> Toxoplasmosis iGm </p>
+											<h5 class="light">Positivo</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab_segundo_trimestre" class="col s12">
+					<div class="row">
+						<div class="col s10 offset-s1">
+							<div class="row">
+								<div class="col s8">
+									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+								</div>
+								<div class="col s4">
+									<div class="right">
+										<a class="waves-effect waves-light btn btn-detail-edit">Modificar sección</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> VDRL </p>
+											<h5 class="light">(No) reactivo</h5>
+										</div>
+										<div class="detail-field">
+											<p> Parcial de orina </p>
+											<h5 class="light">Normal/En tratamiento</h5>
+										</div>
+										<div class="detail-field">
+											<p> Micronutrientes </p>
+											<h5 class="light">O+</h5>
+										</div>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> Fecha de ecografía </p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Semanas de ecografía </p>
+											<h5 class="light">42</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab_tercer_trimestre" class="col s12">
+					<div class="row">
+						<div class="col s10 offset-s1">
+							<div class="row">
+								<div class="col s8">
+									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+								</div>
+								<div class="col s4">
+									<div class="right">
+										<a class="waves-effect waves-light btn btn-detail-edit">Modificar sección</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> VDRL </p>
+											<h5 class="light">(No) reactivo</h5>
+										</div>
+										<div class="detail-field">
+											<p> Factores de riesgo VIH </p>
+											<h5 class="light">(No) reactivo</h5>
+										</div>
+										<div class="detail-field">
+											<p> Parcial de orina </p>
+											<h5 class="light">Normal/En tratamiento</h5>
+										</div>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="section">
+										<div class="detail-field">
+											<p> Fecha de ecografía única</p>
+											<h5 class="light">31/31/3131</h5>
+										</div>
+										<div class="detail-field">
+											<p> Semanas de ecografía única</p>
+											<h5 class="light">42</h5>
+										</div>
+										<div class="detail-field">
+											<p> Micronutrientes </p>
+											<h5 class="light">O+</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab_citas" class="col s12">
+					<div class="row">
+						<div class="col s10 offset-s1">
+							<div class="row">
+								<div class="col s8">
+									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+								</div>
+								<div class="col s4">
+									<div class="right">
+										<a class="waves-effect waves-light btn btn-detail-edit">Modificar sección</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<div class="section">
+										<div class="appt-detail-field">
+											<p> Fecha de parto </p>
+											<h5 class="light"><small><strong>Estado:</strong>
+												Pendiente/Hecho
+											</small></h5>
+											<h5 class="light"><small><strong>Fecha:</strong>
+												31/31/3131
+											</small></h5>
+											<h5 class="light"><small><strong>Información adicional:</strong>
+												Cualquier comentario que hayan puesto
+											</small></h5>
+										</div>
+										<div class="appt-detail-field">
+											<p> Recién nacido </p>
+											<h5 class="light"><small><strong>Estado:</strong>
+												Pendiente/Hecho
+											</small></h5>
+											<h5 class="light"><small><strong>Fecha:</strong>
+												31/31/3131
+											</small></h5>
+											<h5 class="light"><small><strong>Información adicional:</strong>
+												Cualquier comentario que hayan puesto
+											</small></h5>
+										</div>
+										<div class="appt-detail-field">
+											<p> Puerperio </p>
+											<h5 class="light"><small><strong>Estado:</strong>
+												Pendiente/Hecho
+											</small></h5>
+											<h5 class="light"><small><strong>Fecha:</strong>
+												31/31/3131
+											</small></h5>
+											<h5 class="light"><small><strong>Información adicional:</strong>
+												Cualquier comentario que hayan puesto
+											</small></h5>
+										</div>
+										<div class="appt-detail-field">
+											<p> Crecimiento y desarrollo </p>
+											<h5 class="light"><small><strong>Estado:</strong>
+												Pendiente/Hecho
+											</small></h5>
+											<h5 class="light"><small><strong>Fecha:</strong>
+												31/31/3131
+											</small></h5>
+											<h5 class="light"><small><strong>Información adicional:</strong>
+												Cualquier comentario que hayan puesto
+											</small></h5>
+										</div>
+										<div class="appt-detail-field">
+											<p> Planificación familiar </p>
+											<h5 class="light"><small><strong>Estado:</strong>
+												Pendiente/Hecho
+											</small></h5>
+											<h5 class="light"><small><strong>Fecha:</strong>
+												31/31/3131
+											</small></h5>
+											<h5 class="light"><small><strong>Información adicional:</strong>
+												Cualquier comentario que hayan puesto
+											</small></h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</main>
 		<div class="pad-10"></div>
