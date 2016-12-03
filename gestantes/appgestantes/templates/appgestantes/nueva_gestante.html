@@ -187,7 +187,7 @@
 						<input type="checkbox" class="filled-in" id="micronutrientes" name="{{ form.micronutrientes.html_name}}" value="No">
 					{% endif %}
 				{% else %}
-					{% if form.value != none and form.value == 'Si' %}
+					{% if form.micronutrientes.value != none and form.micronutrientes.value == 'Si' %}
 						<input type="checkbox" name="{{ form.micronutrientes.html_name}}" value="{{ form.micronutrientes.value }}" class="filled-in" id="micronutrientes"  checked >
 					{% else %}
 						<input type="checkbox" class="filled-in" id="micronutrientes" name="{{ form.micronutrientes.html_name}}" value="No">
@@ -251,7 +251,7 @@
 						<input type="checkbox" class="filled-in" id="DPTa" name="{{ form.DPTa.html_name}}" value="No">
 					{% endif %}
 				{% else %}
-					{% if form.value != none and form.value == 'Si' %}
+					{% if form.DPTa.value != none and form.DPTa.value == 'Si' %}
 						<input type="checkbox" name="{{ form.DPTa.html_name}}" value="{{ form.DPTa.value }}" class="filled-in" id="DPTa"  checked >
 					{% else %}
 						<input type="checkbox" class="filled-in" id="DPTa" name="{{ form.DPTa.html_name}}" value="No">
@@ -270,13 +270,12 @@
 						<input type="checkbox" class="filled-in" id="iami" name="{{ form.iami.html_name}}" value="No">
 					{% endif %}
 				{% else %}
-					{% if form.value != none and form.value == 'Si' %}
+					{% if form.iami.value != none and form.iami.value == 'Si' %}
 						<input type="checkbox" name="{{ form.iami.html_name}}" value="{{ form.iami.value }}" class="filled-in" id="iami"  checked >
 					{% else %}
 						<input type="checkbox" class="filled-in" id="iami" name="{{ form.iami.html_name}}" value="No">
 					{% endif %}
 				{% endif %}
-				<input type="checkbox" class="filled-in" id="IAMI" />
       			<label for="iami">IAMI</label>
       			<div class="section"></div>
 			</div>
