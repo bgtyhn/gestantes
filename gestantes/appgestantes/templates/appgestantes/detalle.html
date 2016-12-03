@@ -45,7 +45,7 @@
 						<div class="col s10 offset-s1">
 							<div class="row">
 								<div class="col s8">
-									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+									<h4 class="indigo-text text-lighten-1">{{ gestante.nombre }}</h4>
 								</div>
 								<div class="col s4">
 									<div class="right">
@@ -58,19 +58,32 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> Fecha probable de parto </p>
-											<h5 class="light">31/31/3131<small> (no) confiable</small></h5>
+											<h5 class="light">
+												{{ gestante.fecha_probable_parto }}
+											</h5>
+											<h5>
+												<small>
+													confiable: {{ gestante.confiable }}
+												</small>
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Semana de gestación al ingresar </p>
-											<h5 class="light">42</h5>
+											<h5 class="light">
+												{{gestante.semana_ingreso}}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Fecha de la ultima menstruación </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{{gestante.fecha_ultima_menstruacion}}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Fecha de ingreso al programa </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{{gestante.fecha_ingreso_programa}}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -78,15 +91,21 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> Número de identificación </p>
-											<h5 class="light">1234566879</h5>
+											<h5 class="light">
+												{{gestante.identificacion}}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Fecha de nacimiento </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{{gestante.fecha_nacimiento}}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Captación </p>
-											<h5 class="light">Médico</h5>
+											<h5 class="light">
+												{{gestante.captacion}}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -112,7 +131,7 @@
 						<div class="col s10 offset-s1">
 							<div class="row">
 								<div class="col s8">
-									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+									<h4 class="indigo-text text-lighten-1">{{gestante.nombre}}</h4>
 								</div>
 								<div class="col s4">
 									<div class="right">
@@ -125,23 +144,53 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> Fecha de paraclínicos</p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if primer_control.fecha_paraclinicos %}
+													{{primer_control.fecha_paraclinicos}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Fecha de odontología </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if primer_control.odontologia_fecha %}
+													{{primer_control.odontologia_fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Micronutrientes </p>
-											<h5 class="light">Sí/No</h5>
+											<h5 class="light">
+												{% if primer_control.micronutrientes %}
+													{{primer_control.micronutrientes}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Fecha de pretest </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if primer_control.pretest_fecha %}
+													{{primer_control.pretest_fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Fecha de postest </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if primer_control.fecha_postest %}
+													{{primer_control.fecha_postest}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -149,19 +198,43 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> Fecha de citología </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if primer_control.citologia_fecha %}
+													{{primer_control.citologia_fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Resultado de citología </p>
-											<h5 class="light">Resultado</h5>
+											<h5 class="light">
+												{% if primer_control.citologia_resultado %}
+													{{primer_control.citologia_resultado}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> IAMI </p>
-											<h5 class="light">Sí/No</h5>
+											<h5 class="light">
+												{% if primer_control.iami %}
+													{{primer_control.iami}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> DPTa </p>
-											<h5 class="light">Sí/No</h5>
+											<h5 class="light">
+												{% if primer_control.DPTa %}
+													{{primer_control.DPTa}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -187,7 +260,7 @@
 						<div class="col s10 offset-s1">
 							<div class="row">
 								<div class="col s8">
-									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+									<h4 class="indigo-text text-lighten-1">{{gestante.nombre}}</h4>
 								</div>
 								<div class="col s4">
 									<div class="right">
@@ -200,52 +273,108 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> Cuadro hemático </p>
-											<h5 class="light">(A)normal</h5>
-											<div class="row">
-												<div class="col s9 offset-s1">
-													<p> Motivos </p>
-													<ul class="collection">
-														<li class="collection-item">
-															Observación 1
-														</li>
-														<li class="collection-item">
-															Observación 2
-														</li>
-													</ul>
+											<h5 class="light">
+												{% if primer_trimestre.cuadro_hematico %}
+													{{primer_trimestre.cuadro_hematico}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
+											{% if primer_trimestre.cuadro_hematico and primer_trimestre.cuadro_hematico == "Anormal"%}
+												<div class="row">
+													<div class="col s9 offset-s1">
+														<p> Motivos </p>
+														<ul class="collection">
+															<li class="collection-item">
+																Observación 1
+															</li>
+															<li class="collection-item">
+																Observación 2
+															</li>
+														</ul>
+													</div>
 												</div>
-											</div>
+											{% endif %}
 										</div>
 										<div class="detail-field">
 											<p> Parcial de orina </p>
-											<h5 class="light">Normal/En tratamiento</h5>
+											<h5 class="light">
+												{% if primer_trimestre.parcial_orina %}
+													{{primer_trimestre.parcial_orina}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> RH </p>
-											<h5 class="light">O+</h5>
+											<h5 class="light">
+												{% if primer_trimestre.RH %}
+													{{primer_trimestre.RH}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> VDRL </p>
-											<h5 class="light">(No) reactivo</h5>
+											<h5 class="light">
+												{% if primer_trimestre.VDRL %}
+													{{primer_trimestre.VDRL}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Factores de riesgo VIH </p>
-											<h5 class="light">(No) reactivo</h5>
+											<h5 class="light">
+												{% if primer_trimestre.VIH %}
+													{{primer_trimestre.VIH}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Micronutrientes </p>
-											<h5 class="light">Sí/No</h5>
+											<h5 class="light">
+												{% if primer_trimestre.micronutrientes %}
+													{{primer_trimestre.micronutrientes}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Antígeno hepatitis B </p>
-											<h5 class="light">#ElAntígeno</h5>
+											<h5 class="light">
+												{% if primer_trimestre.antigeno_hepatitisB %}
+													{{primer_trimestre.antigeno_hepatitisB}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Toxoplasmosis iGg </p>
-											<h5 class="light">Positivo</h5>
+											<h5 class="light">
+												{% if primer_trimestre.toxoplasmosis_IGG %}
+													{{primer_trimestre.toxoplasmosis_IGG}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Toxoplasmosis iGm </p>
-											<h5 class="light">Positivo</h5>
+											<h5 class="light">
+												{% if primer_trimestre.toxoplasmosis_IGM %}
+													{{primer_trimestre.toxoplasmosis_IGM}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -253,44 +382,78 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> Fecha de frotis </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if primer_trimestre.frotis_fecha %}
+													{{primer_trimestre.frotis_fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Resultado frotis </p>
-											<h5 class="light">(No) reactivo</h5>
-											<div class="row">
-												<div class="col s9 offset-s1">
-													<p> Motivos </p>
-													<ul class="collection">
-														<li class="collection-item">
-															Observación 1
-														</li>
-														<li class="collection-item">
-															Observación 2
-														</li>
-													</ul>
+											<h5 class="light">
+												{% if primer_trimestre.frotis_tipo %}
+													{{primer_trimestre.frotis_tipo}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
+											{% if primer_trimestre.frotis_tipo and primer_trimestre.frotis_tipo == "Reactivo" %}
+												<div class="row">
+													<div class="col s9 offset-s1">
+														<p> Motivos </p>
+														<ul class="collection">
+															<li class="collection-item">
+																Observación 1
+															</li>
+															<li class="collection-item">
+																Observación 2
+															</li>
+														</ul>
+													</div>
 												</div>
-											</div>
+											{% endif %}
 										</div>
 										<div class="detail-field">
 											<p> Factores de riesgo diabetes gestacional </p>
-											<h5 class="light">Sí/No</h5>
-											<div class="row">
-												<div class="col s9 offset-s1">
-													<p> Fecha </p>
-													<h5 class="light">31/31/3131</h5>
-													<p> Resultado </p>
-													<h5 class="light">42 mg/dl</h5>
+											<h5 class="light">
+												{% if primer_trimestre.factores_riesgo_diabetes_gestacional %}
+													{{primer_trimestre.factores_riesgo_diabetes_gestacional}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
+											{% if primer_trimestre.factores_riesgo_diabetes_gestacional and primer_trimestre.factores_riesgo_diabetes_gestacional == "Si" %}
+												<div class="row">
+													<div class="col s9 offset-s1">
+														<p> Fecha </p>
+														<h5 class="light">31/31/3131</h5>
+														<p> Resultado </p>
+														<h5 class="light">{{primer_trimestre.numero_factores_diabetes}} mg/dl</h5>
+													</div>
 												</div>
-											</div>
+											{% endif %}
 										</div>
 										<div class="detail-field">
 											<p> Fecha de ecografía </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if primer_trimestre.ecografia_fecha %}
+													{{primer_trimestre.ecografia_fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Semanas ecografía </p>
-											<h5 class="light">42</h5>
+											<h5 class="light">
+												{% if primer_trimestre.ecografia_semanas %}
+													{{primer_trimestre.ecografia_semanas}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -303,7 +466,7 @@
 						<div class="col s10 offset-s1">
 							<div class="row">
 								<div class="col s8">
-									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+									<h4 class="indigo-text text-lighten-1">{{gestante.nombre}}</h4>
 								</div>
 								<div class="col s4">
 									<div class="right">
@@ -316,23 +479,43 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> VDRL </p>
-											<h5 class="light">(No) reactivo</h5>
+											<h5 class="light">
+												{% if segundo_trimestre.VDRL %}
+													{{segundo_trimestre.VDRL}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Factores de riesgo diabetes gestacional </p>
-											<h5 class="light">Sí/No</h5>
-											<div class="row">
-												<div class="col s9 offset-s1">
-													<p> Fecha </p>
-													<h5 class="light">31/31/3131</h5>
-													<p> Resultado </p>
-													<h5 class="light">42 mg/dl</h5>
+											<h5 class="light">
+												{% if segundo_trimestre.factores_riesgo_diabetes_gestacional %}
+													{{segundo_trimestre.factores_riesgo_diabetes_gestacional}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
+											{% if segundo_trimestre.factores_riesgo_diabetes_gestacional and segundo_trimestre.factores_riesgo_diabetes_gestacional == "Si" %}
+												<div class="row">
+													<div class="col s9 offset-s1">
+														<p> Fecha </p>
+														<h5 class="light">31/31/3131</h5>
+														<p> Resultado </p>
+														<h5 class="light">42 mg/dl</h5>
+													</div>
 												</div>
-											</div>
+											{% endif %}
 										</div>
 										<div class="detail-field">
 											<p> Micronutrientes </p>
-											<h5 class="light">O+</h5>
+											<h5 class="light">
+												{% if segundo_trimestre.micronutrientes %}
+													{{segundo_trimestre.micronutrientes}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -340,15 +523,33 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> Parcial de orina </p>
-											<h5 class="light">Normal/En tratamiento</h5>
+											<h5 class="light">
+												{% if segundo_trimestre.parcial_horina %}
+													{{segundo_trimestre.parcial_horina}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Fecha de ecografía </p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if segundo_trimestre.ecografia_fecha %}
+													{{segundo_trimestre.ecografia_fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Semanas de ecografía </p>
-											<h5 class="light">42</h5>
+											<h5 class="light">
+												{% if segundo_trimestre.ecografia_semanas %}
+													{{segundo_trimestre.ecografia_semanas}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -361,7 +562,7 @@
 						<div class="col s10 offset-s1">
 							<div class="row">
 								<div class="col s8">
-									<h4 class="indigo-text text-lighten-1">Nombre de la gestante</h4>
+									<h4 class="indigo-text text-lighten-1">{{gestante.nombre}}</h4>
 								</div>
 								<div class="col s4">
 									<div class="right">
@@ -374,23 +575,55 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> VDRL </p>
-											<h5 class="light">(No) reactivo</h5>
+											<h5 class="light">
+												{% if tercer_trimestre.VDRL %}
+													{{tercer_trimestre.VDRL}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Factores de riesgo VIH </p>
-											<h5 class="light">Sí/No</h5>
-											<div class="row">
-												<div class="col s9 offset-s1">
-													<p> Fecha </p>
-													<h5 class="light">31/31/3131</h5>
-													<p> Resultado </p>
-													<h5 class="light">(No) reactivo</h5>
+											<h5 class="light">
+												{% if tercer_trimestre.factores_riesgo_VIH %}
+													{{tercer_trimestre.factores_riesgo_VIH}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
+											{% if tercer_trimestre.factores_riesgo_VIH and tercer_trimestre.factores_riesgo_VIH == "Si" %}
+												<div class="row">
+													<div class="col s9 offset-s1">
+														<p> Fecha </p>
+														<h5 class="light">
+															{% if tercer_trimestre.fecha_VIH %}
+																{{tercer_trimestre.fecha_VIH}}
+															{% else %}
+																&nbsp
+															{% endif %}
+														</h5>
+														<p> Resultado </p>
+														<h5 class="light">
+															{% if tercer_trimestre.reactivo_VIH %}
+																{{tercer_trimestre.reactivo_VIH}}
+															{% else %}
+																&nbsp
+															{% endif %}
+														</h5>
+													</div>
 												</div>
-											</div>
+											{% endif %}
 										</div>
 										<div class="detail-field">
 											<p> Parcial de orina </p>
-											<h5 class="light">Normal/En tratamiento</h5>
+											<h5 class="light">
+												{% if tercer_trimestre.parcial_orina %}
+													{{tercer_trimestre.parcial_orina}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -398,15 +631,33 @@
 									<div class="section">
 										<div class="detail-field">
 											<p> Fecha de ecografía única</p>
-											<h5 class="light">31/31/3131</h5>
+											<h5 class="light">
+												{% if tercer_trimestre.ecografia_unica_fecha %}
+													{{tercer_trimestre.ecografia_unica_fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Semanas de ecografía única</p>
-											<h5 class="light">42</h5>
+											<h5 class="light">
+												{% if tercer_trimestre.ecografia_unica_semanas %}
+													{{tercer_trimestre.ecografia_unica_semanas}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 										<div class="detail-field">
 											<p> Micronutrientes </p>
-											<h5 class="light">O+</h5>
+											<h5 class="light">
+												{% if tercer_trimestre.micronutrientes %}
+													{{tercer_trimestre.micronutrientes}}
+												{% else %}
+													&nbsp
+												{% endif %}
+											</h5>
 										</div>
 									</div>
 								</div>
@@ -433,62 +684,132 @@
 										<div class="appt-detail-field">
 											<p> Fecha de parto </p>
 											<h5 class="light"><small><strong>Estado:</strong>
-												Pendiente/Hecho
+												{% if citas.fecha_parto.estado %}
+													{{citas.fecha_parto.estado}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
 											<h5 class="light"><small><strong>Fecha:</strong>
-												31/31/3131
+												{% if citas.fecha_parto.fecha %}
+													{{citas.fecha_parto.fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
-											<h5 class="light"><small><strong>Información adicional:</strong>
-												Cualquier comentario que hayan puesto
-											</small></h5>
+											{% if citas.fecha_parto.estado and citas.fecha_parto.estado == "Atendida" %}
+												<h5 class="light"><small><strong>Información adicional:</strong>
+													{% if citas.fecha_parto.info_adicional %}
+														{{citas.fecha_parto.info_adicional}}
+													{% else %}
+														&nbsp
+													{% endif %}
+												</small></h5>
+											{% endif %}
 										</div>
 										<div class="appt-detail-field">
 											<p> Recién nacido </p>
 											<h5 class="light"><small><strong>Estado:</strong>
-												Pendiente/Hecho
+												{% if citas.recien_nacido.estado %}
+													{{citas.recien_nacido.estado}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
 											<h5 class="light"><small><strong>Fecha:</strong>
-												31/31/3131
+												{% if citas.recien_nacido.fecha %}
+													{{citas.recien_nacido.fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
-											<h5 class="light"><small><strong>Información adicional:</strong>
-												Cualquier comentario que hayan puesto
-											</small></h5>
+											{% if citas.recien_nacido.estado and citas.recien_nacido.estado == "Atendida" %}
+												<h5 class="light"><small><strong>Información adicional:</strong>
+													{% if citas.recien_nacido.info_adicional %}
+														{{citas.recien_nacido.info_adicional}}
+													{% else %}
+														&nbsp
+													{% endif %}
+												</small></h5>
+											{% endif %}
 										</div>
 										<div class="appt-detail-field">
 											<p> Puerperio </p>
 											<h5 class="light"><small><strong>Estado:</strong>
-												Pendiente/Hecho
+												{% if citas.puerperio.estado %}
+													{{citas.puerperio.estado}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
 											<h5 class="light"><small><strong>Fecha:</strong>
-												31/31/3131
+												{% if citas.puerperio.fecha %}
+													{{citas.puerperio.fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
-											<h5 class="light"><small><strong>Información adicional:</strong>
-												Cualquier comentario que hayan puesto
-											</small></h5>
+											{% if citas.puerperio.estado and citas.puerperio.estado == "Atendida" %}
+												<h5 class="light"><small><strong>Información adicional:</strong>
+													{% if citas.puerperio.info_adicional %}
+														{{citas.puerperio.info_adicional}}
+													{% else %}
+														&nbsp
+													{% endif %}
+												</small></h5>
+											{% endif %}
 										</div>
 										<div class="appt-detail-field">
 											<p> Crecimiento y desarrollo </p>
 											<h5 class="light"><small><strong>Estado:</strong>
-												Pendiente/Hecho
+												{% if citas.crecimiento_desarrollo.estado %}
+													{{citas.crecimiento_desarrollo.estado}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
 											<h5 class="light"><small><strong>Fecha:</strong>
-												31/31/3131
+												{% if citas.crecimiento_desarrollo.fecha %}
+													{{citas.crecimiento_desarrollo.fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
-											<h5 class="light"><small><strong>Información adicional:</strong>
-												Cualquier comentario que hayan puesto
-											</small></h5>
+											{% if citas.crecimiento_desarrollo.estado and citas.crecimiento_desarrollo.estado == "Atendida" %}
+												<h5 class="light"><small><strong>Información adicional:</strong>
+													{% if citas.crecimiento_desarrollo.info_adicional %}
+														{{citas.crecimiento_desarrollo.info_adicional}}
+													{% else %}
+														&nbsp
+													{% endif %}
+												</small></h5>
+											{% endif %}
 										</div>
 										<div class="appt-detail-field">
 											<p> Planificación familiar </p>
 											<h5 class="light"><small><strong>Estado:</strong>
-												Pendiente/Hecho
+												{% if citas.planificacion_familiar.estado %}
+													{{citas.planificacion_familiar.estado}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
 											<h5 class="light"><small><strong>Fecha:</strong>
-												31/31/3131
+												{% if citas.planificacion_familiar.fecha %}
+													{{citas.planificacion_familiar.fecha}}
+												{% else %}
+													&nbsp
+												{% endif %}
 											</small></h5>
-											<h5 class="light"><small><strong>Información adicional:</strong>
-												Cualquier comentario que hayan puesto
-											</small></h5>
+											{% if citas.planificacion_familiar.estado and citas.planificacion_familiar.estado == "Atendida" %}
+												<h5 class="light"><small><strong>Información adicional:</strong>
+													{% if citas.planificacion_familiar.info_adicional %}
+														{{citas.planificacion_familiar.info_adicional}}
+													{% else %}
+														&nbsp
+													{% endif %}
+												</small></h5>
+											{% endif %}
 										</div>
 									</div>
 								</div>

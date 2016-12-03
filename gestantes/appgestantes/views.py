@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.template import loader
 from django.core.paginator import Paginator
@@ -269,6 +270,11 @@ class Detalle(DetailView):
         except ObjectDoesNotExist:
             context['tercer_trimestre'] = ""
 
-        context['citas'] = Cita.objects.filter(gestante_id = gestante.id)
+        context['citas'] = {}
+        context['citas']['fecha_parto'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Fecha parto')
+        context['citas']['recien_nacido'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Recien nacido')
+        context['citas']['puerperio'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Puerperio')
+        context['citas']['crecimiento_desarrollo'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Crecimiento y Desarrollo')
+        context['citas']['planificacion_familiar'] = Cita.objects.filter(gestante_id = gestante.id).filter(tipo_cita = 'Planificación Familiar')
 
         return context

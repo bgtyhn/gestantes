@@ -26,21 +26,13 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <tr class="clickable-row" data-href="{% url 'detalle' %}">
-	      <td>Sulma Beatriz Ocampo</td>
-	      <td>123121657</td>
-	      <td>56</td>
+	    {% for gestante in lista_gestantes %}
+	    <tr class="clickable-row" data-href="{% url 'detalle' gestante.id %}">
+	      <td>{{ gestante.nombre }}</td>
+	      <td>{{ gestante.identificacion }}</td>
+	      <td>{{ gestante.fecha_probable_parto }}</td>
 	    </tr>
-	    <tr class="clickable-row" data-href="{% url 'detalle' %}">
-	      <td>Alan</td>
-	      <td>Jellybean</td>
-	      <td>56</td>
-	    </tr>
-	    <tr class="clickable-row" data-href="{% url 'detalle' %}">
-	      <td>Jonathan</td>
-	      <td>Lollipop</td>
-	      <td>56</td>
-	    </tr>
+	  	{% endfor %}
 	  </tbody>
 	</table>		
 {% endblock %}
