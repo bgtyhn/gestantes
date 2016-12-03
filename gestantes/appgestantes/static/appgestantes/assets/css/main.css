@@ -17,8 +17,22 @@
 	margin-bottom: 4vh;
 }
 
-.appt-detail-field{
+.detail-field{
   margin-bottom: 30px;
+}
+
+.detail-field p {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.detail-field h5 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.appt-detail-field{
+  margin-bottom: 40px;
 }
 
 .pad-10{
