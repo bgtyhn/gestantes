@@ -206,6 +206,11 @@ class Nueva(FormView):
     template_name = 'appgestantes/nueva_gestante.html'
     form_class = forms.GestanteForm
 
+    def get_context_data(self, **kwargs):
+        context = super(Nueva, self).get_context_data(**kwargs)
+        context['opciones_captacion'] = CAPTACION
+        return context
+
     def form_valid(self, form):
         
 
