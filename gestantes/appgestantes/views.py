@@ -281,6 +281,63 @@ class Detalle(DetailView):
 
         return context
 
+class EditarGeneral(FormView):
+    template_name = 'appgestantes/forms_editar/editar_general.html'
+    form_class = forms.EditarGeneralForm
+    success_url = '/detalle/'
+
+    def get_context_data(self, **kwargs):
+        context = super(EditarGeneral, self).get_context_data(**kwargs)
+        context['observaciones'] = Observacion.objects.filter(gestante_id = self.kwargs['observacion'])
+        context['opciones_captacion'] = CAPTACION
+        return context
+
+    def form_valid(self, form):
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        gestante.nombre = form.cleaned_data['nombre']
+        gestante.fecha_ingreso_programa = form.cleaned_data['fecha_ingreso_programa']
+        gestante.fecha_nacimiento = form.cleaned_data['fecha_nacimiento']
+        gestante.identificacion = form.cleaned_data['identificacion']
+        gestante.captacion = form.cleaned_data['captacion']
+        gestante.semana_ingreso = form.cleaned_data['semana_ingreso']
+        gestante.fecha_ultima_menstruacion = form.cleaned_data['fecha_ultima_menstruacion']
+        gestante.fecha_probable_parto = form.cleaned_data['fecha_probable_parto'],
+        gestante.confiable = form.cleaned_data['confiable']
+        gestante.save()
+
+        primer_control = PrimerControl(
+            gestante = gestante,
+            fecha_paraclinicos = form.cleaned_data['fecha_paraclinicos'],
+            micronutrientes = form.cleaned_data['micronutrientes'],
+            pretest_fecha = form.cleaned_data['pretest_fecha'],
+            fecha_postest =form.cleaned_data['fecha_postest'],
+            iami = form.cleaned_data['iami'],
+            odontologia_fecha = form.cleaned_data['odontologia_fecha'],
+            citologia_fecha = form.cleaned_data['citologia_fecha'],
+            citologia_resultado = form.cleaned_data['citologia_resultado'],
+            DPTa = form.cleaned_data['DPTa']
+        )
+        primer_control.save()
+        self.success_url = self.success_url + str(gestante.pk) + '/'
+        return super(Nueva, self).form_valid(form)
+
+    def get_initial(self):
+        initial = super(EditarGeneral, self).get_initial()
+
+        try:
+            gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+            initial['fecha_probable_parto'] = gestante.fecha_probable_parto
+            initial['identificacion'] = gestante.identificacion
+            initial['confiable'] = gestante.confiable
+            initial['fecha_nacimiento'] = gestante.fecha_nacimiento
+            initial['semana_ingreso'] = gestante.semana_ingreso
+            initial['captacion'] = gestante.captacion
+            initial['fecha_ultima_menstruacion'] = gestante.fecha_ultima_menstruacion
+            initial['fecha_ingreso_programa'] = gestante.fecha_ingreso_programa
+            return initial
+        except ObjectDoesNotExist:
+            return initial
+
 def editar_general(request):
     return render(request, 'appgestantes/forms_editar/editar_general.html')
 

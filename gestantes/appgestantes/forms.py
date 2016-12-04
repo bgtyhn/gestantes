@@ -99,3 +99,13 @@ class GestanteForm(forms.Form):
 	citologia_fecha = forms.DateField(error_messages = errores_defecto)
 	citologia_resultado = forms.CharField(error_messages = errores_defecto)
 	DPTa = forms.CharField(error_messages = errores_defecto, required = False)
+
+class EditarGeneralForm(forms.Form):
+	fecha_probable_parto = forms.DateField(error_messages = errores_defecto)
+	identificacion = forms.CharField(error_messages = errores_defecto)
+	confiable = forms.CharField(error_messages = errores_defecto, required = False)
+	fecha_nacimiento = forms.DateField(error_messages = errores_defecto)
+	semana_ingreso = forms.CharField(error_messages = errores_defecto) #verificar solo numero
+	captacion = forms.CharField(error_messages = errores_defecto)
+	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto) #verificar <= hoy
+	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto) #verificar
