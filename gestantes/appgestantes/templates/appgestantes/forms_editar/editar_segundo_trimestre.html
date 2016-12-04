@@ -1,0 +1,120 @@
+{% extends 'appgestantes/forms_editar/_base_editar.html' %}
+
+{% load staticfiles %}
+
+{% block detail_link %}
+
+	<a href="#">Volver a segundo trimestre</a>
+
+{% endblock %}
+
+{% block section_name %}
+
+segundo trimestre
+
+{% endblock %}
+
+{% block form_content %}
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="VDRL">
+				<option value="Si">Reactivo</option>
+				<option value="No">No reactivo</option>
+		    </select>
+		    <label for="VDRL">VDRL</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<select id="parcial_orina">
+				<option value="Normal">Normal</option>
+				<option value="En tratamiento">En tratamiento</option>
+		    </select>
+		    <label for="parcial_orina">Parcial de orina</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="factores_diabetes_gestacional">
+				<option value="Si">Si</option>
+				<option value="No">No</option>
+		    </select>
+		    <label for="factores_diabetes_gestacional">Factores de riesgo diabetes gestacional</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_ecografia" type="text" class="datepicker">
+			<label for="fecha_ecografia">Fecha de ecografía</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_factores_diabetes" type="text" class="datepicker">
+			<label for="fecha_factores_diabetes">Fecha de factores de riesgo</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="semanas_ecografia" type="text" class="validate">
+			<label for="semanas_ecografia">Semanas ecografía</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="estado_factores_diabetes">
+				<option value="Normal">Normal</option>
+				<option value="Alterado">Alterado</option>
+		    </select>
+		    <label for="estado_factores_diabetes">Estado factores diabetes</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<p>
+		      <input type="checkbox" class="filled-in" id="micronutrientes"/>
+		      <label for="micronutrientes">Micronutrientes</label>
+		    </p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<input id="resultado_factores_diabetes" type="text" class="validate">
+			<label for="resultado_factores_diabetes">Resultado factores de riesgo diabetes</label>
+		</div>
+	</div>
+</div>
+
+<br><br>
+<div class="divider"></div>
+<br><br>
+
+<div class="row">
+	<div class="col s12 center-align">
+		<a class="waves-effect waves-light btn">Guardar</a>
+		&nbsp
+		<a class="waves-effect waves-light btn red lighten-2">Cancelar</a>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src='{% static "appgestantes/assets/js/editar_segundo_trimestre.js" %}'></script>
+
+{% endblock %}

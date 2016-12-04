@@ -279,8 +279,6 @@ class Detalle(DetailView):
         context['citas']['crecimiento_desarrollo'] = citasGestante.get(tipo_cita = 'Crecimiento y Desarrollo')
         context['citas']['planificacion_familiar'] = citasGestante.get(tipo_cita = 'Planificación Familiar')
 
-        print(context['citas'])
-
         return context
 
 def editar_general(request):
@@ -291,3 +289,12 @@ def editar_primer_control(request):
 
 def editar_primer_trimestre(request):
     return render(request, 'appgestantes/forms_editar/editar_primer_trimestre.html')
+
+def editar_segundo_trimestre(request):
+    return render(request, 'appgestantes/forms_editar/editar_segundo_trimestre.html')
+
+def editar_tercer_trimestre(request):
+    return render(request, 'appgestantes/forms_editar/editar_tercer_trimestre.html')
+
+def editar_citas(request):
+    return render(request, 'appgestantes/forms_editar/editar_citas.html')

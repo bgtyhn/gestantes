@@ -13,4 +13,7 @@ urlpatterns = [
     url(r'^editar_general/$', views.editar_general, name='editar_general'),
     url(r'^editar_primer_control/$', views.editar_primer_control, name='editar_primer_control'),
     url(r'^editar_primer_trimestre/$', views.editar_primer_trimestre, name='editar_primer_trimestre'),
+    url(r'^editar_segundo_trimestre/$', views.editar_segundo_trimestre, name='editar_segundo_trimestre'),
+    url(r'^editar_tercer_trimestre/$', views.editar_tercer_trimestre, name='editar_tercer_trimestre'),
+    url(r'^editar_citas/$', views.editar_citas, name='editar_citas'),
 ]
