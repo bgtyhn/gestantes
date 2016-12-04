@@ -1,0 +1,68 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Gestantes</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href='{% static "appgestantes/assets/css/materialize.min.css" %}'>
+		<link rel="stylesheet" href='{% static "appgestantes/assets/css/main.css" %}'>
+	</head>
+	<body>
+		<header>
+			<nav class="nav-extended indigo lighten-2">
+				<div class="nav-wrapper">
+					<div class="container">
+						<a href="{% url 'index' %}" class="brand-logo">Gestantes</a>
+						<ul class="right hide-on-med-and-down">
+							<li><a href="{% url 'index' %}">Pendientes</a></li>
+							<li><a href="{% url 'prioritarias' %}">Prioritarias</a></li>
+							<li><a href="{% url 'completa' %}">Lista completa</a></li>
+							<li><a href="{% url 'pasadas' %}">Pasadas</a></li>
+						</ul>
+						<ul class="tabs tabs-transparent">
+					        <li class="tab"><a class="active" href="#tab_informacion_general">Información general</a></li>
+					        <li class="tab"><a href="#tab_primer_control">Primer control</a></li>
+					        <li class="tab"><a href="#tab_primer_trimestre">Primer trimestre</a></li>
+					        <li class="tab"><a href="#tab_segundo_trimestre">Segundo trimestre</a></li>
+					        <li class="tab"><a href="#tab_tercer_trimestre">Tercer trimestre</a></li>
+					        <li class="tab"><a href="#tab_citas">Citas</a></li>
+				      	</ul>
+					</div>
+				</div>
+		  	</nav>
+		</header>
+		<div class="pad-5"></div>
+		<main>
+			<div class="container z-depth-1" id="main-container">
+				<div id="tab_informacion_general" class="col s12">
+					{% include "appgestantes/tabs_detalle/_tab_general.html" %}
+				</div> 
+				<div id="tab_primer_control" class="col s12">
+					{% include "appgestantes/tabs_detalle/_tab_primer_control.html" %}
+				</div>
+				<div id="tab_primer_trimestre" class="col s12">
+					{% include "appgestantes/tabs_detalle/_tab_primer_trimestre.html" %}
+				</div>
+				<div id="tab_segundo_trimestre" class="col s12">
+					{% include "appgestantes/tabs_detalle/_tab_segundo_trimestre.html" %}
+				</div>
+				<div id="tab_tercer_trimestre" class="col s12">
+					{% include "appgestantes/tabs_detalle/_tab_tercer_trimestre.html" %}
+				</div>
+				<div id="tab_citas" class="col s12">
+					{% include "appgestantes/tabs_detalle/_tab_citas.html" %}
+				</div>
+			</div>
+		</main>
+		<div class="pad-10"></div>
+		<script src='{% static "appgestantes/assets/js/jquery-3.1.1.min.js" %}'></script>
+		<script src='{% static "appgestantes/assets/js/main.js" %}'></script>
+		<script src='{% static "appgestantes/assets/js/materialize.min.js" %}'></script>
+	</body>
+</html>
