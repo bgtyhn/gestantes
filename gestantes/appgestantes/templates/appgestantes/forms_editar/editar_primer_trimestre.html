@@ -1,0 +1,241 @@
+{% extends 'appgestantes/forms_editar/_base_editar.html' %}
+
+{% load staticfiles %}
+
+{% block detail_link %}
+
+	<a href="#">Volver a primer trimestre</a>
+
+{% endblock %}
+
+{% block section_name %}
+
+primer trimestre
+
+{% endblock %}
+
+{% block form_content %}
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="cuadro_hematico">
+				<option value="Normal" selected="selected">Normal</option>
+				<option value="Anormal">Anormal</option>
+		    </select>
+		    <label for="cuadro_hematico">Cuadro hemático</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_frotis" type="text" class="datepicker">
+			<label for="fecha_frotis">Fecha de frotis</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6 inner-list">
+		<!--To do: disabled y ninguno si cuadro hematico normal-->
+		<p>Motivos cuadro hemático</p>
+		<div class="row">
+			<div class="col s10">
+				<input id="Motivo1" type="text" placeholder="Motivo" class="validate">
+			</div>
+			<div class="col s2">
+				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 center-align">
+				<a class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
+			</div>
+		</div>
+	</div>
+	<div class="col s6">
+		<!--To do: disabled si no hay fecha de frotis-->
+		<div class="input-field">
+			<br>
+			<select id="resultado_frotis">
+				<option value="Normal">Normal</option>
+				<option value="Alterado">Alterado</option>
+		    </select>
+		    <label for="resultado_frotis">Resultado frotis</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<br>
+			<select id="parcial_orina">
+				<option value="Normal">Normal</option>
+				<option value="En tratamiento">En tratamiento</option>
+		    </select>
+		    <label for="parcial_orina">Parcial de orina</label>
+		</div>
+	</div>
+	<div class="col s6 inner-list">
+		<!--To do: disabled y ninguno si frotis normal-->
+		<p>Motivos frotis</p>
+		<div class="row">
+			<div class="col s10">
+				<input id="Motivo1" type="text" placeholder="Motivo" class="validate">
+			</div>
+			<div class="col s2">
+				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 center-align">
+				<a class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<input id="RH" type="text" class="validate">
+			<label for="RH">RH</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<select id="factores_diabetes_gestacional">
+				<option value="Si">Si</option>
+				<option value="No">No</option>
+		    </select>
+		    <label for="factores_diabetes_gestacional">Factores de riesgo diabetes gestacional</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="VDRL">
+				<option value="Si">Reactivo</option>
+				<option value="No">No reactivo</option>
+		    </select>
+		    <label for="VDRL">VDRL</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_factores_diabetes" type="text" class="datepicker">
+			<label for="fecha_factores_diabetes">Fecha de factores de riesgo</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="VIH">
+				<option value="Si">Reactivo</option>
+				<option value="No">No reactivo</option>
+		    </select>
+		    <label for="VIH">VIH</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<select id="estado_factores_diabetes">
+				<option value="Normal">Normal</option>
+				<option value="Alterado">Alterado</option>
+		    </select>
+		    <label for="estado_factores_diabetes">Estado factores diabetes</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<p>
+		      <input type="checkbox" class="filled-in" id="micronutrientes"/>
+		      <label for="micronutrientes">Micronutrientes</label>
+		    </p>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="resultado_factores_diabetes" type="text" class="validate">
+			<label for="resultado_factores_diabetes">Resultado factores de riesgo diabetes</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="antigeno_hepatitisB">
+				<option value="Pendiente">Pendiente</option>
+				<option value="Reactivo">Reactivo</option>
+				<option value="No reactivo">No reactivo</option>
+		    </select>
+		    <label for="antigeno_hepatitisB">Antígeno Hepatitis B</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_ecografia" type="text" class="datepicker">
+			<label for="fecha_ecografia">Fecha de ecografía</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="toxoplasmosis_IGG">
+				<option value="IGG positiva">IGG positiva</option>
+				<option value="IGG negativa">IGG negativa</option>
+		    </select>
+		    <label for="toxoplasmosis_IGG">Toxoplasmosis iGg</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="semanas_ecografia" type="text" class="validate">
+			<label for="semanas_ecografia">Semanas ecografía</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<select id="toxoplasmosis_IGM">
+				<option value="IGM positiva">IGM positiva</option>
+				<option value="IGM negativa">IGM negativa</option>
+		    </select>
+		    <label for="toxoplasmosis_IGM">Toxoplasmosis iGm</label>
+		</div>
+	</div>
+</div>
+
+<br><br>
+<div class="divider"></div>
+<br><br>
+
+<div class="row">
+	<div class="col s12 center-align">
+		<a class="waves-effect waves-light btn">Guardar</a>
+		&nbsp
+		<a class="waves-effect waves-light btn red lighten-2">Cancelar</a>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src='{% static "appgestantes/assets/js/editar_primer_trimestre.js" %}'></script>
+
+{% endblock %}

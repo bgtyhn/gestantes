@@ -283,5 +283,11 @@ class Detalle(DetailView):
 
         return context
 
-def editar(request):
-    return render(request, 'appgestantes/forms_editar/_base_form_editar.html')
+def editar_general(request):
+    return render(request, 'appgestantes/forms_editar/editar_general.html')
+
+def editar_primer_control(request):
+    return render(request, 'appgestantes/forms_editar/editar_primer_control.html')
+
+def editar_primer_trimestre(request):
+    return render(request, 'appgestantes/forms_editar/editar_primer_trimestre.html')

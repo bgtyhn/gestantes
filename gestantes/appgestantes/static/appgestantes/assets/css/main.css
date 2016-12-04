@@ -12,6 +12,10 @@
 	color: #7986cb;
 }
 
+.inner-list .row{
+  margin-bottom: 2px;
+}
+
 #btn-new-container{
 	margin-top: 4vh;
 	margin-bottom: 4vh;

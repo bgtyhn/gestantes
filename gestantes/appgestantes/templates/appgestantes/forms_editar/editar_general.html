@@ -1,0 +1,143 @@
+{% extends 'appgestantes/forms_editar/_base_editar.html' %}
+
+{% block detail_link %}
+
+	<a href="#">Volver a información general</a>
+
+{% endblock %}
+
+{% block section_name %}
+
+información general
+
+{% endblock %}
+
+{% block form_content %}
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_probable_parto" type="text" class="datepicker">
+			<label for="fecha_probable_parto">Fecha probable de parto</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="identificacion" type="text" class="validate">
+			<label for="identificacion">Número de identificación</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<p>
+		      <input type="checkbox" class="filled-in" id="confiable"/>
+		      <label for="confiable">Fecha de parto confiable</label>
+		    </p>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_nacimiento" type="text" class="datepicker">
+			<label for="fecha_nacimiento">Fecha de nacimiento</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<input id="semana_gestacion" type="text" class="validate">
+			<label for="semana_gestacion">Semana de gestación al ingresar</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<select id="captacion">
+				<option value="Médico" selected="selected">Médico</option>
+				<option value="Enfermera">Enfermera</option>
+				<option value="La otra">La otra opción</option>
+		    </select>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_ultima_menstruacion" type="text" class="datepicker">
+			<label for="fecha_ultima_menstruacion">Fecha de ultima menstruación</label>
+		</div>
+	</div>
+	<div class="col s6">
+		<div class="input-field">
+			<input id="fecha_ingreso_programa" type="text" class="datepicker">
+			<label for="fecha_ingreso_programa">Fecha de ingreso al programa</label>
+		</div>
+	</div>
+</div>
+
+<br>
+<div class="divider"></div>
+<br><br>
+<div class="row">
+	<div class="col s12">
+		<h5 class="light">Observaciones</h5>
+		
+		<br><br>
+
+		<div class="row">
+			<div class="col s10">
+				<input id="obs1" type="text" placeholder="Observación" class="validate">
+			</div>
+			<div class="col s2">
+				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s10">
+				<input id="obs2" type="text" placeholder="Observación" class="validate">
+			</div>
+			<div class="col s2">
+				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s10">
+				<input id="obs3" type="text" placeholder="Observación" class="validate">
+			</div>
+			<div class="col s2">
+				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s12 center-align">
+				<a class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
+			</div>
+		</div>
+
+		<br><br>
+		<div class="divider"></div>
+		<br><br>
+
+		<div class="row">
+			<div class="col s12 center-align">
+				<a class="waves-effect waves-light btn">Guardar</a>
+				&nbsp
+				<a class="waves-effect waves-light btn red lighten-2">Cancelar</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

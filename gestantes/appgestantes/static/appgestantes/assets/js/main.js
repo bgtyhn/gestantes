@@ -51,7 +51,7 @@ $(function(){
 		min: true
 	})
 
-	$("#fecha_posttest").pickadate({
+	$("#fecha_postest").pickadate({
 	    selectMonths: true,
 		selectYears: 2,
 		min: true

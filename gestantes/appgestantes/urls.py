@@ -8,6 +8,9 @@ urlpatterns = [
     url(r'^completa/$', views.Completa.as_view(), name='completa'),
     url(r'^pasadas/$', views.Pasadas.as_view(), name='pasadas'),
     url(r'^nueva/$', views.Nueva.as_view(), name='nueva'),
-    url(r'^editar/$', views.editar, name='editar'),
-    url(r'^detalle/(?P<pk>[-\w]+)/$', views.Detalle.as_view(), name='detalle')
+    url(r'^detalle/(?P<pk>[-\w]+)/$', views.Detalle.as_view(), name='detalle'),
+
+    url(r'^editar_general/$', views.editar_general, name='editar_general'),
+    url(r'^editar_primer_control/$', views.editar_primer_control, name='editar_primer_control'),
+    url(r'^editar_primer_trimestre/$', views.editar_primer_trimestre, name='editar_primer_trimestre'),
 ]

@@ -26,8 +26,8 @@
 							<li><a href="{% url 'pasadas' %}">Pasadas</a></li>
 						</ul>
 						<ul class="tabs tabs-transparent">
-					        <li class="tab"><a class="disabled">Información general</a></li>
-				      	</ul>
+					        <li class="tab">{% block detail_link %} {% endblock %}</li>
+						</ul>
 					</div>
 				</div>
 		  	</nav>
@@ -39,45 +39,27 @@
 					<div class="col s10 offset-s1">
 						<div class="row">
 							<div class="col s8">
-								<h4 class="indigo-text text-lighten-1">Nombre gestante: <small>nombre sección</small></h4>
+								<h4 class="indigo-text text-lighten-1"> Nombre gestante:  
+								<small>{% block section_name %} {% endblock %}</small>
+								</h4>
 							</div>
 						</div>
+						
+						{% block form_content %}
 
+						{% endblock %}
 
-						<div class="row">
-							<div class="col s6">
-								<div class="section">
-									<div class="input-field">
-										<input id="fecha_probable_parto" type="text" class="datepicker">
-										<label for="fecha_probable_parto">Fecha probable de parto</label>
-									</div>
-								</div>
-							</div>
-							<div class="col s6">
-								<div class="section">
-									<div class="input-field">
-										<input id="identificacion" type="text" class="validate">
-										<label for="identificacion">Número de identificación</label>
-									</div>
-								</div>
-							</div>
 						</div>
-
-
-						<div class="row">
-							<div class="col s12">
-							{% block bottom %}
-							{% endblock %}
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</main>
+
 		<div class="pad-10"></div>
 		{% include "appgestantes/global_scripts.html" %}
-		
-		<script src='{% static "appgestantes/assets/js/editar_general.js" %}'></script>
+
+		{% block scripts %}
+
+		{% endblock %}
 
 	</body>
 </html>
