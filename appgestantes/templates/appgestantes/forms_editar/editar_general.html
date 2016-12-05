@@ -20,12 +20,10 @@ información general
 		<div class="input-field">
 			{% if form.fecha_probable_parto.errors %}
 				<input id="fecha_probable_parto" value="{{ form.fecha_probable_parto.value }}" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_probable_parto.errors.as_text }}'  placeholder="Fecha probable de parto" >
-          	{% else %}
-          		{% if form.fecha_probable_parto.value != none %}
-          			<input id="fecha_probable_parto" value="{{ form.fecha_probable_parto.value }}" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" placeholder="Fecha probable de parto" >
-          		{% else %}
-          			<input id="fecha_probable_parto" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" placeholder="Fecha probable de parto" >
-          		{% endif %}
+          	{% elif form.fecha_probable_parto.value != none %}
+      			<input id="fecha_probable_parto" value="{{ form.fecha_probable_parto.value }}" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" placeholder="Fecha probable de parto" >
+      		{% else %}
+      			<input id="fecha_probable_parto" name="{{ form.fecha_probable_parto.html_name }}" type="date" class="datepicker" placeholder="Fecha probable de parto" >
           	{% endif %}
 			<label class="active" for="fecha_probable_parto">Fecha probable de parto</label>
 		</div>
@@ -163,34 +161,10 @@ información general
 
 		<div class="row">
 			<div class="col s10">
-				<input id="observacion" type="text" name="{{ form.observacion.html_name }}" placeholder="Observación" class="validate">
+				<input id="observacion" type="text" placeholder="Observación" class="validate">
 			</div>
 			<div class="col s2">
 				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s10">
-				<input id="observacion" type="text" name="{{ form.observacion.html_name }}" placeholder="Observación" class="validate">
-			</div>
-			<div class="col s2">
-				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s10">
-				<input id="observacion" type="text" name="{{ form.observacion.html_name }}" placeholder="Observación" class="validate">
-			</div>
-			<div class="col s2">
-				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col s12 center-align">
-				<a class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
 			</div>
 		</div>
 
