@@ -1,5 +1,7 @@
 {% extends 'appgestantes/forms_editar/_base_editar.html' %}
 
+{% load staticfiles %}
+
 {% block detail_link %}
 
 	<a href="#">Volver a información general</a>
@@ -15,6 +17,24 @@ información general
 {% block form_content %}
 
 <form id="gest-form-update" action="" method="post" >{% csrf_token %}
+
+
+<div class="row">
+	<div class="col s12">
+		<div class="input-field">
+			{% if form.nombre.errors %}
+				<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.nombre.errors.as_text }}'  placeholder="Fecha probable de parto" >
+          	{% elif form.nombre.value != none %}
+      			<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="date" class="validate" placeholder="Fecha probable de parto" >
+      		{% else %}
+      			<input id="nombre" name="{{ form.nombre.html_name }}" type="date" class="validate" placeholder="Fecha probable de parto" >
+          	{% endif %}
+			<label class="active" for="nombre">Nombre</label>
+		</div>
+	</div>
+</div>
+
+
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
@@ -154,17 +174,41 @@ información general
 <div class="divider"></div>
 <br><br>
 <div class="row">
-	<div class="col s12">
+	<div  class="col s12">
 		<h5 class="light">Observaciones</h5>
 		
 		<br><br>
 
-		<div class="row">
+		{% if not observaciones %}
+
+		<p id="no-obss" class="center-align">No hay observaciones, presione el botón para agregar una</p class="center-align">
+
+		{% else %}
+
+		<p id="no-obss" class="center-align hide">No hay observaciones, presione el botón para agregar una</p class="center-align">
+
+		{% endif %}
+
+		<div id="obs-container">
+
+		{% for observacion in observaciones %}
+
+		<div class="row obs-row">
 			<div class="col s10">
-				<input id="observacion" type="text" placeholder="Observación" class="validate">
+				<input value="{{ observacion.texto }}" name="observacion" type="text" placeholder="Observación" class="validate">
 			</div>
 			<div class="col s2">
-				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
+				<button type="button" class="obs-del btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></button>
+			</div>
+		</div>		
+
+		{% endfor %}
+
+		</div>
+
+		<div class="row">
+			<div class="col s12 center-align">
+				<a id="add-obs-btn" class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
 			</div>
 		</div>
 
@@ -187,5 +231,7 @@ información general
 {% endblock %}
 
 {% block scripts %}
+
+<script src='{% static "appgestantes/assets/js/editar_general.js" %}'></script>
 
 {% endblock %}

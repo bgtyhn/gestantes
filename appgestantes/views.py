@@ -294,19 +294,25 @@ class EditarGeneral(FormView):
         return context
 
     def form_valid(self, form):
-        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
-        #gestante.nombre = form.cleaned_data['nombre']
-        gestante.fecha_ingreso_programa = form.cleaned_data['fecha_ingreso_programa']
-        gestante.fecha_nacimiento = form.cleaned_data['fecha_nacimiento']
-        gestante.identificacion = form.cleaned_data['identificacion']
-        gestante.captacion = form.cleaned_data['captacion']
-        gestante.semana_ingreso = form.cleaned_data['semana_ingreso']
-        gestante.fecha_ultima_menstruacion = form.cleaned_data['fecha_ultima_menstruacion']
-        gestante.fecha_probable_parto = form.cleaned_data['fecha_probable_parto']
-        gestante.confiable = form.cleaned_data['confiable']
-        gestante.save()
+        g = Gestante.objects.get(id = self.kwargs['gestante'])
+        g.nombre = form.cleaned_data['nombre']
+        g.fecha_ingreso_programa = form.cleaned_data['fecha_ingreso_programa']
+        g.fecha_nacimiento = form.cleaned_data['fecha_nacimiento']
+        g.identificacion = form.cleaned_data['identificacion']
+        g.captacion = form.cleaned_data['captacion']
+        g.semana_ingreso = form.cleaned_data['semana_ingreso']
+        g.fecha_ultima_menstruacion = form.cleaned_data['fecha_ultima_menstruacion']
+        g.fecha_probable_parto = form.cleaned_data['fecha_probable_parto']
+        g.confiable = form.cleaned_data['confiable']
+        g.save()
 
-        self.success_url = self.success_url + str(gestante.pk) + '/'
+        Observacion.objects.filter(gestante_id = g.id).delete()
+
+        for o in self.request.POST.getlist("observacion"):
+            if o:
+                Observacion.objects.create(gestante=g, texto=o)
+
+        self.success_url = self.success_url + str(g.pk) + '/'
 
         return super(EditarGeneral, self).form_valid(form)
 
@@ -315,6 +321,7 @@ class EditarGeneral(FormView):
 
         try:
             gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+            initial['nombre'] = gestante.nombre
             initial['fecha_probable_parto'] = gestante.fecha_probable_parto.strftime('%Y-%m-%d')
             initial['identificacion'] = gestante.identificacion
             initial['confiable'] = gestante.confiable

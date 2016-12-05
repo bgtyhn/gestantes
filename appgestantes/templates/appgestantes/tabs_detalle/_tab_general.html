@@ -68,12 +68,22 @@
 {% block bottom %}
 
 	<h5 class="light">Observaciones</h5>
-	<ul class="collection">
+
+	{% if gestante.observacion_set.all %}
+
+		<ul class="collection">
 		{% for observacion in gestante.observacion_set.all %}
 			<li class="collection-item">
 				{{observacion.texto}}
 			</li>
 		{% endfor %}
 	</ul>
+
+
+	{% else %}
+
+	<p class="center-align">No hay observaciones</p class="center-align">
+	
+	{% endif %}
 
 {% endblock %}

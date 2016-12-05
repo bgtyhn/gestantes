@@ -101,6 +101,7 @@ class GestanteForm(forms.Form):
 	DPTa = forms.CharField(error_messages = errores_defecto, required = False)
 
 class EditarGeneralForm(forms.Form):
+	nombre = forms.CharField(error_messages = errores_defecto)
 	fecha_probable_parto = forms.DateField(error_messages = errores_defecto)
 	identificacion = forms.CharField(error_messages = errores_defecto)
 	confiable = forms.CharField(error_messages = errores_defecto, required = False)
@@ -109,3 +110,4 @@ class EditarGeneralForm(forms.Form):
 	captacion = forms.CharField(error_messages = errores_defecto)
 	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto) #verificar <= hoy
 	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto) #verificar
+	observacion = forms.CharField(error_messages = errores_defecto, required = False)
