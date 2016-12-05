@@ -291,6 +291,7 @@ class EditarGeneral(FormView):
         context = super(EditarGeneral, self).get_context_data(**kwargs)
         context['observaciones'] = Observacion.objects.filter(gestante_id = self.kwargs['gestante'])
         context['opciones_captacion'] = CAPTACION
+        context['gestante_id'] = self.kwargs['gestante']
         return context
 
     def form_valid(self, form):
