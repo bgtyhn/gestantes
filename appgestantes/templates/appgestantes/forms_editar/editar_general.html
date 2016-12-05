@@ -163,7 +163,7 @@ información general
 
 		<div class="row">
 			<div class="col s10">
-				<input id="obs1" type="text" placeholder="Observación" class="validate">
+				<input id="observacion" type="text" name="{{ form.observacion.html_name }}" placeholder="Observación" class="validate">
 			</div>
 			<div class="col s2">
 				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
@@ -172,7 +172,7 @@ información general
 
 		<div class="row">
 			<div class="col s10">
-				<input id="obs2" type="text" placeholder="Observación" class="validate">
+				<input id="observacion" type="text" name="{{ form.observacion.html_name }}" placeholder="Observación" class="validate">
 			</div>
 			<div class="col s2">
 				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
@@ -181,7 +181,7 @@ información general
 
 		<div class="row">
 			<div class="col s10">
-				<input id="obs3" type="text" placeholder="Observación" class="validate">
+				<input id="observacion" type="text" name="{{ form.observacion.html_name }}" placeholder="Observación" class="validate">
 			</div>
 			<div class="col s2">
 				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
@@ -200,7 +200,7 @@ información general
 
 		<div class="row">
 			<div class="col s12 center-align">
-				<a class="waves-effect waves-light btn"><button>Guardar</button></a>
+				<button type="submit" class="waves-effect waves-light btn">Guardar</button>
 				&nbsp
 				<a class="waves-effect waves-light btn red lighten-2">Cancelar</a>
 			</div>
