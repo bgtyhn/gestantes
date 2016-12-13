@@ -15,7 +15,7 @@ $(function(){
 	    selectYears: 3
 	})
 
-	$("#fecha_ecografia").pickadate({
+	$("#ecografia_fecha").pickadate({
 		selectMonths: true,
 	    selectYears: 3
 	})

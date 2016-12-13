@@ -589,7 +589,7 @@ class EditarSegundoTrimestre(FormView):
         segundo_trimestre.gestante = gestante 
         segundo_trimestre.save()
 
-        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_segundo_trimestre"'
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_segundo_trimestre'
 
         return super(EditarSegundoTrimestre, self).form_valid(form)
 
@@ -604,9 +604,9 @@ class EditarSegundoTrimestre(FormView):
             initial['factores_riesgo_diabetes_gestacional'] = segundo_trimestre.factores_riesgo_diabetes_gestacional
             initial['fecha_factores_riesgo'] = segundo_trimestre.fecha_factores_riesgo
             initial['estado_factores_diabetes'] = segundo_trimestre.estado_factores_diabetes
-            initial['fecha_factores_diabetes'] = segundo_trimestre.fecha_factores_diabetes
+            initial['fecha_factores_diabetes'] = segundo_trimestre.fecha_factores_diabetes.strftime('%Y-%m-%d')
             initial['numero_factores_diabetes'] = segundo_trimestre.numero_factores_diabetes
-            initial['ecografia_fecha'] = segundo_trimestre.ecografia_fecha
+            initial['ecografia_fecha'] = segundo_trimestre.ecografia_fecha.strftime('%Y-%m-%d')
             initial['ecografia_semanas'] = segundo_trimestre.ecografia_semanas
             initial['micronutrientes'] = segundo_trimestre.micronutrientes
             print(initial)

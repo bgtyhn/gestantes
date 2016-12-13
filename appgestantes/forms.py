@@ -155,8 +155,8 @@ class EditarSegundoTrimestre(forms.Form):
 	fecha_factores_diabetes = forms.DateField(error_messages = errores_defecto, required = False)
 	numero_factores_diabetes = forms.CharField(error_messages = errores_defecto, required = False)
 	ecografia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
-	ecografia_semanas = forms.CharField(error_messages = errores_defecto)
-	micronutrientes = forms.CharField(error_messages = errores_defecto)
+	ecografia_semanas = forms.CharField(error_messages = errores_defecto, required = False)
+	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
 
 class EditarTercerTrimestre(forms.Form):
 	VDRL = forms.CharField(error_messages = errores_defecto, required = False)
