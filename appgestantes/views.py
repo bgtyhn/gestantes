@@ -421,7 +421,7 @@ class EditarPrimerControl(FormView):
             return initial
 
 class EditarPrimerTrimestre(FormView):
-    template_name = 'appgestantes/forms_editar/editar_primer_control.html'
+    template_name = 'appgestantes/forms_editar/editar_primer_trimestre.html'
     form_class = forms.EditarPrimerControl
     success_url = '/detalle/'
 
@@ -474,29 +474,68 @@ class EditarPrimerTrimestre(FormView):
             primer_trimestre.toxoplasmosis_IGG = form.cleaned_data['toxoplasmosis_IGG']
             primer_trimestre.toxoplasmosis_IGM = form.cleaned_data['toxoplasmosis_IGM']
         except ObjectDoesNotExist:
-            pass
-        pc = PrimerControl.objects.get(id = self.kwargs['control'])
-        pc.fecha_paraclinicos = form.cleaned_data['fecha_paraclinicos']
-        pc.micronutrientes = micronutrientes
-        pc.pretest_fecha = form.cleaned_data['pretest_fecha']
-        pc.fecha_postest = form.cleaned_data['fecha_postest']
-        pc.iami = iami
-        pc.odontologia_fecha = form.cleaned_data['odontologia_fecha']
-        pc.citologia_fecha = form.cleaned_data['citologia_fecha']
-        pc.citologia_resultado = form.cleaned_data['citologia_resultado']
-        pc.DPTa = DPTa
-        pc.save()
+            primer_trimestre = PrimerTrimestre(cuadro_hematico = form.cleaned_data['cuadro_hematico'],
+                parcial_orina = form.cleaned_data['parcial_orina'],
+                RH = form.cleaned_data['RH'],
+                VDRL = form.cleaned_data['VDRL'],
+                VIH = form.cleaned_data['VIH'],
+                frotis_fecha = form.cleaned_data['frotis_fecha'],
+                frotis_tipo = form.cleaned_data['frotis_tipo'],
+                factores_riesgo_diabetes_gestacional = form.cleaned_data['factores_riesgo_diabetes_gestacional'],
+                estado_factores_diabetes = form.cleaned_data['estado_factores_diabetes'],
+                fecha_factores_diabetes = form.cleaned_data['fecha_factores_diabetes'],
+                numero_factores_diabetes = form.cleaned_data['numero_factores_diabetes'],
+                ecografia_fecha = form.cleaned_data['ecografia_fecha'],
+                ecografia_semanas = form.cleaned_data['ecografia_semanas'],
+                micronutrientes = form.cleaned_data['micronutrientes'],
+                antigeno_hepatitisB = form.cleaned_data['antigeno_hepatitisB'],
+                toxoplasmosis_IGG = form.cleaned_data['toxoplasmosis_IGG'],
+                toxoplasmosis_IGM = form.cleaned_data['toxoplasmosis_IGM'],
+            )
+        primer_trimestre.save()
 
-        Riesgo.objects.filter(primerControl_id = self.kwargs['gestante']).delete()
+        ListaMotivosCHPT.objects.filter(primer_trimestre_id = primer_trimestre.id).delete()
+        ListaMotivosFrotisPT.objects.filter(primer_trimestre_id = primer_trimestre.id).delete()
 
-        for r in self.request.POST.getlist("texto_rie"):
-            if r:
-                Riesgo.objects.create(primerControl=pc, motivo=r)
+        for m in self.request.POST.getlist("motivo_hematico"):
+            if m:
+                ListaMotivosCHPT.objects.create(primer_trimestre=primer_trimestre, motivo=m)
 
-        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_primer_control'
+        for m in self.request.POST.getlist("motivo_frotis"):
+            if m:
+                ListaMotivosFrotisPT.objects.create(primer_trimestre=primer_trimestre, motivo=m)
 
-        return super(EditarPrimerControl, self).form_valid(form)
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_primer_trimestre"'
 
+        return super(EditarPrimerTrimestre, self).form_valid(form)
+
+
+    def get_initial(self):
+        initial = super(EditarPrimerTrimestre, self).get_initial()
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            primer_trimestre = PrimerTrimestre.objects.get(gestante_id = gestante.id)
+            initial['cuadro_hematico'] = primer_trimestre.cuadro_hematico
+            initial['parcial_orina'] = primer_trimestre.parcial_orina
+            initial['RH'] = primer_trimestre.RH
+            initial['VDRL'] = primer_trimestre.VDRL
+            initial['VIH'] = primer_trimestre.VIH
+            initial['frotis_fecha'] = primer_trimestre.frotis_fecha.strftime('%Y-%m-%d')
+            initial['frotis_tipo'] = primer_trimestre.frotis_tipo
+            initial['factores_riesgo_diabetes_gestacional'] = primer_trimestre.factores_riesgo_diabetes_gestacional
+            initial['estado_factores_diabetes'] = primer_trimestre.estado_factores_diabetes
+            initial['fecha_factores_diabetes'] = primer_trimestre.fecha_factores_diabetes.strftime('%Y-%m-%d')
+            initial['numero_factores_diabetes'] = primer_trimestre.numero_factores_diabetes
+            initial['ecografia_fecha'] = primer_trimestre.ecografia_fecha.strftime('%Y-%m-%d')
+            initial['ecografia_semanas'] = primer_trimestre.ecografia_semanas
+            initial['micronutrientes'] = primer_trimestre.micronutrientes
+            initial['antigeno_hepatitisB'] = primer_trimestre.antigeno_hepatitisB
+            initial['toxoplasmosis_IGG'] = primer_trimestre.toxoplasmosis_IGG
+            initial['toxoplasmosis_IGM'] = primer_trimestre.toxoplasmosis_IGM
+            print(initial)
+            return initial
+        except ObjectDoesNotExist:
+            return initial
 
 def editar_general(request):
     return render(request, 'appgestantes/forms_editar/editar_general.html')

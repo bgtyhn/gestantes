@@ -143,6 +143,8 @@ class EditarPrimerTrimestre(forms.Form):
 	antigeno_hepatitisB = forms.CharField(error_messages = errores_defecto)
 	toxoplasmosis_IGG = forms.CharField(error_messages = errores_defecto)
 	toxoplasmosis_IGM = forms.CharField(error_messages = errores_defecto)
+	motivo_hematico = forms.CharField(error_messages = errores_defecto, required = False)
+	motivo_frotis = forms.CharField(error_messages = errores_defecto, required = False)
 
 class EditarSegundoTrimestre(forms.Form):
 	VDRL = forms.CharField(error_messages = errores_defecto)
