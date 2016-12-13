@@ -11,7 +11,7 @@ errores_defecto = {
 class GestanteForm(forms.Form):
 	nombre = forms.CharField(error_messages = errores_defecto)
 	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto, required = False) #verificar
-	fecha_nacimiento = forms.DateField(error_messages = errores_defecto, required = False)
+	edad = forms.CharField(error_messages = errores_defecto, required = False)
 	identificacion = forms.CharField(error_messages = errores_defecto, required = False)
 	captacion = forms.CharField(error_messages = errores_defecto, required = False)
 	semana_ingreso = forms.CharField(error_messages = errores_defecto, required = False) #verificar solo numero
@@ -33,7 +33,7 @@ class EditarGeneralForm(forms.Form):
 	fecha_probable_parto = forms.DateField(error_messages = errores_defecto, required = False)
 	identificacion = forms.CharField(error_messages = errores_defecto)
 	confiable = forms.CharField(error_messages = errores_defecto, required = False)
-	fecha_nacimiento = forms.DateField(error_messages = errores_defecto, required = False)
+	edad = forms.CharField(error_messages = errores_defecto, required = False)
 	semana_ingreso = forms.CharField(error_messages = errores_defecto, required = False) #verificar solo numero
 	captacion = forms.CharField(error_messages = errores_defecto, required = False)
 	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto, required = False) #verificar <= hoy

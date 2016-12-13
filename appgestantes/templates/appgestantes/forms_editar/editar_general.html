@@ -89,16 +89,16 @@ información general
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			{% if form.fecha_nacimiento.errors %}
-					<input id="fecha_nacimiento" value="{{ form.fecha_nacimiento.value }}" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_nacimiento.errors.as_text }}'  placeholder="Fecha de nacimiento" >
-	          	{% else %}
-	          		{% if form.fecha_nacimiento.value != none %}
-	          			<input id="fecha_nacimiento" value="{{ form.fecha_nacimiento.value }}" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker" placeholder="Fecha de nacimiento" >
-	          		{% else %}
-	          			<input id="fecha_nacimiento" name="{{ form.fecha_nacimiento.html_name }}" type="date" class="datepicker" placeholder="Fecha de nacimiento" >
-	          		{% endif %}
-	          	{% endif %}
-			<label class="active" for="fecha_nacimiento">Fecha de nacimiento</label>
+			{% if form.edad.errors %}
+				<input id="{{ form.edad.id_for_label }}" value="{{ form.edad.value }}" name="{{ form.edad.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.edad.errors.as_text }}' >
+          	{% else %}
+          		{% if form.edad.value != None %}
+          			<input id="{{ form.edad.id_for_label }}" value="{{ form.edad.value }}" name="{{ form.edad.html_name }}" type="text" class="validate">
+          		{% else %}
+          			<input id="{{ form.edad.id_for_label }}" name="{{ form.edad.html_name }}" type="text" class="validate" >
+          		{% endif %}
+          	{% endif %}
+			<label for="edad">Edad</label>
 		</div>
 	</div>
 </div>

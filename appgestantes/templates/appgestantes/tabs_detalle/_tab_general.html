@@ -24,19 +24,31 @@
 	<div class="detail-field">
 		<p> Semana de gestación al ingresar </p>
 		<h5 class="light">
+		{% if gestante.semana_ingreso %}
 			{{gestante.semana_ingreso}}
+		{% else %}
+			&nbsp;
+		{% endif %}
 		</h5>
 	</div>
 	<div class="detail-field">
 		<p> Fecha de la ultima menstruación </p>
 		<h5 class="light">
+		{% if gestante.fecha_ultima_menstruacion %}
 			{{gestante.fecha_ultima_menstruacion}}
+		{% else %}
+			&nbsp
+		{% endif %}
 		</h5>
 	</div>
 	<div class="detail-field">
 		<p> Fecha de ingreso al programa </p>
 		<h5 class="light">
+		{% if gestante.fecha_ingreso_programa %}
 			{{gestante.fecha_ingreso_programa}}
+		{% else %}
+			&nbsp
+		{% endif %}
 		</h5>
 	</div>
 
@@ -47,19 +59,31 @@
 	<div class="detail-field">
 		<p> Número de identificación </p>
 		<h5 class="light">
+		{% if gestante.identificacion %}
 			{{gestante.identificacion}}
+		{% else %}
+			&nbsp
+		{% endif %}
 		</h5>
 	</div>
 	<div class="detail-field">
-		<p> Fecha de nacimiento </p>
+		<p> Edad </p>
 		<h5 class="light">
-			{{gestante.fecha_nacimiento}}
+		{% if gestante.edad %}
+			{{gestante.edad}}
+		{% else %}
+			&nbsp;
+		{% endif %}
 		</h5>
 	</div>
 	<div class="detail-field">
 		<p> Captación </p>
 		<h5 class="light">
+		{% if gestante.captacion %}
 			{{gestante.get_captacion_display}}
+		{% else %}
+			&nbsp
+		{% endif %}
 		</h5>
 	</div>
 

@@ -240,7 +240,7 @@ class Nueva(FormView):
             iami = 'Si'
         gestante = Gestante(nombre = form.cleaned_data['nombre'],
             fecha_ingreso_programa = form.cleaned_data['fecha_ingreso_programa'],
-            fecha_nacimiento = form.cleaned_data['fecha_nacimiento'],
+            edad = form.cleaned_data['edad'],
             identificacion = form.cleaned_data['identificacion'],
             captacion = form.cleaned_data['captacion'],
             semana_ingreso = form.cleaned_data['semana_ingreso'],
@@ -333,7 +333,7 @@ class EditarGeneral(FormView):
         g = Gestante.objects.get(id = self.kwargs['gestante'])
         g.nombre = form.cleaned_data['nombre']
         g.fecha_ingreso_programa = form.cleaned_data['fecha_ingreso_programa']
-        g.fecha_nacimiento = form.cleaned_data['fecha_nacimiento']
+        g.edad = form.cleaned_data['edad']
         g.identificacion = form.cleaned_data['identificacion']
         g.captacion = form.cleaned_data['captacion']
         g.semana_ingreso = form.cleaned_data['semana_ingreso']
@@ -362,8 +362,7 @@ class EditarGeneral(FormView):
                 initial['fecha_probable_parto'] = gestante.fecha_probable_parto.strftime('%Y-%m-%d')
             initial['identificacion'] = gestante.identificacion
             initial['confiable'] = gestante.confiable
-            if gestante.fecha_nacimiento:
-                initial['fecha_nacimiento'] = gestante.fecha_nacimiento.strftime('%Y-%m-%d')
+            initial['edad'] = gestante.edad
             initial['semana_ingreso'] = gestante.semana_ingreso
             initial['captacion'] = gestante.captacion
             if gestante.fecha_ultima_menstruacion:
