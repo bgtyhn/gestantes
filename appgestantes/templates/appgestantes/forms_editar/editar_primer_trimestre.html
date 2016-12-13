@@ -16,7 +16,7 @@ primer trimestre
 
 {% block form_content %}
 
-<form id="gest-form-update" action="" method="post" >{% csrf_token %}
+<form id="gest-prim-trim-update" action="" method="post" >{% csrf_token %}
 
 <div class="row">
 	<div class="col s6">
@@ -44,14 +44,13 @@ primer trimestre
 			
 			{% if form.frotis_fecha.errors %}
 				<input id="frotis_fecha" value="{{ form.frotis_fecha.value }}" name="{{ form.frotis_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.frotis_fecha.errors.as_text }}'  placeholder="Fecha de frotis" >
-          	{% else %}
-          		{% if form.frotis_fecha.value != none %}
-          			<input id="frotis_fecha" value="{{ form.frotis_fecha.value }}" name="{{ form.frotis_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de frotis" >
-          		{% else %}
-          			<input id="frotis_fecha" name="{{ form.frotis_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de frotis" >
-          		{% endif %}
+          	{% elif form.frotis_fecha.value != none %}
+      			<input id="frotis_fecha" value="{{ form.frotis_fecha.value }}" name="{{ form.frotis_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de frotis" >
+      		{% else %}
+      			<input id="frotis_fecha" name="{{ form.frotis_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de frotis" >
           	{% endif %}
-			<label class="active" for="frotis_fecha">Fecha de frotis</label>
+
+			<label for="frotis_fecha" class="active">Fecha de frotis</label>
 
 		</div>
 	</div>

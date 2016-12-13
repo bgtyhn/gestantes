@@ -447,6 +447,7 @@ class EditarPrimerTrimestre(FormView):
         context['opciones_antigeno'] = ANTIGENO
         context['opciones_toxoplasmosis_igg'] = TOXOPLASMOSIS_IGG
         context['opciones_toxoplasmosis_igm'] = TOXOPLASMOSIS_IGM
+        return context
 
     def form_valid(self, form):
         micronutrientes = 'No'

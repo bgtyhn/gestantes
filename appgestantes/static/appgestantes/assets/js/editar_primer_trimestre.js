@@ -5,6 +5,11 @@ $(function(){
 	    selectYears: 3
 	})
 
+	$("#frotis_fecha").pickadate({
+		selectMonths: true,
+	    selectYears: 3
+	})
+
 	$("#fecha_factores_diabetes").pickadate({
 		selectMonths: true,
 	    selectYears: 3
