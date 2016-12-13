@@ -307,6 +307,7 @@ class EditarGeneral(FormView):
         context['observaciones'] = Observacion.objects.filter(gestante_id = self.kwargs['gestante'])
         context['opciones_captacion'] = CAPTACION
         context['gestante_id'] = self.kwargs['gestante']
+        context['nombre_gestante'] = Gestante.objects.get(id = self.kwargs['gestante']).nombre
         return context
 
     def form_valid(self, form):
@@ -363,6 +364,7 @@ class EditarPrimerControl(FormView):
         context = super(EditarPrimerControl, self).get_context_data(**kwargs)
         context['riesgos'] = Riesgo.objects.filter(primerControl = self.kwargs['control'])
         context['gestante_id'] = self.kwargs['gestante']
+        context['nombre_gestante'] = Gestante.objects.get(id = self.kwargs['gestante']).nombre
         return context
 
     def form_valid(self, form):
@@ -391,11 +393,11 @@ class EditarPrimerControl(FormView):
 
         Riesgo.objects.filter(primerControl_id = self.kwargs['gestante']).delete()
 
-        for r in self.request.POST.getlist("riesgo"):
+        for r in self.request.POST.getlist("texto_rie"):
             if r:
                 Riesgo.objects.create(primerControl=pc, motivo=r)
 
-        self.success_url = self.success_url + str(g.pk) + '/'
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_primer_control'
 
         return super(EditarPrimerControl, self).form_valid(form)
 
@@ -404,7 +406,7 @@ class EditarPrimerControl(FormView):
 
         try:
             pc = PrimerControl.objects.get(id = self.kwargs['control'])
-            initial['fecha_paraclinicos'] = pc.fecha_paraclinicos
+            initial['fecha_paraclinicos'] = pc.fecha_paraclinicos.strftime('%Y-%m-%d')
             initial['micronutrientes'] = pc.micronutrientes
             initial['pretest_fecha'] = pc.pretest_fecha.strftime('%Y-%m-%d')
             initial['fecha_postest'] = pc.fecha_postest.strftime('%Y-%m-%d')
