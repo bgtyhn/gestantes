@@ -65,16 +65,15 @@ class Index(ListView):
         context = super(ListView, self).get_context_data(**kwargs)
         query_string = ''
         found_entries = None
-        gestantes_pendientes = Cita.objects.all().filter(estado = 'Pendiente').only('gestante_id')
         if ('q' in self.request.GET) and self.request.GET['q'].strip():
             query_string = self.request.GET['q']
 
             product_query = get_query(query_string, ['nombre', 'identificacion'])
 
-            lista_gestantes = Gestante.objects.filter(product_query).filter(pk__in = gestantes_pendientes)
+            lista_gestantes = Gestante.objects.filter(product_query).filter(Q(fecha_probable_parto__gt=datetime.now().date()))
             context['search'] = self.request.GET['q']
         else:
-            lista_gestantes = Gestante.objects.filter(pk__in = gestantes_pendientes)
+            lista_gestantes = Gestante.objects.filter(Q(fecha_probable_parto__gt=datetime.now().date()))
 
         paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca')
@@ -186,10 +185,10 @@ class Pasadas(ListView):
 
             product_query = get_query(query_string, ['nombre', 'identificacion'])
 
-            lista_gestantes = Gestante.objects.filter(product_query).filter(Q(fecha_probable_parto=datetime().now().date()) | Q(fecha_probable_parto__gt=datetime().now().date()))
+            lista_gestantes = Gestante.objects.filter(product_query).filter(Q(fecha_probable_parto=datetime().now().date()) | Q(fecha_probable_parto__lt=datetime().now().date()))
             context['search'] = self.request.GET['q']
         else:
-            lista_gestantes = Gestante.objects.filter(Q(fecha_probable_parto=datetime.now().date()) | Q(fecha_probable_parto__gt=datetime.now().date()))
+            lista_gestantes = Gestante.objects.filter(Q(fecha_probable_parto=datetime.now().date()) | Q(fecha_probable_parto__lt=datetime.now().date()))
 
         paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca') 
