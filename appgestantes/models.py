@@ -27,17 +27,17 @@ CUADRO_HEMATICO = (
 
 PARCIAL_ORINA = (
 	('Normal', 'Normal'),
-	('En tratamiento', 'En tratamiento')
+	('Tratamiento', 'En tratamiento')
 )
 
 VDRL = (
 	('Reactivo', 'Reactivo'),
-	('No reactivo', 'No reactivo')
+	('NoReactivo', 'No reactivo')
 )
 
 VIH = (
 	('Reactivo', 'Reactivo'),
-	('No reactivo', 'No reactivo')
+	('NoReactivo', 'No reactivo')
 )
 
 FROTIS = (
@@ -47,26 +47,26 @@ FROTIS = (
 
 ANTIGENO = (
 	('Reactivo', 'Reactivo'),
-	('No reactivo', 'No reactivo'),
+	('NoReactivo', 'No reactivo'),
 	('Pendiente', 'Pendiente'),
 )
 
 TOXOPLASMOSIS_IGG = (
-	('IGG Positiva', 'IGG Positiva'),
-	('IGG Negativa', 'IGG Negativa'),
+	('IGGPositiva', 'IGG Positiva'),
+	('IGGNegativa', 'IGG Negativa'),
 )
 
 TOXOPLASMOSIS_IGM = (
-	('IGM Positiva', 'IGM Positiva'),
-	('IGM Negativa', 'IGM Negativa'),
+	('IGMPositiva', 'IGM Positiva'),
+	('IGMNegativa', 'IGM Negativa'),
 )
 
 TIPO_CITA = (
-	('Fecha parto', 'Fecha parto'),
-	('Recien nacido', 'Recien nacido'),
+	('Fechaparto', 'Fecha parto'),
+	('Reciennacido', 'Recien nacido'),
 	('Puerperio', 'Puerperio'),
-	('Crecimiento y Desarrollo', 'Crecimiento y Desarrollo'),
-	('Planificación Familiar', 'Planificación Familiar')
+	('CrecimientoyDesarrollo', 'Crecimiento y Desarrollo'),
+	('PlanificaciónFamiliar', 'Planificación Familiar')
 )
 
 ESTADO_CITA = (
