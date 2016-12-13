@@ -186,10 +186,10 @@ class Pasadas(ListView):
 
             product_query = get_query(query_string, ['nombre', 'identificacion'])
 
-            lista_gestantes = Gestante.objects.filter(product_query).filter(Q(fecha_probable_parto=datetime().now().date()) | Q(fecha_probable_parto__gt=datetime().now().date()))
+            lista_gestantes = Gestante.objects.filter(product_query).filter(Q(fecha_probable_parto=datetime().now().date()) | Q(fecha_probable_parto__lt=datetime().now().date()))
             context['search'] = self.request.GET['q']
         else:
-            lista_gestantes = Gestante.objects.filter(Q(fecha_probable_parto=datetime.now().date()) | Q(fecha_probable_parto__gt=datetime.now().date()))
+            lista_gestantes = Gestante.objects.filter(Q(fecha_probable_parto=datetime.now().date()) | Q(fecha_probable_parto__lt=datetime.now().date()))
 
         paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca') 
