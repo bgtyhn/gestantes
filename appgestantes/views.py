@@ -420,6 +420,84 @@ class EditarPrimerControl(FormView):
         except ObjectDoesNotExist:
             return initial
 
+class EditarPrimerTrimestre(FormView):
+    template_name = 'appgestantes/forms_editar/editar_primer_control.html'
+    form_class = forms.EditarPrimerControl
+    success_url = '/detalle/'
+
+    def get_context_data(self, **kwargs):
+        context = super(EditarPrimerTrimestre, self).get_context_data(**kwargs)
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            primer_trimestre = PrimerTrimestre.objects.get(gestante_id = gestante.id)
+            context['lista_motivosCH'] = ListaMotivosCHPT.objects.filter(primer_trimestre = primer_trimestre)
+            context['lista_motivosFR'] = ListaMotivosFrotisPT.objects.filter(primer_trimestre = primer_trimestre)
+        except ObjectDoesNotExist:
+            context['lista_motivosCH'] = []
+            context['lista_motivosFR'] = []
+
+        context['gestante_id'] = self.kwargs['gestante']
+        context['nombre_gestante'] = gestante.nombre
+        context['opciones_parcial_horina'] = PARCIAL_ORINA
+        context['opciones_cuadro_hematico'] = CUADRO_HEMATICO
+        context['opciones_VDRL'] = VDRL
+        context['opciones_VIH'] = VIH
+        context['opciones_frotis'] = FROTIS
+        context['si_opciones'] = SI_OPCIONES
+        context['opciones_antigeno'] = ANTIGENO
+        context['opciones_toxoplasmosis_igg'] = TOXOPLASMOSIS_IGG
+        context['opciones_toxoplasmosis_igm'] = TOXOPLASMOSIS_IGM
+
+    def form_valid(self, form):
+        micronutrientes = 'No'
+        if form.cleaned_data['micronutrientes']:
+            micronutrientes = 'Si'
+
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            primer_trimestre = PrimerTrimestre.objects.get(gestante_id = gestante.id)
+            primer_trimestre.cuadro_hematico = form.cleaned_data['cuadro_hematico']
+            primer_trimestre.parcial_orina = form.cleaned_data['parcial_orina']
+            primer_trimestre.RH = form.cleaned_data['RH']
+            primer_trimestre.VDRL = form.cleaned_data['VDRL']
+            primer_trimestre.VIH = form.cleaned_data['VIH']
+            primer_trimestre.frotis_fecha = form.cleaned_data['frotis_fecha']
+            primer_trimestre.frotis_tipo = form.cleaned_data['frotis_tipo']
+            primer_trimestre.factores_riesgo_diabetes_gestacional = form.cleaned_data['factores_riesgo_diabetes_gestacional']
+            primer_trimestre.estado_factores_diabetes = form.cleaned_data['estado_factores_diabetes']
+            primer_trimestre.fecha_factores_diabetes = form.cleaned_data['fecha_factores_diabetes']
+            primer_trimestre.numero_factores_diabetes = form.cleaned_data['numero_factores_diabetes']
+            primer_trimestre.ecografia_fecha = form.cleaned_data['ecografia_fecha']
+            primer_trimestre.ecografia_semanas = form.cleaned_data['ecografia_semanas']
+            primer_trimestre.micronutrientes = form.cleaned_data['micronutrientes']
+            primer_trimestre.antigeno_hepatitisB = form.cleaned_data['antigeno_hepatitisB']
+            primer_trimestre.toxoplasmosis_IGG = form.cleaned_data['toxoplasmosis_IGG']
+            primer_trimestre.toxoplasmosis_IGM = form.cleaned_data['toxoplasmosis_IGM']
+        except ObjectDoesNotExist:
+            pass
+        pc = PrimerControl.objects.get(id = self.kwargs['control'])
+        pc.fecha_paraclinicos = form.cleaned_data['fecha_paraclinicos']
+        pc.micronutrientes = micronutrientes
+        pc.pretest_fecha = form.cleaned_data['pretest_fecha']
+        pc.fecha_postest = form.cleaned_data['fecha_postest']
+        pc.iami = iami
+        pc.odontologia_fecha = form.cleaned_data['odontologia_fecha']
+        pc.citologia_fecha = form.cleaned_data['citologia_fecha']
+        pc.citologia_resultado = form.cleaned_data['citologia_resultado']
+        pc.DPTa = DPTa
+        pc.save()
+
+        Riesgo.objects.filter(primerControl_id = self.kwargs['gestante']).delete()
+
+        for r in self.request.POST.getlist("texto_rie"):
+            if r:
+                Riesgo.objects.create(primerControl=pc, motivo=r)
+
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_primer_control'
+
+        return super(EditarPrimerControl, self).form_valid(form)
+
+
 def editar_general(request):
     return render(request, 'appgestantes/forms_editar/editar_general.html')
 
