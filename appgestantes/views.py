@@ -720,31 +720,6 @@ class EditarCitas(FormView):
     def get_context_data(self, **kwargs):
         context = super(EditarCitas, self).get_context_data(**kwargs)
         gestante = Gestante.objects.get(id = self.kwargs['gestante'])
-        try:
-            context['cita_parto'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Fechaparto')
-        except ObjectDoesNotExist:
-            context['cita_parto'] = ""
-
-        try:
-            context['cita_recien_nacido'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Reciennacido')
-        except ObjectDoesNotExist:
-            context['cita_recien_nacido'] = ""
-
-        try:
-            context['cita_puerperio'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Puerperio')
-        except ObjectDoesNotExist:
-            context['cita_puerperio'] = ""
-
-        try:
-            context['cita_crecimiento'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'CrecimientoyDesarrollo')
-        except ObjectDoesNotExist:
-            context['cita_crecimiento'] = ""
-
-        try:
-            context['cita_planificacion'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificaciónFamiliar')
-        except ObjectDoesNotExist:
-            context['cita_planificacion'] = ""
-
         context['gestante_id'] = self.kwargs['gestante']
         context['nombre_gestante'] = gestante.nombre
         context['opciones_estado'] = ESTADO_CITA
@@ -809,10 +784,10 @@ class EditarCitas(FormView):
         cita_crecimiento.save()
 
         try:
-            cita_planificacion = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificaciónFamiliar')
-            cita_planificacion.estado =form.cleaned_data["estadoPlanificaciónFamiliar"]
-            cita_planificacion.fecha = form.cleaned_data["fechaPlanificaciónFamiliar"]
-            cita_planificacion.info_adicional = form.cleaned_data["info_adicionalPlanificaciónFamiliar"]
+            cita_planificacion = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificacionFamiliar')
+            cita_planificacion.estado =form.cleaned_data["estadoPlanificacionFamiliar"]
+            cita_planificacion.fecha = form.cleaned_data["fechaPlanificacionFamiliar"]
+            cita_planificacion.info_adicional = form.cleaned_data["info_adicionalPlanificacionFamiliar"]
         except ObjectDoesNotExist:
             cita_planificacion = Cita(tipo_cita = 'PlanificacionFamiliar',
                 estado = form.cleaned_data["estadoPlanificacionFamiliar"],

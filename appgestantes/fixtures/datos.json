@@ -76,7 +76,7 @@
     "fields" : {
       "gestante" : "1",
       "cuadro_hematico" : "Anormal",
-      "parcial_orina" : "En tratamiento",
+      "parcial_orina" : "Tratamiento",
       "RH" : "O+",
       "VDRL" : "Reactivo",
       "VIH" : "Reactivo",
@@ -90,8 +90,8 @@
       "ecografia_semanas" : "5",
       "micronutrientes" : "Si",
       "antigeno_hepatitisB" : "Reactivo",
-      "toxoplasmosis_IGG" : "IGG Positiva",
-      "toxoplasmosis_IGM" : "IGM Positiva"
+      "toxoplasmosis_IGG" : "IGGPositiva",
+      "toxoplasmosis_IGM" : "IGMPositiva"
     }
   },
   {
@@ -140,7 +140,7 @@
     "fields" : {
       "gestante" : "1",
       "VDRL" : "Reactivo",
-      "parcial_horina" : "En tratamiento",
+      "parcial_horina" : "Tratamiento",
       "factores_riesgo_diabetes_gestacional" : "Si",
       "estado_factores_diabetes" : "Alterado",
       "fecha_factores_diabetes" : "2014-09-25",
@@ -156,7 +156,7 @@
     "fields" : {
       "gestante" : "1",
       "VDRL" : "Reactivo",
-      "parcial_orina" : "En tratamiento",
+      "parcial_orina" : "Tratamiento",
       "factores_riesgo_VIH" : "Si",
       "fecha_VIH" : "2015-01-15",
       "reactivo_VIH" : "Reactivo",
@@ -170,7 +170,7 @@
     "pk" : 1,
     "fields" : {
       "gestante" : "1",
-      "tipo_cita" : "Fecha parto",
+      "tipo_cita" : "Fechaparto",
       "estado" : "Atendida",
       "fecha" : "2015-01-25",
       "info_adicional" : "Informacion cita fecha parto gestante 1"
@@ -181,7 +181,7 @@
     "pk" : 2,
     "fields" : {
       "gestante" : "1",
-      "tipo_cita" : "Recien nacido",
+      "tipo_cita" : "Reciennacido",
       "estado" : "Pendiente",
       "fecha" : "2015-02-01",
       "info_adicional" : "Informacion cita recien nacido gestante 1"
@@ -203,7 +203,7 @@
     "pk" : 4,
     "fields" : {
       "gestante" : "1",
-      "tipo_cita" : "Crecimiento y Desarrollo",
+      "tipo_cita" : "CrecimientoyDesarrollo",
       "estado" : "Pendiente",
       "fecha" : "2015-05-04",
       "info_adicional" : "Informacion cita fecha crecimiento y desarrollo gestante 1"
@@ -214,7 +214,7 @@
     "pk" : 5,
     "fields" : {
       "gestante" : "1",
-      "tipo_cita" : "Planificación Familiar",
+      "tipo_cita" : "PlanificacionFamiliar",
       "estado" : "Pendiente",
       "fecha" : "2015-08-20",
       "info_adicional" : "Informacion cita planificacion gestante 1"

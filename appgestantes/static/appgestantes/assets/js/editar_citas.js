@@ -1,11 +1,26 @@
 $(function(){
 	
-	$('#fecha_parto_fecha').pickadate({
+	$('#fechaFechaparto').pickadate({
 	    selectMonths: true,
 	    selectYears: 4
 	});
 
-	$('#recien_nacido_fecha').pickadate({
+	$('#fechaReciennacido').pickadate({
+	    selectMonths: true,
+	    selectYears: 4
+	});
+
+	$('#fechaPuerperio').pickadate({
+	    selectMonths: true,
+	    selectYears: 4
+	});
+
+	$('#fechaCrecimientoyDesarrollo').pickadate({
+	    selectMonths: true,
+	    selectYears: 4
+	});
+
+	$('#fechaPlanificacionFamiliar').pickadate({
 	    selectMonths: true,
 	    selectYears: 4
 	});
