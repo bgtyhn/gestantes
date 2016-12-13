@@ -75,7 +75,9 @@ class Index(ListView):
         else:
             lista_gestantes = Gestante.objects.filter(Q(fecha_probable_parto__gt=datetime.now().date()))
 
-        paginator = Paginator(lista_gestantes, self.paginate_by)
+        context['lista_gestantes'] = lista_gestantes
+
+        '''paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca')
 
         page = self.request.GET.get('page')
@@ -85,7 +87,7 @@ class Index(ListView):
             gestantes = paginator.page(1)
         except EmptyPage:
             gestantes = paginator.page(paginator.num_pages)
-        context['lista_gestantes'] = gestantes
+        context['lista_gestantes'] = gestantes'''
         return context
 
 class Prioritarias(ListView):
@@ -126,7 +128,9 @@ class Prioritarias(ListView):
 
             lista_gestantes = gestantes_VIH_L | gestantes_VDRL_L | gestantes_toxoplasmosis_IGM_L | gestantes_toxoplasmosis_IGG_L | gestantes_hepatitisB_L
 
-        paginator = Paginator(lista_gestantes, self.paginate_by)
+        context['lista_gestantes'] = lista_gestantes
+
+        '''paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca')
 
         page = self.request.GET.get('page')
@@ -137,7 +141,7 @@ class Prioritarias(ListView):
         except EmptyPage:
             gestantes = paginator.page(paginator.num_pages)
         context['lista_gestantes'] = gestantes
-        return context
+        return context'''
 
 class Completa(ListView):
     model = Gestante
@@ -158,7 +162,8 @@ class Completa(ListView):
         else:
             lista_gestantes = Gestante.objects.all()
 
-        paginator = Paginator(lista_gestantes, self.paginate_by)
+        context['lista_gestantes'] = lista_gestantes
+        '''paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca')
 
         page = self.request.GET.get('page')
@@ -169,7 +174,7 @@ class Completa(ListView):
         except EmptyPage:
             gestantes = paginator.page(paginator.num_pages)
         context['lista_gestantes'] = gestantes
-        return context
+        return context'''
 
 class Pasadas(ListView):
     model = Gestante
@@ -190,7 +195,8 @@ class Pasadas(ListView):
         else:
             lista_gestantes = Gestante.objects.filter(Q(fecha_probable_parto=datetime.now().date()) | Q(fecha_probable_parto__lt=datetime.now().date()))
 
-        paginator = Paginator(lista_gestantes, self.paginate_by)
+        context['lista_gestantes'] = lista_gestantes
+        '''paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca') 
 
         page = self.request.GET.get('page')
@@ -201,7 +207,7 @@ class Pasadas(ListView):
         except EmptyPage:
             gestantes = paginator.page(paginator.num_pages)
         context['lista_gestantes'] = gestantes
-        return context
+        return context'''
 
 
 class Nueva(FormView):
