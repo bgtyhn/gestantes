@@ -11,7 +11,7 @@ $(function(){
 
 	$("#citologia_fecha").pickadate({
 		selectMonths: true,
-		selectYears: 4,
+		selectYears: 10,
 		onClose: function(){
 			checkCitRes()
 		}
@@ -19,12 +19,12 @@ $(function(){
 
 	$("#odontologia_fecha").pickadate({
 		selectMonths: true,
-		selectYears: 2
+		selectYears: 10
 	})
 
 	$("#pretest_fecha").pickadate({
 		selectMonths: true,
-		selectYears: 4
+		selectYears: 10
 	})
 
 	rie_rows = $("#rie-container").children(".rie-row")

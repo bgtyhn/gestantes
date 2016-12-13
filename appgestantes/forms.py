@@ -10,10 +10,10 @@ errores_defecto = {
 
 class GestanteForm(forms.Form):
 	nombre = forms.CharField(error_messages = errores_defecto)
-	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto) #verificar
+	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto, required = False) #verificar
 	fecha_nacimiento = forms.DateField(error_messages = errores_defecto, required = False)
-	identificacion = forms.CharField(error_messages = errores_defecto)
-	captacion = forms.CharField(error_messages = errores_defecto)
+	identificacion = forms.CharField(error_messages = errores_defecto, required = False)
+	captacion = forms.CharField(error_messages = errores_defecto, required = False)
 	semana_ingreso = forms.CharField(error_messages = errores_defecto, required = False) #verificar solo numero
 	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto, required = False) #verificar <= hoy
 	fecha_probable_parto = forms.DateField(error_messages = errores_defecto,required = False)
