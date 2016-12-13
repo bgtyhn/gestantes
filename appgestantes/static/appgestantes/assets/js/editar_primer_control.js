@@ -1,4 +1,21 @@
 $(function(){
+
+	$("#citologia_fecha").pickadate({
+		selectMonths: true,
+		selectYears: 4
+	})
+
+	$("#odontologia_fecha").pickadate({
+		selectMonths: true,
+		selectYears: 2
+	})
+
+	$("#pretest_fecha").pickadate({
+		selectMonths: true,
+		selectYears: 4,
+		min: true
+	})
+
 	rie_rows = $("#rie-container").children(".rie-row")
 
 	counter = 1

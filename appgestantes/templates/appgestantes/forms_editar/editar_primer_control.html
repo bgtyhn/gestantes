@@ -19,14 +19,32 @@ primer control
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_paraclinicos" type="text" class="datepicker">
-			<label for="fecha_paraclinicos">Fecha de paraclínicos</label>
+
+			{% if form.fecha_paraclinicos.errors %}
+				<input id="fecha_paraclinicos" value="{{ form.fecha_paraclinicos.value }}" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_paraclinicos.errors.as_text }}'  placeholder="Fecha de paraclínicos" >
+          	{% elif form.fecha_paraclinicos.value != none %}
+      			<input id="fecha_paraclinicos" value="{{ form.fecha_paraclinicos.value }}" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker" placeholder="Fecha de paraclínicos" >
+      		{% else %}
+      			<input id="fecha_paraclinicos" name="{{ form.fecha_paraclinicos.html_name }}" type="date" class="datepicker" placeholder="Fecha de paraclínicos" >
+          	{% endif %}
+
+			<label for="fecha_paraclinicos" class="active">Fecha de paraclínicos</label>
+			
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_citologia" type="text" class="datepicker">
-			<label for="fecha_citologia">Fecha de citología</label>
+
+			{% if form.citologia_fecha.errors %}
+				<input id="citologia_fecha" value="{{ form.citologia_fecha.value }}" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.citologia_fecha.errors.as_text }}'  placeholder="Fecha de citología" >
+          	{% elif form.citologia_fecha.value != none %}
+      			<input id="citologia_fecha" value="{{ form.citologia_fecha.value }}" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de citología" >
+      		{% else %}
+      			<input id="citologia_fecha" name="{{ form.citologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de citología" >
+          	{% endif %}
+
+			<label for="citologia_fecha" class="active">Fecha de citología</label>
+
 		</div>
 	</div>
 </div>
@@ -34,15 +52,33 @@ primer control
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_odontologia" type="text" class="datepicker">
-			<label for="fecha_odontologia">Fecha de odontología</label>
+
+			{% if form.odontologia_fecha.errors %}
+				<input id="odontologia_fecha" value="{{ form.odontologia_fecha.value }}" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.odontologia_fecha.errors.as_text }}'  placeholder="Fecha de odontología" >
+          	{% elif form.odontologia_fecha.value != none %}
+      			<input id="odontologia_fecha" value="{{ form.odontologia_fecha.value }}" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de odontología" >
+      		{% else %}
+      			<input id="odontologia_fecha" name="{{ form.odontologia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de odontología" >
+          	{% endif %}
+
+			<label for="odontologia_fecha" class="active">Fecha de odontología</label>
+
 		</div>
 	</div>
 	<div class="col s6">
 		TO DO: resultado disabled si fecha de odontologia esta en blanco
 		<div class="input-field">
-			<input id="resultado_citologia" type="text" class="validate">
-			<label for="resultado_citologia">Resultado de citología</label>
+
+			{% if form.citologia_resultado.errors %}
+				<input id="citologia_resultado" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.citologia_resultado.errors.as_text }}'  placeholder="Resultado de citología" >
+          	{% elif form.citologia_resultado.value != none %}
+      			<input id="citologia_resultado" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="date" class="validate" placeholder="Resultado de citología" >
+      		{% else %}
+      			<input id="citologia_resultado" name="{{ form.citologia_resultado.html_name }}" type="date" class="validate" placeholder="Resultado de citología" >
+          	{% endif %}
+
+			<label for="citologia_resultado" class="active">Resultado de citología</label>
+
 		</div>
 	</div>
 </div>
@@ -51,16 +87,46 @@ primer control
 	<div class="col s6">
 		<div class="input-field">
 			<p>
-		      <input type="checkbox" class="filled-in" id="micronutrientes"/>
-		      <label for="micronutrientes">Micronutrientes</label>
+
+		        {% if form.micronutrientes.errors %}
+					{% if form.micronutrientes.value == 'Si' %}
+						<input type="checkbox" name="{{ form.micronutrientes.html_name}}" value="{{ form.micronutrientes.value }}" class="filled-in" id="micronutrientes"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="micronutrientes" name="{{ form.micronutrientes.html_name}}" value="No">
+					{% endif %}
+				{% else %}
+					{% if form.micronutrientes.value != none and form.micronutrientes.value == 'Si'%}
+						<input type="checkbox" name="{{ form.micronutrientes.html_name}}" value="{{ form.micronutrientes.value }}" class="filled-in" id="micronutrientes"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="micronutrientes" name="{{ form.micronutrientes.html_name}}" value="No">
+					{% endif %}
+				{% endif %}
+
+			    <label for="micronutrientes">Micronutrientes</label>
+
 		    </p>
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
 			<p>
-		      <input type="checkbox" class="filled-in" id="IAMI"/>
-		      <label for="IAMI">IAMI</label>
+
+		        {% if form.iami.errors %}
+					{% if form.iami.value == 'Si' %}
+						<input type="checkbox" name="{{ form.iami.html_name}}" value="{{ form.iami.value }}" class="filled-in" id="iami"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="iami" name="{{ form.iami.html_name}}" value="No">
+					{% endif %}
+				{% else %}
+					{% if form.iami.value != none and form.iami.value == 'Si'%}
+						<input type="checkbox" name="{{ form.iami.html_name}}" value="{{ form.iami.value }}" class="filled-in" id="iami"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="iami" name="{{ form.iami.html_name}}" value="No">
+					{% endif %}
+				{% endif %}
+				
+			    <label for="iami">IAMI</label>
+
 		    </p>
 		</div>
 	</div>
@@ -69,15 +135,39 @@ primer control
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_pretest" type="text" class="datepicker">
-			<label for="fecha_pretest">Fecha de pretest</label>
+
+			{% if form.pretest_fecha.errors %}
+				<input id="pretest_fecha" value="{{ form.pretest_fecha.value }}" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.pretest_fecha.errors.as_text }}'  placeholder="Fecha de pretest" >
+          	{% elif form.pretest_fecha.value != none %}
+      			<input id="pretest_fecha" value="{{ form.pretest_fecha.value }}" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de pretest" >
+      		{% else %}
+      			<input id="pretest_fecha" name="{{ form.pretest_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de pretest" >
+          	{% endif %}
+
+			<label for="pretest_fecha" class="active">Fecha de pretest</label>
+
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<p>
-		      <input type="checkbox" class="filled-in" id="DPTa"/>
-		      <label for="DPTa">DPTa</label>
+			<p>		      
+
+			{% if form.DPTa.errors %}
+				{% if form.DPTa.value == 'Si' %}
+					<input type="checkbox" name="{{ form.DPTa.html_name}}" value="{{ form.DPTa.value }}" class="filled-in" id="DPTa"  checked >
+				{% else %}
+					<input type="checkbox" class="filled-in" id="DPTa" name="{{ form.DPTa.html_name}}" value="No">
+				{% endif %}
+			{% else %}
+				{% if form.DPTa.value != none and form.DPTa.value == 'Si'%}
+					<input type="checkbox" name="{{ form.DPTa.html_name}}" value="{{ form.DPTa.value }}" class="filled-in" id="DPTa"  checked >
+				{% else %}
+					<input type="checkbox" class="filled-in" id="DPTa" name="{{ form.DPTa.html_name}}" value="No">
+				{% endif %}
+			{% endif %}
+				
+		    <label for="DPTa">DPTa</label>
+
 		    </p>
 		</div>
 	</div>
@@ -86,8 +176,17 @@ primer control
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_postest" type="text" class="datepicker">
-			<label for="fecha_postest">Fecha de postest</label>
+
+			{% if form.fecha_postest.errors %}
+				<input id="fecha_postest" value="{{ form.fecha_postest.value }}" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_postest.errors.as_text }}'  placeholder="Fecha de postest" >
+          	{% elif form.fecha_postest.value != none %}
+      			<input id="fecha_postest" value="{{ form.fecha_postest.value }}" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker" placeholder="Fecha de postest" >
+      		{% else %}
+      			<input id="fecha_postest" name="{{ form.fecha_postest.html_name }}" type="date" class="datepicker" placeholder="Fecha de postest" >
+          	{% endif %}
+
+			<label for="fecha_postest" class="active">Fecha de postest</label>
+
 		</div>
 	</div>
 </div>
@@ -100,30 +199,31 @@ primer control
 		
 		<br><br>
 
-		<!-- recordar if hay motivos para esconder esto-->
+		{% if riesgos %}
+
+		<p id="no-ries" class="center-align hide">No hay riesgos, presione el botón para agregar uno</p class="center-align">
+
+		{% else %}
 
 		<p id="no-ries" class="center-align">No hay riesgos, presione el botón para agregar uno</p class="center-align">
 
-		<!-- fin if -->
+		{% endif %}
 
-		<!--
-			lista dinámica	
-		-->
 
 		<div id="rie-container">
 			
-		<!-- para el for  recordar value motivo-->
+		{% for riesgo in riesgos %}
 
 		<div class="row rie-row">
 			<div class="col s10">
-				<input type="text" name="texto_rie" placeholder="Riesgo" class="validate">	
+				<input value="{{ riesgo.motivo }}" type="text" name="texto_rie" placeholder="Riesgo" class="validate">	
 			</div>
 			<div class="col s2">
 				<button type="button" class="rie-del btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></button>
 			</div>
 		</div>
 
-		<!-- fin del for -->
+		{% endfor %}
 
 		</div>
 
