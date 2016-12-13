@@ -16,10 +16,257 @@ citas
 
 {% block form_content %}
 
+<form action="" id="gest-cit-update">
+
+<div class="row">
+
+	<!-- Cita fecha de parto -->
+
+	<div class="col s6">
+		<div class="row"><div class="col s11">
+			<div class="row">
+				<div class="col s12">
+					<h5>Cita fecha de parto</h5>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<select name="" id="fecha_parto_estado">
+							<option value="Ninguna" selected="selected">Ninguna</option>
+							<option value="Atendida">Atendida</option>
+							<option value="Pendiente">Pendiente</option>
+						</select>
+						<label for="fecha_parto_estado">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="date" class="datepicker" id="fecha_parto_fecha">
+						<label for="fecha_parto_fecha" class="active">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="text" class="validate" id="fecha_parto_observaciones">
+						<label for="fecha_parto_observaciones">Observaciones</label>
+					</div>
+				</div>
+			</div>
+		</div></div>
+	</div>
+
+	<!-- fin cita fecha de parto -->
+
+	<!-- Cita recién nacido -->
+
+	<div class="col s6">
+		<div class="row"><div class="col s11 offset-s1">
+			<div class="row">
+				<div class="col s12">
+					<h5>Cita recién nacido</h5>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<select name="" id="recien_nacido_estado">
+							<option value="Ninguna" selected="selected">Ninguna</option>
+							<option value="Atendida">Atendida</option>
+							<option value="Pendiente">Pendiente</option>
+						</select>
+						<label for="recien_nacido_estado">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="date" class="datepicker" id="recien_nacido_fecha">
+						<label for="recien_nacido_fecha" class="active">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="text" class="validate" id="recien_nacido_observaciones">
+						<label for="recien_nacido_observaciones">Observaciones</label>
+					</div>
+				</div>
+			</div>
+		</div></div>
+	</div>
+
+	<!-- fin cita recién nacido -->
+
+</div>
+
+<div class="divider"></div>
+<br><br>
+
+<div class="row">
+
+	<!-- Cita puerperio -->
+
+	<div class="col s6">
+		<div class="row"><div class="col s11">
+			<div class="row">
+				<div class="col s12">
+					<h5>Cita puerperio</h5>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<select name="" id="puerperio_estado">
+							<option value="Ninguna" selected="selected">Ninguna</option>
+							<option value="Atendida">Atendida</option>
+							<option value="Pendiente">Pendiente</option>
+						</select>
+						<label for="puerperio_estado">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="date" class="datepicker" id="puerperio_fecha">
+						<label for="puerperio_fecha" class="active">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="text" class="validate" id="puerperio_observaciones">
+						<label for="puerperio_observaciones">Observaciones</label>
+					</div>
+				</div>
+			</div>
+		</div></div>
+	</div>
+
+	<!-- fin cita puerperio -->
+
+	<!-- Cita crecimiento y desarrollo -->
+
+	<div class="col s6">
+		<div class="row"><div class="col s11 offset-s1">
+			<div class="row">
+				<div class="col s12">
+					<h5>Cita crecimiento y desarrollo</h5>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<select name="" id="crecimiento_desarrollo_estado">
+							<option value="Ninguna" selected="selected">Ninguna</option>
+							<option value="Atendida">Atendida</option>
+							<option value="Pendiente">Pendiente</option>
+						</select>
+						<label for="crecimiento_desarrollo_estado">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="date" class="datepicker" id="crecimiento_desarrollo_fecha">
+						<label for="crecimiento_desarrollo_fecha" class="active">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="text" class="validate" id="crecimiento_desarrollo_observaciones">
+						<label for="crecimiento_desarrollo_observaciones">Observaciones</label>
+					</div>
+				</div>
+			</div>
+		</div></div>
+	</div>
+
+	<!-- fin cita crecimiento y desarrollo -->
+
+</div>
+
+<div class="divider"></div>
+<br><br>
+
+<div class="row">
+
+	<!-- Cita planificación familiar -->
+
+	<div class="col s6">
+		<div class="row"><div class="col s11">
+			<div class="row">
+				<div class="col s12">
+					<h5>Cita planificación familiar</h5>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<select name="" id="planificacion_familiar_estado">
+							<option value="Ninguna" selected="selected">Ninguna</option>
+							<option value="Atendida">Atendida</option>
+							<option value="Pendiente">Pendiente</option>
+						</select>
+						<label for="planificacion_familiar_estado">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="date" class="datepicker" id="planificacion_familiar_fecha">
+						<label for="planificacion_familiar_fecha" class="active">Estado</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="input-field">
+						<input type="text" class="validate" id="planificacion_familiar_observaciones">
+						<label for="planificacion_familiar_observaciones">Observaciones</label>
+					</div>
+				</div>
+			</div>
+		</div></div>
+	</div>
+
+	<!-- fin cita planificación familiar -->
+
+</div>
+
+</form>
+
 {% endblock %}
 
 {% block scripts %}
 
-<script src='{% static "appgestantes/assets/js/editar_tercer_trimestre.js" %}'></script>
+<script src='{% static "appgestantes/assets/js/editar_citas.js" %}'></script>
 
 {% endblock %}
