@@ -32,19 +32,7 @@ $(function(){
 	$("#ecografia_fecha").pickadate({
 		selectMonths: true,
 	    selectYears: 3,
-	    onClose : function(){
-	    	checkEcoSem()
-	    }
 	})
-
-	function checkEcoSem(){
-		if($("#ecografia_fecha").val() == ""){
-			$("#ecografia_semanas").val('')
-			$("#ecografia_semanas").attr("disabled", "disabled")
-		} else {
-			$("#ecografia_semanas").removeAttr("disabled")
-		}
-	}
 
 	function checkHemFields(){
 		if($("#cuadro_hematico").val() == "Normal"){

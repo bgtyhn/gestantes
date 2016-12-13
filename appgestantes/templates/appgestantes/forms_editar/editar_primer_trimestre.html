@@ -202,11 +202,11 @@ primer trimestre
 		<div class="input-field">
 
 			{% if form.RH.errors %}
-				<input id="RH" value="{{ form.RH.value }}" name="{{ form.RH.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.RH.errors.as_text }}'  placeholder="RH" >
+				<input id="RH" value="{{ form.RH.value }}" name="{{ form.RH.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.RH.errors.as_text }}'  placeholder="RH" >
           	{% elif form.RH.value != none %}
-      			<input id="RH" value="{{ form.RH.value }}" name="{{ form.RH.html_name }}" type="date" class="validate" placeholder="RH" >
+      			<input id="RH" value="{{ form.RH.value }}" name="{{ form.RH.html_name }}" type="text" class="validate" placeholder="RH" >
       		{% else %}
-      			<input id="RH" name="{{ form.RH.html_name }}" type="date" class="validate" placeholder="RH" >
+      			<input id="RH" name="{{ form.RH.html_name }}" type="text" class="validate" placeholder="RH" >
           	{% endif %}
 			<label class="active" for="RH">RH</label>
 
@@ -341,11 +341,11 @@ primer trimestre
 		<div class="input-field">
 
 			{% if form.numero_factores_diabetes.errors %}
-				<input id="numero_factores_diabetes" value="{{ form.numero_factores_diabetes.value }}" name="{{ form.numero_factores_diabetes.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.numero_factores_diabetes.errors.as_text }}'  placeholder="Resultado factores de riesgo diabetes" >
+				<input id="numero_factores_diabetes" value="{{ form.numero_factores_diabetes.value }}" name="{{ form.numero_factores_diabetes.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.numero_factores_diabetes.errors.as_text }}'  placeholder="Resultado factores de riesgo diabetes" >
           	{% elif form.numero_factores_diabetes.value != none %}
-      			<input id="numero_factores_diabetes" value="{{ form.numero_factores_diabetes.value }}" name="{{ form.numero_factores_diabetes.html_name }}" type="date" class="validate" placeholder="Resultado factores de riesgo diabetes" >
+      			<input id="numero_factores_diabetes" value="{{ form.numero_factores_diabetes.value }}" name="{{ form.numero_factores_diabetes.html_name }}" type="text" class="validate" placeholder="Resultado factores de riesgo diabetes" >
       		{% else %}
-      			<input id="numero_factores_diabetes" name="{{ form.numero_factores_diabetes.html_name }}" type="date" class="validate" placeholder="Resultado factores de riesgo diabetes" >
+      			<input id="numero_factores_diabetes" name="{{ form.numero_factores_diabetes.html_name }}" type="text" class="validate" placeholder="Resultado factores de riesgo diabetes" >
           	{% endif %}
 			<label class="active" for="numero_factores_diabetes">Resultado factores de riesgo diabetes</label>
 

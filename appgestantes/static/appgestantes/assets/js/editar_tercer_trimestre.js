@@ -10,20 +10,8 @@ $(function(){
 
 	$("#ecografia_unica_fecha").pickadate({
 		selectMonths: true,
-	    selectYears: 3,
-	    onClose : function(){
-	    	checkEcoSem()
-	    }
+	    selectYears: 3
 	})
-
-	function checkEcoSem(){
-		if($("#ecografia_unica_fecha").val() == ""){
-			$("#ecografia_unica_semanas").val('')
-			$("#ecografia_unica_semanas").attr("disabled", "disabled")
-		} else {
-			$("#ecografia_unica_semanas").removeAttr("disabled")
-		}
-	}
 
 	function checkVIHRes(){
 		if($("#fecha_VIH").val() == ""){
