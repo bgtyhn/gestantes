@@ -28,8 +28,18 @@ primer trimestre
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_frotis" type="text" class="datepicker">
-			<label for="fecha_frotis">Fecha de frotis</label>
+			
+			{% if form.frotis_fecha.errors %}
+				<input id="frotis_fecha" value="{{ form.frotis_fecha.value }}" name="{{ form.frotis_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.frotis_fecha.errors.as_text }}'  placeholder="Fecha de frotis" >
+          	{% else %}
+          		{% if form.frotis_fecha.value != none %}
+          			<input id="frotis_fecha" value="{{ form.frotis_fecha.value }}" name="{{ form.frotis_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de frotis" >
+          		{% else %}
+          			<input id="frotis_fecha" name="{{ form.frotis_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de frotis" >
+          		{% endif %}
+          	{% endif %}
+			<label class="active" for="frotis_fecha">Fecha de frotis</label>
+
 		</div>
 	</div>
 </div>
@@ -41,11 +51,15 @@ primer trimestre
 		
 		<br><br>
 
-		<!-- recordar if hay motivos para esconder esto-->
+		{% if not lista_motivosCH %}
 
 		<p id="no-hems" class="center-align">No hay motivos, presione el botón para agregar uno</p class="center-align">
+		
+		{% else %}
 
-		<!-- fin if -->
+		<p id="no-hems" class="center-align hide">No hay motivos, presione el botón para agregar uno</p class="center-align">
+
+		{% endif %}
 
 		<!--
 			lista dinámica	
@@ -53,16 +67,18 @@ primer trimestre
 
 		<div id="hem-container">
 			
-		<!-- para el for  recordar value motivo-->
+		{% for motivo in lista_motivosCH %}
 
 		<div class="row hem-row">
 			<div class="col s10">
-				<input type="text" name="motivo_hematico" placeholder="Motivo" class="validate">	
+				<input value="{{ motivo.motivo }}" type="text" name="motivo_hematico" placeholder="Motivo" class="validate">	
 			</div>
 			<div class="col s2">
 				<button type="button" class="hem-del btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></button>
 			</div>
 		</div>
+
+		{% endfor %}
 
 		<!-- fin del for -->
 
@@ -109,11 +125,15 @@ primer trimestre
 		<br><br>
 
 
-		<!-- recordar if hay motivos para esconder esto-->
+		{% if not lista_motivosFR %}
 
-		<p id="no-frots" class="center-align">No hay motivos, presione el botón para agregar uno</p class="center-align">
+		<p id="no-frots" class="center-align">No hay motivos, presione el botón para agregar uno</p>
 
-		<!-- fin if -->
+		{% else %}
+
+		<p id="no-frots" class="center-align hide">No hay motivos, presione el botón para agregar uno</p>		
+
+		{% endif %}
 
 		<!--
 			lista dinámica	
@@ -121,18 +141,18 @@ primer trimestre
 
 		<div id="frot-container">
 			
-		<!-- para el for  recordar value motivo-->
+		{% for motivo in lista_motivosFR %}
 
 		<div class="row frot-row">
 			<div class="col s10">
-				<input type="text" name="motivo_frotis" placeholder="Motivo" class="validate">	
+				<input value="{{ motivo.motivo }}" type="text" name="motivo_frotis" placeholder="Motivo" class="validate">	
 			</div>
 			<div class="col s2">
 				<button type="button" class="frot-del btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></button>
 			</div>
 		</div>
 
-		<!-- fin del for -->
+		{% endfor %}
 
 		</div>
 
@@ -149,8 +169,16 @@ primer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<input id="RH" type="text" class="validate">
-			<label for="RH">RH</label>
+
+			{% if form.RH.errors %}
+				<input id="RH" value="{{ form.RH.value }}" name="{{ form.RH.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.RH.errors.as_text }}'  placeholder="RH" >
+          	{% elif form.RH.value != none %}
+      			<input id="RH" value="{{ form.RH.value }}" name="{{ form.RH.html_name }}" type="date" class="validate" placeholder="RH" >
+      		{% else %}
+      			<input id="RH" name="{{ form.RH.html_name }}" type="date" class="validate" placeholder="RH" >
+          	{% endif %}
+			<label class="active" for="RH">RH</label>
+
 		</div>
 	</div>
 	<div class="col s6">
@@ -176,8 +204,16 @@ primer trimestre
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_factores_diabetes" type="text" class="datepicker">
-			<label for="fecha_factores_diabetes">Fecha de factores de riesgo</label>
+
+			{% if form.fecha_factores_diabetes.errors %}
+				<input id="fecha_factores_diabetes" value="{{ form.fecha_factores_diabetes.value }}" name="{{ form.fecha_factores_diabetes.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_factores_diabetes.errors.as_text }}'  placeholder="Fecha factores diabetes" >
+          	{% elif form.fecha_factores_diabetes.value != none %}
+      			<input id="fecha_factores_diabetes" value="{{ form.fecha_factores_diabetes.value }}" name="{{ form.fecha_factores_diabetes.html_name }}" type="date" class="datepicker" placeholder="Fecha factores diabetes" >
+      		{% else %}
+      			<input id="fecha_factores_diabetes" name="{{ form.fecha_factores_diabetes.html_name }}" type="date" class="datepicker" placeholder="Fecha factores diabetes" >
+          	{% endif %}
+			<label class="active" for="fecha_factores_diabetes">Fecha factores diabetes</label>
+
 		</div>
 	</div>
 </div>
@@ -207,15 +243,37 @@ primer trimestre
 	<div class="col s6">
 		<div class="input-field">
 			<p>
-		      <input type="checkbox" class="filled-in" id="micronutrientes"/>
-		      <label for="micronutrientes">Micronutrientes</label>
+
+				{% if form.micronutrientes.errors %}
+					{% if form.micronutrientes.value == 'Si' %}
+						<input type="checkbox" name="{{ form.micronutrientes.html_name}}" value="{{ form.micronutrientes.value }}" class="filled-in" id="micronutrientes"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="micronutrientes" name="{{ form.micronutrientes.html_name}}" value="No">
+					{% endif %}
+				{% else %}
+					{% if form.micronutrientes.value != none and form.micronutrientes.value == 'Si'%}
+						<input type="checkbox" name="{{ form.micronutrientes.html_name}}" value="{{ form.micronutrientes.value }}" class="filled-in" id="micronutrientes"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="micronutrientes" name="{{ form.micronutrientes.html_name}}" value="No">
+					{% endif %}
+				{% endif %}
+		        <label for="micronutrientes">Micronutrientes</label>
+	
 		    </p>
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<input id="resultado_factores_diabetes" type="text" class="validate">
-			<label for="resultado_factores_diabetes">Resultado factores de riesgo diabetes</label>
+
+			{% if form.numero_factores_diabetes.errors %}
+				<input id="numero_factores_diabetes" value="{{ form.numero_factores_diabetes.value }}" name="{{ form.numero_factores_diabetes.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.numero_factores_diabetes.errors.as_text }}'  placeholder="Resultado factores de riesgo diabetes" >
+          	{% elif form.numero_factores_diabetes.value != none %}
+      			<input id="numero_factores_diabetes" value="{{ form.numero_factores_diabetes.value }}" name="{{ form.numero_factores_diabetes.html_name }}" type="date" class="validate" placeholder="Resultado factores de riesgo diabetes" >
+      		{% else %}
+      			<input id="numero_factores_diabetes" name="{{ form.numero_factores_diabetes.html_name }}" type="date" class="validate" placeholder="Resultado factores de riesgo diabetes" >
+          	{% endif %}
+			<label class="active" for="numero_factores_diabetes">Resultado factores de riesgo diabetes</label>
+
 		</div>
 	</div>
 </div>
@@ -233,8 +291,16 @@ primer trimestre
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_ecografia" type="text" class="datepicker">
-			<label for="fecha_ecografia">Fecha de ecografía</label>
+
+			{% if form.ecografia_fecha.errors %}
+				<input id="ecografia_fecha" value="{{ form.ecografia_fecha.value }}" name="{{ form.ecografia_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.ecografia_fecha.errors.as_text }}'  placeholder="Fecha de ecografía" >
+          	{% elif form.ecografia_fecha.value != none %}
+      			<input id="ecografia_fecha" value="{{ form.ecografia_fecha.value }}" name="{{ form.ecografia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de ecografía" >
+      		{% else %}
+      			<input id="ecografia_fecha" name="{{ form.ecografia_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de ecografía" >
+          	{% endif %}
+			<label class="active" for="ecografia_fecha">Fecha de ecografía</label>
+
 		</div>
 	</div>
 </div>
@@ -251,8 +317,18 @@ primer trimestre
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<input id="semanas_ecografia" type="text" class="validate">
-			<label for="semanas_ecografia">Semanas ecografía</label>
+
+			{% if form.ecografia_semanas.errors %}
+				<input id="{{ form.ecografia_semanas.id_for_label }}" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.ecografia_semanas.errors.as_text }}' >
+          	{% else %}
+          		{% if form.ecografia_semanas.value != none %}
+          			<input id="{{ form.ecografia_semanas.id_for_label }}" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate">
+          		{% else %}
+          			<input id="{{ form.ecografia_semanas.id_for_label }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate" >
+          		{% endif %}
+          	{% endif %}
+          	<label for="{{ form.ecografia_semanas.id_for_label }}">Semanas ecografía</label>
+
 		</div>
 	</div>
 </div>

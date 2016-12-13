@@ -23,11 +23,11 @@ información general
 	<div class="col s12">
 		<div class="input-field">
 			{% if form.nombre.errors %}
-				<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.nombre.errors.as_text }}'  placeholder="Fecha probable de parto" >
+				<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.nombre.errors.as_text }}'  placeholder="Nombre" >
           	{% elif form.nombre.value != none %}
-      			<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="date" class="validate" placeholder="Fecha probable de parto" >
+      			<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="date" class="validate" placeholder="Nombre" >
       		{% else %}
-      			<input id="nombre" name="{{ form.nombre.html_name }}" type="date" class="validate" placeholder="Fecha probable de parto" >
+      			<input id="nombre" name="{{ form.nombre.html_name }}" type="date" class="validate" placeholder="Nombre" >
           	{% endif %}
 			<label class="active" for="nombre">Nombre</label>
 		</div>
@@ -70,20 +70,20 @@ información general
 	<div class="col s6">
 		<div class="input-field">
 			<p>
-		      {% if form.confiable.errors %}
-				{% if form.confiable.value == 'Si' %}
-					<input type="checkbox" name="{{ form.confiable.html_name}}" value="{{ form.confiable.value }}" class="filled-in" id="confiable"  checked >
+		      	{% if form.confiable.errors %}
+					{% if form.confiable.value == 'Si' %}
+						<input type="checkbox" name="{{ form.confiable.html_name}}" value="{{ form.confiable.value }}" class="filled-in" id="confiable"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="confiable" name="{{ form.confiable.html_name}}" value="No">
+					{% endif %}
 				{% else %}
-					<input type="checkbox" class="filled-in" id="confiable" name="{{ form.confiable.html_name}}" value="No">
+					{% if form.confiable.value != none and form.confiable.value == 'Si'%}
+						<input type="checkbox" name="{{ form.confiable.html_name}}" value="{{ form.confiable.value }}" class="filled-in" id="confiable"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="confiable" name="{{ form.confiable.html_name}}" value="No">
+					{% endif %}
 				{% endif %}
-			{% else %}
-				{% if form.confiable.value != none and form.confiable.value == 'Si'%}
-					<input type="checkbox" name="{{ form.confiable.html_name}}" value="{{ form.confiable.value }}" class="filled-in" id="confiable"  checked >
-				{% else %}
-					<input type="checkbox" class="filled-in" id="confiable" name="{{ form.confiable.html_name}}" value="No">
-				{% endif %}
-			{% endif %}
-		      <label for="confiable">Fecha de parto confiable</label>
+		        <label for="confiable">Fecha de parto confiable</label>
 		    </p>
 		</div>
 	</div>
@@ -135,6 +135,7 @@ información general
 				{% endif %}
 			{% endfor %}
 		    </select>
+		    <label for="{{ form.captacion.id_for_label }}">Captación</label>
 		</div>
 	</div>
 </div>
