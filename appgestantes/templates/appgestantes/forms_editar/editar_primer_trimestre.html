@@ -38,20 +38,44 @@ primer trimestre
 	<div class="col s6 inner-list">
 		<!--To do: disabled y ninguno si cuadro hematico normal-->
 		<p>Motivos cuadro hemático</p>
-		<div class="row">
+		
+		<br><br>
+
+		<!-- recordar if hay motivos para esconder esto-->
+
+		<p id="no-hems" class="center-align">No hay motivos, presione el botón para agregar uno</p class="center-align">
+
+		<!-- fin if -->
+
+		<!--
+			lista dinámica	
+		-->
+
+		<div id="hem-container">
+			
+		<!-- para el for  recordar value motivo-->
+
+		<div class="row hem-row">
 			<div class="col s10">
-				<input id="Motivo1" type="text" placeholder="Motivo" class="validate">
+				<input type="text" name="motivo_hematico" placeholder="Motivo" class="validate">	
 			</div>
 			<div class="col s2">
-				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
+				<button type="button" class="hem-del btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></button>
 			</div>
 		</div>
 
+		<!-- fin del for -->
+
+		</div>
+
+
 		<div class="row">
 			<div class="col s12 center-align">
-				<a class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
+				<a id="add-hem-btn" class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
 			</div>
 		</div>
+
+
 	</div>
 	<div class="col s6">
 		<!--To do: disabled si no hay fecha de frotis-->
@@ -81,20 +105,44 @@ primer trimestre
 	<div class="col s6 inner-list">
 		<!--To do: disabled y ninguno si frotis normal-->
 		<p>Motivos frotis</p>
-		<div class="row">
+
+		<br><br>
+
+
+		<!-- recordar if hay motivos para esconder esto-->
+
+		<p id="no-frots" class="center-align">No hay motivos, presione el botón para agregar uno</p class="center-align">
+
+		<!-- fin if -->
+
+		<!--
+			lista dinámica	
+		-->
+
+		<div id="frot-container">
+			
+		<!-- para el for  recordar value motivo-->
+
+		<div class="row frot-row">
 			<div class="col s10">
-				<input id="Motivo1" type="text" placeholder="Motivo" class="validate">
+				<input type="text" name="motivo_frotis" placeholder="Motivo" class="validate">	
 			</div>
 			<div class="col s2">
-				<a class="btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></a>
+				<button type="button" class="frot-del btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></button>
 			</div>
 		</div>
 
+		<!-- fin del for -->
+
+		</div>
+
+
 		<div class="row">
 			<div class="col s12 center-align">
-				<a class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
+				<a id="add-frot-btn" class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">add</i></a>
 			</div>
 		</div>
+			
 	</div>
 </div>
 
