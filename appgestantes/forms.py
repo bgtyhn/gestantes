@@ -11,73 +11,73 @@ errores_defecto = {
 class GestanteForm(forms.Form):
 	nombre = forms.CharField(error_messages = errores_defecto)
 	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto) #verificar
-	fecha_nacimiento = forms.DateField(error_messages = errores_defecto)
+	fecha_nacimiento = forms.DateField(error_messages = errores_defecto, required = False)
 	identificacion = forms.CharField(error_messages = errores_defecto)
 	captacion = forms.CharField(error_messages = errores_defecto)
-	semana_ingreso = forms.CharField(error_messages = errores_defecto) #verificar solo numero
-	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto) #verificar <= hoy
-	fecha_probable_parto = forms.DateField(error_messages = errores_defecto)
+	semana_ingreso = forms.CharField(error_messages = errores_defecto, required = False) #verificar solo numero
+	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto, required = False) #verificar <= hoy
+	fecha_probable_parto = forms.DateField(error_messages = errores_defecto,required = False)
 	confiable = forms.CharField(error_messages = errores_defecto, required = False)
-	fecha_paraclinicos = forms.DateField(error_messages = errores_defecto) # > hoy
-	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
-	pretest_fecha = forms.DateField(error_messages = errores_defecto) # > hoy
-	fecha_postest = forms.DateField(error_messages = errores_defecto) # > hoy
-	iami = forms.CharField(error_messages = errores_defecto, required = False)
-	odontologia_fecha = forms.DateField(error_messages = errores_defecto)
-	citologia_fecha = forms.DateField(error_messages = errores_defecto)
-	citologia_resultado = forms.CharField(error_messages = errores_defecto)
-	DPTa = forms.CharField(error_messages = errores_defecto, required = False)
-
-class EditarGeneralForm(forms.Form):
-	nombre = forms.CharField(error_messages = errores_defecto)
-	fecha_probable_parto = forms.DateField(error_messages = errores_defecto)
-	identificacion = forms.CharField(error_messages = errores_defecto)
-	confiable = forms.CharField(error_messages = errores_defecto, required = False)
-	fecha_nacimiento = forms.DateField(error_messages = errores_defecto)
-	semana_ingreso = forms.CharField(error_messages = errores_defecto) #verificar solo numero
-	captacion = forms.CharField(error_messages = errores_defecto)
-	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto) #verificar <= hoy
-	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto) #verificar
-	observacion = forms.CharField(error_messages = errores_defecto, required = False)
-
-class EditarPrimerControl(forms.Form):
-	fecha_paraclinicos = forms.DateField(error_messages = errores_defecto) # > hoy
+	fecha_paraclinicos = forms.DateField(error_messages = errores_defecto, required = False) # > hoy
 	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
 	pretest_fecha = forms.DateField(error_messages = errores_defecto, required = False) # > hoy
 	fecha_postest = forms.DateField(error_messages = errores_defecto, required = False) # > hoy
 	iami = forms.CharField(error_messages = errores_defecto, required = False)
-	odontologia_fecha = forms.DateField(error_messages = errores_defecto)
-	citologia_fecha = forms.DateField(error_messages = errores_defecto)
-	citologia_resultado = forms.CharField(error_messages = errores_defecto)
+	odontologia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
+	citologia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
+	citologia_resultado = forms.CharField(error_messages = errores_defecto, required = False)
+	DPTa = forms.CharField(error_messages = errores_defecto, required = False)
+
+class EditarGeneralForm(forms.Form):
+	nombre = forms.CharField(error_messages = errores_defecto)
+	fecha_probable_parto = forms.DateField(error_messages = errores_defecto, required = False)
+	identificacion = forms.CharField(error_messages = errores_defecto)
+	confiable = forms.CharField(error_messages = errores_defecto, required = False)
+	fecha_nacimiento = forms.DateField(error_messages = errores_defecto, required = False)
+	semana_ingreso = forms.CharField(error_messages = errores_defecto, required = False) #verificar solo numero
+	captacion = forms.CharField(error_messages = errores_defecto, required = False)
+	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto, required = False) #verificar <= hoy
+	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto, required = False) #verificar
+	observacion = forms.CharField(error_messages = errores_defecto, required = False)
+
+class EditarPrimerControl(forms.Form):
+	fecha_paraclinicos = forms.DateField(error_messages = errores_defecto, required = False) # > hoy
+	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
+	pretest_fecha = forms.DateField(error_messages = errores_defecto, required = False) # > hoy
+	fecha_postest = forms.DateField(error_messages = errores_defecto, required = False) # > hoy
+	iami = forms.CharField(error_messages = errores_defecto, required = False)
+	odontologia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
+	citologia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
+	citologia_resultado = forms.CharField(error_messages = errores_defecto, required = False)
 	DPTa = forms.CharField(error_messages = errores_defecto, required = False)
 	texto_rie = forms.CharField(error_messages = errores_defecto, required = False)
 
 class EditarPrimerTrimestre(forms.Form):
-	cuadro_hematico = forms.CharField(error_messages = errores_defecto)
-	parcial_orina = forms.CharField(error_messages = errores_defecto)
-	RH = forms.CharField(error_messages = errores_defecto)
-	VDRL = forms.CharField(error_messages = errores_defecto)
-	VIH = forms.CharField(error_messages = errores_defecto)
+	cuadro_hematico = forms.CharField(error_messages = errores_defecto, required = False)
+	parcial_orina = forms.CharField(error_messages = errores_defecto, required = False)
+	RH = forms.CharField(error_messages = errores_defecto, required = False)
+	VDRL = forms.CharField(error_messages = errores_defecto, required = False)
+	VIH = forms.CharField(error_messages = errores_defecto, required = False)
 	frotis_fecha = forms.DateField(error_messages = errores_defecto, required = False)
-	frotis_tipo = forms.CharField(error_messages = errores_defecto)
-	factores_riesgo_diabetes_gestacional = forms.CharField(error_messages = errores_defecto)
+	frotis_tipo = forms.CharField(error_messages = errores_defecto, required = False)
+	factores_riesgo_diabetes_gestacional = forms.CharField(error_messages = errores_defecto, required = False)
 	estado_factores_diabetes = forms.CharField(error_messages = errores_defecto, required = False)
 	fecha_factores_diabetes = forms.DateField(error_messages = errores_defecto, required = False)
 	numero_factores_diabetes = forms.CharField(error_messages = errores_defecto, required = False)
 	ecografia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
-	ecografia_semanas = forms.CharField(error_messages = errores_defecto) 
+	ecografia_semanas = forms.CharField(error_messages = errores_defecto, required = False) 
 	#mirar fecha parto con la ecografia
 	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
-	antigeno_hepatitisB = forms.CharField(error_messages = errores_defecto)
-	toxoplasmosis_IGG = forms.CharField(error_messages = errores_defecto)
-	toxoplasmosis_IGM = forms.CharField(error_messages = errores_defecto)
+	antigeno_hepatitisB = forms.CharField(error_messages = errores_defecto, required = False)
+	toxoplasmosis_IGG = forms.CharField(error_messages = errores_defecto, required = False)
+	toxoplasmosis_IGM = forms.CharField(error_messages = errores_defecto, required = False)
 	motivo_hematico = forms.CharField(error_messages = errores_defecto, required = False)
 	motivo_frotis = forms.CharField(error_messages = errores_defecto, required = False)
 
 class EditarSegundoTrimestre(forms.Form):
-	VDRL = forms.CharField(error_messages = errores_defecto)
-	parcial_horina = forms.CharField(error_messages = errores_defecto)
-	factores_riesgo_diabetes_gestacional = forms.CharField(error_messages = errores_defecto)
+	VDRL = forms.CharField(error_messages = errores_defecto, required = False)
+	parcial_horina = forms.CharField(error_messages = errores_defecto, required = False)
+	factores_riesgo_diabetes_gestacional = forms.CharField(error_messages = errores_defecto, required = False)
 	fecha_factores_riesgo = forms.DateField(error_messages = errores_defecto, required = False)
 	estado_factores_diabetes = forms.CharField(error_messages = errores_defecto, required = False)
 	fecha_factores_diabetes = forms.DateField(error_messages = errores_defecto, required = False)
