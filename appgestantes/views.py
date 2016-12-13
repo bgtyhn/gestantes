@@ -598,7 +598,7 @@ class EditarSegundoTrimestre(FormView):
             segundo_trimestre.ecografia_semanas = form.cleaned_data['ecografia_semanas']
             segundo_trimestre.micronutrientes = micronutrientes
         except ObjectDoesNotExist:
-            segundo_semestre = SegundoTrimestre(VDRL = form.cleaned_data['VDRL'],
+            segundo_trimestre = SegundoTrimestre(VDRL = form.cleaned_data['VDRL'],
                 parcial_horina = form.cleaned_data['parcial_horina'],
                 factores_riesgo_diabetes_gestacional = form.cleaned_data['factores_riesgo_diabetes_gestacional'],
                 fecha_factores_riesgo = form.cleaned_data['fecha_factores_riesgo'],
