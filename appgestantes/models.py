@@ -7,7 +7,7 @@ from django.core.validators import RegexValidator
 CAPTACION = (
 	('Médico','Médico'),
 	('Enfermera','Enfermera'),
-	('Atención primaria en salud', 'Atención primaria en salud')
+	('Atención', 'Atención primaria en salud')
 )
 
 SI_OPCIONES = (
