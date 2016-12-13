@@ -72,7 +72,35 @@
 
 							{% block content %}
 
+							<table class="highlight">
+							  <thead>
+							    <tr>
+							        <th>Nombre</th>
+							        <th>EPS</th>
+							        <th>Identificación</th>
+							        <th>Fecha probable de parto</th>
+							        <th>&nbsp</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							  {% for gestante in lista_gestantes %}
+							    <tr class="clickable-row" data-href="{% url 'detalle' gestante.id %}">
+							      <td>{{ gestante.nombre }}</td>
+							      <td>{{ gestante.eps }}</td>
+							      <td>{{ gestante.identificacion }}</td>
+							      <td>{{ gestante.fecha_probable_parto }}</td>
+							    </tr>
+							  {% endfor %}
+							  </tbody>
+							</table>
+
 							{% endblock %}
+
+							{% if not lista_gestantes %}
+
+							<h4 class="center-align grey-text text-lighten-1"><small>No hay ninguna gestante en esta lista</small></h4>
+
+							{% endif %}
 
 							</div>
 						</div>

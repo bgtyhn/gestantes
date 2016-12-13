@@ -111,6 +111,9 @@
 {% block bottom %}
 
 <h5 class="light">Riesgos</h5>
+
+{% if gestante.observacion_set.all %}
+
 <ul class="collection">
 	{% for riesgo in primer_control.riesgo_set.all %}
 		<li class="collection-item">
@@ -118,5 +121,16 @@
 		</li>
 	{% endfor %}
 </ul>
+
+
+{% else %}
+
+<p class="center-align">No hay riesgos</p class="center-align">
+
+{% endif %}	
+
+
+
+
 
 {% endblock %}
