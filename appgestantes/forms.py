@@ -139,7 +139,7 @@ class EditarPrimerTrimestre(forms.Form):
 	ecografia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
 	ecografia_semanas = forms.CharField(error_messages = errores_defecto) 
 	#mirar fecha parto con la ecografia
-	micronutrientes = forms.CharField(error_messages = errores_defecto)
+	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
 	antigeno_hepatitisB = forms.CharField(error_messages = errores_defecto)
 	toxoplasmosis_IGG = forms.CharField(error_messages = errores_defecto)
 	toxoplasmosis_IGM = forms.CharField(error_messages = errores_defecto)

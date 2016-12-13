@@ -422,7 +422,7 @@ class EditarPrimerControl(FormView):
 
 class EditarPrimerTrimestre(FormView):
     template_name = 'appgestantes/forms_editar/editar_primer_trimestre.html'
-    form_class = forms.EditarPrimerControl
+    form_class = forms.EditarPrimerTrimestre
     success_url = '/detalle/'
 
     def get_context_data(self, **kwargs):
@@ -507,7 +507,7 @@ class EditarPrimerTrimestre(FormView):
             if m:
                 ListaMotivosFrotisPT.objects.create(primer_trimestre=primer_trimestre, motivo=m)
 
-        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_primer_trimestre"'
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_primer_trimestre'
 
         return super(EditarPrimerTrimestre, self).form_valid(form)
 
@@ -685,14 +685,6 @@ class EditarTercerTrimestre(FormView):
         except ObjectDoesNotExist:
             return initial
 
-def editar_general(request):
-    return render(request, 'appgestantes/forms_editar/editar_general.html')
-
-def editar_primer_control(request):
-    return render(request, 'appgestantes/forms_editar/editar_primer_control.html')
-
-def editar_primer_trimestre(request):
-    return render(request, 'appgestantes/forms_editar/editar_primer_trimestre.html')
 
 def editar_segundo_trimestre(request):
     return render(request, 'appgestantes/forms_editar/editar_segundo_trimestre.html')
