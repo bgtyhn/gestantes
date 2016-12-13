@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^detalle/(?P<pk>[-\w]+)/$', views.Detalle.as_view(), name='detalle'),
 
     url(r'^editar_general/(?P<gestante>[-\w]+)/$', views.EditarGeneral.as_view(), name='editar_general'),
-    url(r'^editar_primer_control/$', views.editar_primer_control, name='editar_primer_control'),
+    url(r'^editar_primer_control/(?P<gestante>[-\w]+)/(?P<control>[-\w]+)/$', views.EditarPrimerControl.as_view(), name='editar_primer_control'),
     url(r'^editar_primer_trimestre/$', views.editar_primer_trimestre, name='editar_primer_trimestre'),
     url(r'^editar_segundo_trimestre/$', views.editar_segundo_trimestre, name='editar_segundo_trimestre'),
     url(r'^editar_tercer_trimestre/$', views.editar_tercer_trimestre, name='editar_tercer_trimestre'),

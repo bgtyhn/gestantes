@@ -111,3 +111,14 @@ class EditarGeneralForm(forms.Form):
 	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto) #verificar <= hoy
 	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto) #verificar
 	observacion = forms.CharField(error_messages = errores_defecto, required = False)
+
+class EditarPrimerControl(forms.Form):
+	fecha_paraclinicos = forms.DateField(error_messages = errores_defecto) # > hoy
+	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
+	pretest_fecha = forms.DateField(error_messages = errores_defecto) # > hoy
+	fecha_postest = forms.DateField(error_messages = errores_defecto) # > hoy
+	iami = forms.CharField(error_messages = errores_defecto, required = False)
+	odontologia_fecha = forms.DateField(error_messages = errores_defecto)
+	citologia_fecha = forms.DateField(error_messages = errores_defecto)
+	citologia_resultado = forms.CharField(error_messages = errores_defecto)
+	DPTa = forms.CharField(error_messages = errores_defecto, required = False)
