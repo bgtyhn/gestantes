@@ -469,7 +469,7 @@ class EditarPrimerTrimestre(FormView):
             primer_trimestre.numero_factores_diabetes = form.cleaned_data['numero_factores_diabetes']
             primer_trimestre.ecografia_fecha = form.cleaned_data['ecografia_fecha']
             primer_trimestre.ecografia_semanas = form.cleaned_data['ecografia_semanas']
-            primer_trimestre.micronutrientes = form.cleaned_data['micronutrientes']
+            primer_trimestre.micronutrientes = micronutrientes
             primer_trimestre.antigeno_hepatitisB = form.cleaned_data['antigeno_hepatitisB']
             primer_trimestre.toxoplasmosis_IGG = form.cleaned_data['toxoplasmosis_IGG']
             primer_trimestre.toxoplasmosis_IGM = form.cleaned_data['toxoplasmosis_IGM']
@@ -487,11 +487,12 @@ class EditarPrimerTrimestre(FormView):
                 numero_factores_diabetes = form.cleaned_data['numero_factores_diabetes'],
                 ecografia_fecha = form.cleaned_data['ecografia_fecha'],
                 ecografia_semanas = form.cleaned_data['ecografia_semanas'],
-                micronutrientes = form.cleaned_data['micronutrientes'],
+                micronutrientes = micronutrientes,
                 antigeno_hepatitisB = form.cleaned_data['antigeno_hepatitisB'],
                 toxoplasmosis_IGG = form.cleaned_data['toxoplasmosis_IGG'],
                 toxoplasmosis_IGM = form.cleaned_data['toxoplasmosis_IGM'],
             )
+        primer_trimestre.gestante = gestante
         primer_trimestre.save()
 
         ListaMotivosCHPT.objects.filter(primer_trimestre_id = primer_trimestre.id).delete()
@@ -532,6 +533,153 @@ class EditarPrimerTrimestre(FormView):
             initial['antigeno_hepatitisB'] = primer_trimestre.antigeno_hepatitisB
             initial['toxoplasmosis_IGG'] = primer_trimestre.toxoplasmosis_IGG
             initial['toxoplasmosis_IGM'] = primer_trimestre.toxoplasmosis_IGM
+            print(initial)
+            return initial
+        except ObjectDoesNotExist:
+            return initial
+
+class EditarSegundoTrimestre(FormView):
+    template_name = 'appgestantes/forms_editar/editar_segundo_trimestre.html'
+    form_class = forms.EditarSegundoTrimestre
+    success_url = '/detalle/'
+
+    def get_context_data(self, **kwargs):
+        context = super(EditarSegundoTrimestre, self).get_context_data(**kwargs)
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+
+        context['gestante_id'] = self.kwargs['gestante']
+        context['nombre_gestante'] = gestante.nombre
+        context['opciones_parcial_horina'] = PARCIAL_ORINA
+        context['opciones_VDRL'] = VDRL
+        context['opciones_frotis'] = FROTIS
+        context['si_opciones'] = SI_OPCIONES
+
+    def form_valid(self, form):
+        micronutrientes = 'No'
+        if form.cleaned_data['micronutrientes']:
+            micronutrientes = 'Si'
+
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            segundo_trimestre = SegundoTrimestre.objects.get(gestante_id = gestante.id)
+            segundo_trimestre.VDRL = form.cleaned_data['VDRL']
+            segundo_trimestre.parcial_horina = form.cleaned_data['parcial_horina']
+            segundo_trimestre.factores_riesgo_diabetes_gestacional = form.cleaned_data['factores_riesgo_diabetes_gestacional']
+            segundo_trimestre.fecha_factores_riesgo = form.cleaned_data['fecha_factores_riesgo']
+            segundo_trimestre.estado_factores_diabetes = form.cleaned_data['estado_factores_diabetes']
+            segundo_trimestre.fecha_factores_diabetes = form.cleaned_data['fecha_factores_diabetes']
+            segundo_trimestre.numero_factores_diabetes = form.cleaned_data['numero_factores_diabetes']
+            segundo_trimestre.ecografia_fecha = form.cleaned_data['ecografia_fecha']
+            segundo_trimestre.ecografia_semanas = form.cleaned_data['ecografia_semanas']
+            segundo_trimestre.micronutrientes = micronutrientes
+        except ObjectDoesNotExist:
+            segundo_semestre = SegundoTrimestre(VDRL = form.cleaned_data['VDRL'],
+                parcial_horina = form.cleaned_data['parcial_horina'],
+                factores_riesgo_diabetes_gestacional = form.cleaned_data['factores_riesgo_diabetes_gestacional'],
+                fecha_factores_riesgo = form.cleaned_data['fecha_factores_riesgo'],
+                estado_factores_diabetes = form.cleaned_data['estado_factores_diabetes'],
+                fecha_factores_diabetes = form.cleaned_data['fecha_factores_diabetes'],
+                numero_factores_diabetes = form.cleaned_data['numero_factores_diabetes'],
+                ecografia_fecha = form.cleaned_data['ecografia_fecha'],
+                ecografia_semanas = form.cleaned_data['ecografia_semanas'],
+                micronutrientes = micronutrientes,
+            )
+        segundo_trimestre.gestante = gestante 
+        segundo_trimestre.save()
+
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_segundo_trimestre"'
+
+        return super(EditarSegundoTrimestre, self).form_valid(form)
+
+
+    def get_initial(self):
+        initial = super(EditarSegundoTrimestre, self).get_initial()
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            segundo_trimestre = SegundoTrimestre.objects.get(gestante_id = gestante.id)
+            initial['VDRL'] = segundo_trimestre.VDRL
+            initial['parcial_horina'] = segundo_trimestre.parcial_horina
+            initial['factores_riesgo_diabetes_gestacional'] = segundo_trimestre.factores_riesgo_diabetes_gestacional
+            initial['fecha_factores_riesgo'] = segundo_trimestre.fecha_factores_riesgo
+            initial['estado_factores_diabetes'] = segundo_trimestre.estado_factores_diabetes
+            initial['fecha_factores_diabetes'] = segundo_trimestre.fecha_factores_diabetes
+            initial['numero_factores_diabetes'] = segundo_trimestre.numero_factores_diabetes
+            initial['ecografia_fecha'] = segundo_trimestre.ecografia_fecha
+            initial['ecografia_semanas'] = segundo_trimestre.ecografia_semanas
+            initial['micronutrientes'] = segundo_trimestre.micronutrientes
+            print(initial)
+            return initial
+        except ObjectDoesNotExist:
+            return initial
+
+class EditarTercerTrimestre(FormView):
+    template_name = 'appgestantes/forms_editar/editar_tercer_trimestre.html'
+    form_class = forms.EditarTercerTrimestre
+    success_url = '/detalle/'
+
+    def get_context_data(self, **kwargs):
+        context = super(EditarTercerTrimestre, self).get_context_data(**kwargs)
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+
+        context['gestante_id'] = self.kwargs['gestante']
+        context['nombre_gestante'] = gestante.nombre
+        context['opciones_parcial_horina'] = PARCIAL_ORINA
+        context['opciones_VDRL'] = VDRL
+        context['opciones_VIH'] = VIH
+
+    def form_valid(self, form):
+        micronutrientes = 'No'
+        if form.cleaned_data['micronutrientes']:
+            micronutrientes = 'Si'
+
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            segundo_trimestre = SegundoTrimestre.objects.get(gestante_id = gestante.id)
+            segundo_trimestre.VDRL = form.cleaned_data['VDRL']
+            segundo_trimestre.parcial_horina = form.cleaned_data['parcial_horina']
+            segundo_trimestre.factores_riesgo_diabetes_gestacional = form.cleaned_data['factores_riesgo_diabetes_gestacional']
+            segundo_trimestre.fecha_factores_riesgo = form.cleaned_data['fecha_factores_riesgo']
+            segundo_trimestre.estado_factores_diabetes = form.cleaned_data['estado_factores_diabetes']
+            segundo_trimestre.fecha_factores_diabetes = form.cleaned_data['fecha_factores_diabetes']
+            segundo_trimestre.numero_factores_diabetes = form.cleaned_data['numero_factores_diabetes']
+            segundo_trimestre.ecografia_fecha = form.cleaned_data['ecografia_fecha']
+            segundo_trimestre.ecografia_semanas = form.cleaned_data['ecografia_semanas']
+            segundo_trimestre.micronutrientes = form.cleaned_data['micronutrientes']
+        except ObjectDoesNotExist:
+            segundo_semestre = SegundoTrimestre(VDRL = form.cleaned_data['VDRL'],
+                parcial_horina = form.cleaned_data['parcial_horina'],
+                factores_riesgo_diabetes_gestacional = form.cleaned_data['factores_riesgo_diabetes_gestacional'],
+                fecha_factores_riesgo = form.cleaned_data['fecha_factores_riesgo'],
+                estado_factores_diabetes = form.cleaned_data['estado_factores_diabetes'],
+                fecha_factores_diabetes = form.cleaned_data['fecha_factores_diabetes'],
+                numero_factores_diabetes = form.cleaned_data['numero_factores_diabetes'],
+                ecografia_fecha = form.cleaned_data['ecografia_fecha'],
+                ecografia_semanas = form.cleaned_data['ecografia_semanas'],
+                micronutrientes = form.cleaned_data['micronutrientes'],
+            )
+        segundo_trimestre.gestante = gestante 
+        segundo_trimestre.save()
+
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_segundo_trimestre"'
+
+        return super(EditarTercerTrimestre, self).form_valid(form)
+
+
+    def get_initial(self):
+        initial = super(EditarTercerTrimestre, self).get_initial()
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            segundo_trimestre = SegundoTrimestre.objects.get(gestante_id = gestante.id)
+            initial['VDRL'] = segundo_trimestre.VDRL
+            initial['parcial_horina'] = segundo_trimestre.parcial_horina
+            initial['factores_riesgo_diabetes_gestacional'] = segundo_trimestre.factores_riesgo_diabetes_gestacional
+            initial['fecha_factores_riesgo'] = segundo_trimestre.fecha_factores_riesgo
+            initial['estado_factores_diabetes'] = segundo_trimestre.estado_factores_diabetes
+            initial['fecha_factores_diabetes'] = segundo_trimestre.fecha_factores_diabetes
+            initial['numero_factores_diabetes'] = segundo_trimestre.numero_factores_diabetes
+            initial['ecografia_fecha'] = segundo_trimestre.ecografia_fecha
+            initial['ecografia_semanas'] = segundo_trimestre.ecografia_semanas
+            initial['micronutrientes'] = segundo_trimestre.micronutrientes
             print(initial)
             return initial
         except ObjectDoesNotExist:
