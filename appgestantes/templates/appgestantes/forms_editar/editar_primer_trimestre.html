@@ -4,7 +4,7 @@
 
 {% block detail_link %}
 
-	<a href="#">Volver a primer trimestre</a>
+	<a target="_self" href="{% url 'detalle' gestante_id %}#tab_primer_trimestre">Volver a primer trimestre</a>
 
 {% endblock %}
 
@@ -16,14 +16,27 @@ primer trimestre
 
 {% block form_content %}
 
+<form id="gest-form-update" action="" method="post" >{% csrf_token %}
+
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<select id="cuadro_hematico">
-				<option value="Normal" selected="selected">Normal</option>
-				<option value="Anormal">Anormal</option>
+
+			{% if form.cuadro_hematico.errors %}
+				<select id="{{ form.cuadro_hematico.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.cuadro_hematico.errors.as_text }}' id="{{form.cuadro_hematico.id_for_label}}" name="{{form.cuadro_hematico.html_name}}">
+			{% else %}
+				<select id="{{ form.cuadro_hematico.id_for_label }}" id="{{form.cuadro_hematico.id_for_label}}" name="{{form.cuadro_hematico.html_name}}">
+			{% endif %}
+			{% for cuadro_hematico_opcion in opciones_cuadro_hematico %}
+				{% if form.cuadro_hematico.value == cuadro_hematico_opcion.0 %}
+					<option value={{cuadro_hematico_opcion.0}} selected="selected">{{cuadro_hematico_opcion.1}}</option>
+				{% else %}
+					<option value={{cuadro_hematico_opcion.0}}>{{cuadro_hematico_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="cuadro_hematico">Cuadro hemático</label>
+		    <label for="{{ form.cuadro_hematico.id_for_label }}">Cuadro hemático</label>
+
 		</div>
 	</div>
 	<div class="col s6">
@@ -97,11 +110,22 @@ primer trimestre
 		<!--To do: disabled si no hay fecha de frotis-->
 		<br><br>
 		<div class="input-field">
-			<select id="resultado_frotis">
-				<option value="Normal">Normal</option>
-				<option value="Alterado">Alterado</option>
+
+			{% if form.frotis_tipo.errors %}
+				<select id="{{ form.frotis_tipo.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.frotis_tipo.errors.as_text }}' id="{{form.frotis_tipo.id_for_label}}" name="{{form.frotis_tipo.html_name}}">
+			{% else %}
+				<select id="{{ form.frotis_tipo.id_for_label }}" id="{{form.frotis_tipo.id_for_label}}" name="{{form.frotis_tipo.html_name}}">
+			{% endif %}
+			{% for frotis_tipo_opcion in opciones_frotis %}
+				{% if form.frotis_tipo.value == frotis_tipo_opcion.0 %}
+					<option value={{frotis_tipo_opcion.0}} selected="selected">{{frotis_tipo_opcion.1}}</option>
+				{% else %}
+					<option value={{frotis_tipo_opcion.0}}>{{frotis_tipo_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="resultado_frotis">Resultado frotis</label>
+		    <label for="{{ form.frotis_tipo.id_for_label }}">Resultado frotis</label>
+
 		</div>
 	</div>
 </div>
@@ -111,11 +135,21 @@ primer trimestre
 	<br><br>
 		<div class="input-field">
 			
-			<select id="parcial_orina">
-				<option value="Normal">Normal</option>
-				<option value="En tratamiento">En tratamiento</option>
+			{% if form.parcial_orina.errors %}
+				<select id="{{ form.parcial_orina.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.parcial_orina.errors.as_text }}' id="{{form.parcial_orina.id_for_label}}" name="{{form.parcial_orina.html_name}}">
+			{% else %}
+				<select id="{{ form.parcial_orina.id_for_label }}" id="{{form.parcial_orina.id_for_label}}" name="{{form.parcial_orina.html_name}}">
+			{% endif %}
+			{% for parcial_orina_opcion in opciones_parcial_horina %}
+				{% if form.parcial_orina.value == parcial_orina_opcion.0 %}
+					<option value={{parcial_orina_opcion.0}} selected="selected">{{parcial_orina_opcion.1}}</option>
+				{% else %}
+					<option value={{parcial_orina_opcion.0}}>{{parcial_orina_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="parcial_orina">Parcial de orina</label>
+		    <label for="{{ form.parcial_orina.id_for_label }}">Parcial de orina</label>
+
 		</div>
 	</div>
 	<div class="col s6 inner-list">
@@ -183,11 +217,22 @@ primer trimestre
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<select id="factores_diabetes_gestacional">
-				<option value="Si">Si</option>
-				<option value="No">No</option>
+
+			{% if form.factores_riesgo_diabetes_gestacional.errors %}
+				<select id="{{ form.factores_riesgo_diabetes_gestacional.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.factores_riesgo_diabetes_gestacional.errors.as_text }}' id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
+			{% else %}
+				<select id="{{ form.factores_riesgo_diabetes_gestacional.id_for_label }}" id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
+			{% endif %}
+			{% for factores_riesgo_diabetes_gestacional_opcion in si_opciones %}
+				{% if form.factores_riesgo_diabetes_gestacional.value == factores_riesgo_diabetes_gestacional_opcion.0 %}
+					<option value={{factores_riesgo_diabetes_gestacional_opcion.0}} selected="selected">{{factores_riesgo_diabetes_gestacional_opcion.1}}</option>
+				{% else %}
+					<option value={{factores_riesgo_diabetes_gestacional_opcion.0}}>{{factores_riesgo_diabetes_gestacional_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="factores_diabetes_gestacional">Factores de riesgo diabetes gestacional</label>
+		    <label for="{{ form.factores_riesgo_diabetes_gestacional.id_for_label }}">Factores de riesgo diabetes gestacional</label>
+
 		</div>
 	</div>
 </div>
@@ -195,11 +240,22 @@ primer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<select id="VDRL">
-				<option value="Si">Reactivo</option>
-				<option value="No">No reactivo</option>
+
+			{% if form.VDRL.errors %}
+				<select id="{{ form.VDRL.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.VDRL.errors.as_text }}' id="{{form.VDRL.id_for_label}}" name="{{form.VDRL.html_name}}">
+			{% else %}
+				<select id="{{ form.VDRL.id_for_label }}" id="{{form.VDRL.id_for_label}}" name="{{form.VDRL.html_name}}">
+			{% endif %}
+			{% for VDRL_opcion in opciones_VDRL %}
+				{% if form.VDRL.value == VDRL_opcion.0 %}
+					<option value={{VDRL_opcion.0}} selected="selected">{{VDRL_opcion.1}}</option>
+				{% else %}
+					<option value={{VDRL_opcion.0}}>{{VDRL_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="VDRL">VDRL</label>
+		    <label for="{{ form.VDRL.id_for_label }}">VDRL</label>
+
 		</div>
 	</div>
 	<div class="col s6">
@@ -221,20 +277,42 @@ primer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<select id="VIH">
-				<option value="Reactivo">Reactivo</option>
-				<option value="No reactivo">No reactivo</option>
+
+			{% if form.VIH.errors %}
+				<select id="{{ form.VIH.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.VIH.errors.as_text }}' id="{{form.VIH.id_for_label}}" name="{{form.VIH.html_name}}">
+			{% else %}
+				<select id="{{ form.VIH.id_for_label }}" id="{{form.VIH.id_for_label}}" name="{{form.VIH.html_name}}">
+			{% endif %}
+			{% for VIH_opcion in opciones_VIH %}
+				{% if form.VIH.value == VIH_opcion.0 %}
+					<option value={{VIH_opcion.0}} selected="selected">{{VIH_opcion.1}}</option>
+				{% else %}
+					<option value={{VIH_opcion.0}}>{{VIH_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="VIH">VIH</label>
+		    <label for="{{ form.VIH.id_for_label }}">VIH</label>
+
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<select id="estado_factores_diabetes">
-				<option value="Normal">Normal</option>
-				<option value="Alterado">Alterado</option>
+
+			{% if form.estado_factores_diabetes.errors %}
+				<select id="{{ form.estado_factores_diabetes.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.estado_factores_diabetes.errors.as_text }}' id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
+			{% else %}
+				<select id="{{ form.estado_factores_diabetes.id_for_label }}" id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
+			{% endif %}
+			{% for estado_factores_diabetes_opcion in opciones_frotis %}
+				{% if form.estado_factores_diabetes.value == estado_factores_diabetes_opcion.0 %}
+					<option value={{estado_factores_diabetes_opcion.0}} selected="selected">{{estado_factores_diabetes_opcion.1}}</option>
+				{% else %}
+					<option value={{estado_factores_diabetes_opcion.0}}>{{estado_factores_diabetes_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="estado_factores_diabetes">Estado factores diabetes</label>
+		    <label for="{{ form.estado_factores_diabetes.id_for_label }}">Estado factores diabetes</label>
+
 		</div>
 	</div>
 </div>
@@ -281,12 +359,22 @@ primer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<select id="antigeno_hepatitisB">
-				<option value="Pendiente">Pendiente</option>
-				<option value="Reactivo">Reactivo</option>
-				<option value="No reactivo">No reactivo</option>
+
+			{% if form.antigeno_hepatitisB.errors %}
+				<select id="{{ form.antigeno_hepatitisB.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.antigeno_hepatitisB.errors.as_text }}' id="{{form.antigeno_hepatitisB.id_for_label}}" name="{{form.antigeno_hepatitisB.html_name}}">
+			{% else %}
+				<select id="{{ form.antigeno_hepatitisB.id_for_label }}" id="{{form.antigeno_hepatitisB.id_for_label}}" name="{{form.antigeno_hepatitisB.html_name}}">
+			{% endif %}
+			{% for antigeno_hepatitisB_opcion in opciones_antigeno %}
+				{% if form.antigeno_hepatitisB.value == antigeno_hepatitisB_opcion.0 %}
+					<option value={{antigeno_hepatitisB_opcion.0}} selected="selected">{{antigeno_hepatitisB_opcion.1}}</option>
+				{% else %}
+					<option value={{antigeno_hepatitisB_opcion.0}}>{{antigeno_hepatitisB_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="antigeno_hepatitisB">Antígeno Hepatitis B</label>
+		    <label for="{{ form.antigeno_hepatitisB.id_for_label }}">Antígeno hepatitis B</label>
+
 		</div>
 	</div>
 	<div class="col s6">
@@ -308,11 +396,22 @@ primer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<select id="toxoplasmosis_IGG">
-				<option value="IGG positiva">IGG positiva</option>
-				<option value="IGG negativa">IGG negativa</option>
+
+			{% if form.toxoplasmosis_IGG.errors %}
+				<select id="{{ form.toxoplasmosis_IGG.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.toxoplasmosis_IGG.errors.as_text }}' id="{{form.toxoplasmosis_IGG.id_for_label}}" name="{{form.toxoplasmosis_IGG.html_name}}">
+			{% else %}
+				<select id="{{ form.toxoplasmosis_IGG.id_for_label }}" id="{{form.toxoplasmosis_IGG.id_for_label}}" name="{{form.toxoplasmosis_IGG.html_name}}">
+			{% endif %}
+			{% for toxoplasmosis_IGG_opcion in opciones_toxoplasmosis_igg %}
+				{% if form.toxoplasmosis_IGG.value == toxoplasmosis_IGG_opcion.0 %}
+					<option value={{toxoplasmosis_IGG_opcion.0}} selected="selected">{{toxoplasmosis_IGG_opcion.1}}</option>
+				{% else %}
+					<option value={{toxoplasmosis_IGG_opcion.0}}>{{toxoplasmosis_IGG_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="toxoplasmosis_IGG">Toxoplasmosis iGg</label>
+		    <label for="{{ form.toxoplasmosis_IGG.id_for_label }}">Toxoplasmosis IGG</label>
+
 		</div>
 	</div>
 	<div class="col s6">
@@ -336,11 +435,22 @@ primer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<select id="toxoplasmosis_IGM">
-				<option value="IGM positiva">IGM positiva</option>
-				<option value="IGM negativa">IGM negativa</option>
+
+			{% if form.toxoplasmosis_IGM.errors %}
+				<select id="{{ form.toxoplasmosis_IGM.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.toxoplasmosis_IGM.errors.as_text }}' id="{{form.toxoplasmosis_IGM.id_for_label}}" name="{{form.toxoplasmosis_IGM.html_name}}">
+			{% else %}
+				<select id="{{ form.toxoplasmosis_IGM.id_for_label }}" id="{{form.toxoplasmosis_IGM.id_for_label}}" name="{{form.toxoplasmosis_IGM.html_name}}">
+			{% endif %}
+			{% for toxoplasmosis_IGM_opcion in opciones_toxoplasmosis_igm %}
+				{% if form.toxoplasmosis_IGM.value == toxoplasmosis_IGM_opcion.0 %}
+					<option value={{toxoplasmosis_IGM_opcion.0}} selected="selected">{{toxoplasmosis_IGM_opcion.1}}</option>
+				{% else %}
+					<option value={{toxoplasmosis_IGM_opcion.0}}>{{toxoplasmosis_IGM_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="toxoplasmosis_IGM">Toxoplasmosis iGm</label>
+		    <label for="{{ form.toxoplasmosis_IGM.id_for_label }}">Toxoplasmosis IGM</label>
+
 		</div>
 	</div>
 </div>
@@ -351,11 +461,13 @@ primer trimestre
 
 <div class="row">
 	<div class="col s12 center-align">
-		<a class="waves-effect waves-light btn">Guardar</a>
+		<button type="submit" class="waves-effect waves-light btn">Guardar</button>
 		&nbsp
 		<a class="waves-effect waves-light btn red lighten-2">Cancelar</a>
 	</div>
 </div>
+
+</form>
 
 {% endblock %}
 

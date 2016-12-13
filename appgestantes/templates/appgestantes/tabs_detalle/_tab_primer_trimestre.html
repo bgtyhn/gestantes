@@ -58,7 +58,7 @@
 	<p> VDRL </p>
 	<h5 class="light">
 		{% if primer_trimestre.VDRL %}
-			{{primer_trimestre.VDRL}}
+			{{primer_trimestre.get_VDRL_display}}
 		{% else %}
 			&nbsp
 		{% endif %}
@@ -68,7 +68,7 @@
 	<p> Factores de riesgo VIH </p>
 	<h5 class="light">
 		{% if primer_trimestre.VIH %}
-			{{primer_trimestre.VIH}}
+			{{primer_trimestre.get_VIH_display}}
 		{% else %}
 			&nbsp
 		{% endif %}
@@ -88,7 +88,7 @@
 	<p> Antígeno hepatitis B </p>
 	<h5 class="light">
 		{% if primer_trimestre.antigeno_hepatitisB %}
-			{{primer_trimestre.antigeno_hepatitisB}}
+			{{primer_trimestre.get_antigeno_hepatitisB_display}}
 		{% else %}
 			&nbsp
 		{% endif %}
@@ -98,7 +98,7 @@
 	<p> Toxoplasmosis iGg </p>
 	<h5 class="light">
 		{% if primer_trimestre.toxoplasmosis_IGG %}
-			{{primer_trimestre.toxoplasmosis_IGG}}
+			{{primer_trimestre.get_toxoplasmosis_IGG_display}}
 		{% else %}
 			&nbsp
 		{% endif %}
@@ -108,7 +108,7 @@
 	<p> Toxoplasmosis iGm </p>
 	<h5 class="light">
 		{% if primer_trimestre.toxoplasmosis_IGM %}
-			{{primer_trimestre.toxoplasmosis_IGM}}
+			{{primer_trimestre.get_toxoplasmosis_IGM_display}}
 		{% else %}
 			&nbsp
 		{% endif %}

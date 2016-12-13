@@ -14,7 +14,7 @@
 	<p> VDRL </p>
 	<h5 class="light">
 		{% if tercer_trimestre.VDRL %}
-			{{tercer_trimestre.VDRL}}
+			{{tercer_trimestre.get_VDRL_display}}
 		{% else %}
 			&nbsp
 		{% endif %}
@@ -43,7 +43,7 @@
 				<p> Resultado </p>
 				<h5 class="light">
 					{% if tercer_trimestre.reactivo_VIH %}
-						{{tercer_trimestre.reactivo_VIH}}
+						{{tercer_trimestre.get_reactivo_VIH_display}}
 					{% else %}
 						&nbsp
 					{% endif %}
@@ -56,7 +56,7 @@
 	<p> Parcial de orina </p>
 	<h5 class="light">
 		{% if tercer_trimestre.parcial_orina %}
-			{{tercer_trimestre.parcial_orina}}
+			{{tercer_trimestre.get_parcial_orina_display}}
 		{% else %}
 			&nbsp
 		{% endif %}

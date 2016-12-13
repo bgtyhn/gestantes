@@ -14,7 +14,7 @@
 	<p> VDRL </p>
 	<h5 class="light">
 		{% if segundo_trimestre.VDRL %}
-			{{segundo_trimestre.VDRL}}
+			{{segundo_trimestre.get_VDRL_display}}
 		{% else %}
 			&nbsp
 		{% endif %}
@@ -63,7 +63,7 @@
 	<p> Parcial de orina </p>
 	<h5 class="light">
 		{% if segundo_trimestre.parcial_horina %}
-			{{segundo_trimestre.parcial_horina}}
+			{{segundo_trimestre.get_parcial_horina_display}}
 		{% else %}
 			&nbsp
 		{% endif %}
