@@ -115,8 +115,8 @@ class EditarGeneralForm(forms.Form):
 class EditarPrimerControl(forms.Form):
 	fecha_paraclinicos = forms.DateField(error_messages = errores_defecto) # > hoy
 	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
-	pretest_fecha = forms.DateField(error_messages = errores_defecto) # > hoy
-	fecha_postest = forms.DateField(error_messages = errores_defecto) # > hoy
+	pretest_fecha = forms.DateField(error_messages = errores_defecto, required = False) # > hoy
+	fecha_postest = forms.DateField(error_messages = errores_defecto, required = False) # > hoy
 	iami = forms.CharField(error_messages = errores_defecto, required = False)
 	odontologia_fecha = forms.DateField(error_messages = errores_defecto)
 	citologia_fecha = forms.DateField(error_messages = errores_defecto)
@@ -155,3 +155,13 @@ class EditarSegundoTrimestre(forms.Form):
 	ecografia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
 	ecografia_semanas = forms.CharField(error_messages = errores_defecto)
 	micronutrientes = forms.CharField(error_messages = errores_defecto)
+
+class EditarTercerTrimestre(forms.Form):
+	VDRL = forms.CharField(error_messages = errores_defecto, required = False)
+	parcial_orina = forms.CharField(error_messages = errores_defecto, required = False)
+	factores_riesgo_VIH = forms.CharField(error_messages = errores_defecto, required = False) #checkbox
+	fecha_VIH = forms.DateField(error_messages = errores_defecto, required = False)
+	reactivo_VIH = forms.CharField(error_messages = errores_defecto, required = False)
+	ecografia_unica_semanas = forms.CharField(error_messages = errores_defecto, required = False)
+	ecografia_unica_fecha = forms.DateField(error_messages = errores_defecto, required = False)
+	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
