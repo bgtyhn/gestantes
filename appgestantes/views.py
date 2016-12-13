@@ -632,9 +632,12 @@ class EditarTercerTrimestre(FormView):
         if form.cleaned_data['micronutrientes']:
             micronutrientes = 'Si'
 
+        factores_riesgo_VIH = 'No'
+        if form.cleaned_data['factores_riesgo_VIH']:
+            factores_riesgo_VIH = 'Si'
         gestante = Gestante.objects.get(id = self.kwargs['gestante'])
         try:
-            segundo_trimestre = SegundoTrimestre.objects.get(gestante_id = gestante.id)
+            tercer_trimestre = TercerTrimestre.objects.get(gestante_id = gestante.id)
             segundo_trimestre.VDRL = form.cleaned_data['VDRL']
             segundo_trimestre.parcial_horina = form.cleaned_data['parcial_horina']
             segundo_trimestre.factores_riesgo_diabetes_gestacional = form.cleaned_data['factores_riesgo_diabetes_gestacional']
