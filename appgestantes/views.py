@@ -342,14 +342,18 @@ class EditarGeneral(FormView):
         try:
             gestante = Gestante.objects.get(id = self.kwargs['gestante'])
             initial['nombre'] = gestante.nombre
-            initial['fecha_probable_parto'] = gestante.fecha_probable_parto.strftime('%Y-%m-%d')
+            if gestante.fecha_probable_parto:
+                initial['fecha_probable_parto'] = gestante.fecha_probable_parto.strftime('%Y-%m-%d')
             initial['identificacion'] = gestante.identificacion
             initial['confiable'] = gestante.confiable
-            initial['fecha_nacimiento'] = gestante.fecha_nacimiento.strftime('%Y-%m-%d')
+            if gestante.fecha_nacimiento:
+                initial['fecha_nacimiento'] = gestante.fecha_nacimiento.strftime('%Y-%m-%d')
             initial['semana_ingreso'] = gestante.semana_ingreso
             initial['captacion'] = gestante.captacion
-            initial['fecha_ultima_menstruacion'] = gestante.fecha_ultima_menstruacion.strftime('%Y-%m-%d')
-            initial['fecha_ingreso_programa'] = gestante.fecha_ingreso_programa.strftime('%Y-%m-%d')
+            if gestante.fecha_ultima_menstruacion:
+                initial['fecha_ultima_menstruacion'] = gestante.fecha_ultima_menstruacion.strftime('%Y-%m-%d')
+            if gestante.fecha_ingreso_programa:
+                initial['fecha_ingreso_programa'] = gestante.fecha_ingreso_programa.strftime('%Y-%m-%d')
             print(initial)
             return initial
         except ObjectDoesNotExist:
@@ -406,13 +410,18 @@ class EditarPrimerControl(FormView):
 
         try:
             pc = PrimerControl.objects.get(id = self.kwargs['control'])
-            initial['fecha_paraclinicos'] = pc.fecha_paraclinicos.strftime('%Y-%m-%d')
+            if pc.fecha_paraclinicos:
+                initial['fecha_paraclinicos'] = pc.fecha_paraclinicos.strftime('%Y-%m-%d')
             initial['micronutrientes'] = pc.micronutrientes
-            initial['pretest_fecha'] = pc.pretest_fecha.strftime('%Y-%m-%d')
-            initial['fecha_postest'] = pc.fecha_postest.strftime('%Y-%m-%d')
+            if pc.pretest_fecha:
+                initial['pretest_fecha'] = pc.pretest_fecha.strftime('%Y-%m-%d')
+            if pc.fecha_postest:
+                initial['fecha_postest'] = pc.fecha_postest.strftime('%Y-%m-%d')
             initial['iami'] = pc.iami
-            initial['odontologia_fecha'] = pc.odontologia_fecha.strftime('%Y-%m-%d')
-            initial['citologia_fecha'] = pc.citologia_fecha.strftime('%Y-%m-%d')
+            if pc.odontologia_fecha:
+                initial['odontologia_fecha'] = pc.odontologia_fecha.strftime('%Y-%m-%d')
+            if pc.citologia_fecha:
+                initial['citologia_fecha'] = pc.citologia_fecha.strftime('%Y-%m-%d')
             initial['citologia_resultado'] = pc.citologia_resultado
             initial['DPTa'] = pc.DPTa
             print(initial)
@@ -522,13 +531,16 @@ class EditarPrimerTrimestre(FormView):
             initial['RH'] = primer_trimestre.RH
             initial['VDRL'] = primer_trimestre.VDRL
             initial['VIH'] = primer_trimestre.VIH
-            initial['frotis_fecha'] = primer_trimestre.frotis_fecha.strftime('%Y-%m-%d')
+            if primer_trimestre.frotis_fecha:
+                initial['frotis_fecha'] = primer_trimestre.frotis_fecha.strftime('%Y-%m-%d')
             initial['frotis_tipo'] = primer_trimestre.frotis_tipo
             initial['factores_riesgo_diabetes_gestacional'] = primer_trimestre.factores_riesgo_diabetes_gestacional
             initial['estado_factores_diabetes'] = primer_trimestre.estado_factores_diabetes
-            initial['fecha_factores_diabetes'] = primer_trimestre.fecha_factores_diabetes.strftime('%Y-%m-%d')
+            if primer_trimestre.fecha_factores_diabetes:
+                initial['fecha_factores_diabetes'] = primer_trimestre.fecha_factores_diabetes.strftime('%Y-%m-%d')
             initial['numero_factores_diabetes'] = primer_trimestre.numero_factores_diabetes
-            initial['ecografia_fecha'] = primer_trimestre.ecografia_fecha.strftime('%Y-%m-%d')
+            if primer_trimestre.ecografia_fecha:
+                initial['ecografia_fecha'] = primer_trimestre.ecografia_fecha.strftime('%Y-%m-%d')
             initial['ecografia_semanas'] = primer_trimestre.ecografia_semanas
             initial['micronutrientes'] = primer_trimestre.micronutrientes
             initial['antigeno_hepatitisB'] = primer_trimestre.antigeno_hepatitisB
@@ -677,10 +689,12 @@ class EditarTercerTrimestre(FormView):
             initial['VDRL'] = tercer_trimestre.VDRL
             initial['parcial_orina'] = tercer_trimestre.parcial_orina
             initial['factores_riesgo_VIH'] = tercer_trimestre.factores_riesgo_VIH
-            initial['fecha_VIH'] = tercer_trimestre.fecha_VIH.strftime('%Y-%m-%d')
+            if tercer_trimestre.fecha_VIH:
+                initial['fecha_VIH'] = tercer_trimestre.fecha_VIH.strftime('%Y-%m-%d')
             initial['reactivo_VIH'] = tercer_trimestre.reactivo_VIH
             initial['ecografia_unica_semanas'] = tercer_trimestre.ecografia_unica_semanas
-            initial['ecografia_unica_fecha'] = tercer_trimestre.ecografia_unica_fecha.strftime('%Y-%m-%d')
+            if tercer_trimestre.ecografia_unica_fecha:
+                initial['ecografia_unica_fecha'] = tercer_trimestre.ecografia_unica_fecha.strftime('%Y-%m-%d')
             initial['micronutrientes'] = tercer_trimestre.micronutrientes
             print(initial)
             return initial
