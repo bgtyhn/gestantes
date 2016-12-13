@@ -397,7 +397,7 @@ class EditarPrimerControl(FormView):
             if r:
                 Riesgo.objects.create(primerControl=pc, motivo=r)
 
-        self.success_url = self.success_url + str(g.pk) + '/'
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_primer_control'
 
         return super(EditarPrimerControl, self).form_valid(form)
 
