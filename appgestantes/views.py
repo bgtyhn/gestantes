@@ -289,11 +289,22 @@ class Detalle(DetailView):
         context['citas'] = {}
         citasGestante = Cita.objects.filter(gestante_id = gestante.id)
         if citasGestante:
-            context['citas']['fecha_parto'] = citasGestante.filter(tipo_cita = 'Fecha parto')
-            context['citas']['recien_nacido'] = citasGestante.filter(tipo_cita = 'Recien nacido')
-            context['citas']['puerperio'] = citasGestante.filter(tipo_cita = 'Puerperio')
-            context['citas']['crecimiento_desarrollo'] = citasGestante.filter(tipo_cita = 'Crecimiento y Desarrollo')
-            context['citas']['planificacion_familiar'] = citasGestante.filter(tipo_cita = 'Planificación Familiar')
+            cfp = citasGestante.filter(tipo_cita = 'Fechaparto')
+            if cfp:
+                context['citas']['fecha_parto'] = cfp[0]
+            crn = citasGestante.filter(tipo_cita = 'Reciennacido')
+            if crn:
+                context['citas']['recien_nacido'] = crn[0]
+            cp = citasGestante.filter(tipo_cita = 'Puerperio')
+            if cp:
+                context['citas']['puerperio'] = cp[0]
+            ccd = citasGestante.filter(tipo_cita = 'CrecimientoyDesarrollo')
+            if ccd:
+                context['citas']['crecimiento_desarrollo'] = ccd[0]
+            cpf = citasGestante.filter(tipo_cita = 'PlanificacionFamiliar')
+            if cpf:
+                context['citas']['planificacion_familiar'] = cpf[0]
+            print(context)
 
         return context
 
@@ -712,30 +723,31 @@ class EditarCitas(FormView):
         try:
             context['cita_parto'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Fechaparto')
         except ObjectDoesNotExist:
-            context['cita_parto'] = None
+            context['cita_parto'] = ""
 
         try:
             context['cita_recien_nacido'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Reciennacido')
         except ObjectDoesNotExist:
-            context['cita_recien_nacido'] = None
+            context['cita_recien_nacido'] = ""
 
         try:
             context['cita_puerperio'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Puerperio')
         except ObjectDoesNotExist:
-            context['cita_puerperio'] = None
+            context['cita_puerperio'] = ""
 
         try:
             context['cita_crecimiento'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'CrecimientoyDesarrollo')
         except ObjectDoesNotExist:
-            context['cita_crecimiento'] = None
+            context['cita_crecimiento'] = ""
 
         try:
             context['cita_planificacion'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificaciónFamiliar')
         except ObjectDoesNotExist:
-            context['cita_planificacion'] = None
+            context['cita_planificacion'] = ""
 
         context['gestante_id'] = self.kwargs['gestante']
         context['nombre_gestante'] = gestante.nombre
+        context['opciones_estado'] = ESTADO_CITA
         return context
 
     def form_valid(self, form):
@@ -802,10 +814,10 @@ class EditarCitas(FormView):
             cita_planificacion.fecha = form.cleaned_data["fechaPlanificaciónFamiliar"]
             cita_planificacion.info_adicional = form.cleaned_data["info_adicionalPlanificaciónFamiliar"]
         except ObjectDoesNotExist:
-            cita_planificacion = Cita(tipo_cita = 'PlanificaciónFamiliar',
-                estado = form.cleaned_data["estadoPlanificaciónFamiliar"],
-                fecha =form.cleaned_data["fechaPlanificaciónFamiliar"],
-                info_adicional = form.cleaned_data["info_adicionalPlanificaciónFamiliar"]
+            cita_planificacion = Cita(tipo_cita = 'PlanificacionFamiliar',
+                estado = form.cleaned_data["estadoPlanificacionFamiliar"],
+                fecha =form.cleaned_data["fechaPlanificacionFamiliar"],
+                info_adicional = form.cleaned_data["info_adicionalPlanificacionFamiliar"]
             )
 
         cita_planificacion.gestante = gestante
@@ -823,7 +835,8 @@ class EditarCitas(FormView):
         try:
             cita_parto = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Fechaparto')
             initial["estadoFechaparto"] = cita_parto.estado 
-            initial["fechaFechaparto"] = cita_parto.fecha 
+            if cita_parto.fecha:
+                initial["fechaFechaparto"] = cita_parto.fecha.strftime('%Y-%m-%d')
             initial["info_adicionalFechaparto"] = cita_parto.info_adicional 
         except ObjectDoesNotExist:
            pass
@@ -831,7 +844,8 @@ class EditarCitas(FormView):
         try:
             cita_recien_nacido = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Reciennacido')
             initial["estadoReciennacido"] = cita_recien_nacido.estado
-            initial["fechaReciennacido"] = cita_recien_nacido.fecha
+            if cita_recien_nacido.fecha:
+                initial["fechaReciennacido"] = cita_recien_nacido.fecha.strftime('%Y-%m-%d')
             initial["info_adicionalReciennacido"] = cita_recien_nacido.info_adicional
         except ObjectDoesNotExist:
             pass
@@ -839,7 +853,8 @@ class EditarCitas(FormView):
         try:
             cita_puerperio = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Puerperio')
             initial["estadoPuerperio"] = cita_puerperio.estado
-            initial["fechaPuerperio"] = cita_puerperio.fecha
+            if cita_puerperio.fecha:
+                initial["fechaPuerperio"] = cita_puerperio.fecha.strftime('%Y-%m-%d')
             initial["info_adicionalPuerperio"] = cita_puerperio.info_adicional 
         except ObjectDoesNotExist:
             pass
@@ -847,15 +862,17 @@ class EditarCitas(FormView):
         try:
             cita_crecimiento = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'CrecimientoyDesarrollo')
             initial["estadoCrecimientoyDesarrollo"] = cita_crecimiento.estado 
-            initial["fechaCrecimientoyDesarrollo"] = cita_crecimiento.fecha 
+            if cita_crecimiento.fecha:
+                initial["fechaCrecimientoyDesarrollo"] = cita_crecimiento.fecha.strftime('%Y-%m-%d')
             initial["info_adicionalCrecimientoyDesarrollo"] = cita_crecimiento.info_adicional
         except ObjectDoesNotExist:
             pass
 
         try:
-            cita_planificacion = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificaciónFamiliar')
+            cita_planificacion = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificacionFamiliar')
             initial["estadoPlanificacionFamiliar"] = cita_planificacion.estado 
-            initial["fechaPlanificacionFamiliar"] = cita_planificacion.fecha 
+            if cita_planificacion.fecha:
+                initial["fechaPlanificacionFamiliar"] = cita_planificacion.fecha.strftime('%Y-%m-%d')
             initial["info_adicionalPlanificacionFamiliar"] = cita_planificacion.info_adicional
         except ObjectDoesNotExist:
             pass

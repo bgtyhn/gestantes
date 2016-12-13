@@ -68,10 +68,11 @@ TIPO_CITA = (
 	('Reciennacido', 'Recien nacido'),
 	('Puerperio', 'Puerperio'),
 	('CrecimientoyDesarrollo', 'Crecimiento y Desarrollo'),
-	('PlanificaciónFamiliar', 'Planificación Familiar')
+	('PlanificacionFamiliar', 'Planificación Familiar')
 )
 
 ESTADO_CITA = (
+	('Ninguno', 'Ninguno'),
 	('Pendiente', 'Pendiente'),
 	('Atendida', 'Atendida'),
 )

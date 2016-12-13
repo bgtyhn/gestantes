@@ -16,7 +16,7 @@ citas
 
 {% block form_content %}
 
-<form action="" id="gest-cit-update">
+<form action="" id="gest-cit-update" method="post">{% csrf_token %}
 
 <div class="row">
 
@@ -33,12 +33,22 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<select name="" id="fecha_parto_estado">
-							<option value="Ninguna" selected="selected">Ninguna</option>
-							<option value="Atendida">Atendida</option>
-							<option value="Pendiente">Pendiente</option>
-						</select>
-						<label for="fecha_parto_estado">Estado</label>
+
+						{% if form.estadoFechaparto.errors %}
+							<select id="estadoFechaparto" class="tooltipped" data-position="top" data-tooltip='{{ form.estadoFechaparto.errors.as_text }}' id="{{form.estadoFechaparto.id_for_label}}" name="{{form.estadoFechaparto.html_name}}">
+						{% else %}
+							<select id="estadoFechaparto" id="{{form.estadoFechaparto.id_for_label}}" name="{{form.estadoFechaparto.html_name}}">
+						{% endif %}
+						{% for estadoFechaparto_opcion in opciones_estado %}
+							{% if form.estadoFechaparto.value == estadoFechaparto_opcion.0 %}
+								<option value={{estadoFechaparto_opcion.0}} selected="selected">{{estadoFechaparto_opcion.1}}</option>
+							{% else %}
+								<option value={{estadoFechaparto_opcion.0}}>{{estadoFechaparto_opcion.1}}</option>
+							{% endif %}
+						{% endfor %}
+					    </select>
+					    <label for="estadoFechaparto">Estado</label>
+
 					</div>
 				</div>
 			</div>
@@ -46,8 +56,17 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="date" class="datepicker" id="fecha_parto_fecha">
-						<label for="fecha_parto_fecha" class="active">Estado</label>
+							
+						{% if form.fechaFechaparto.errors %}
+							<input id="fechaFechaparto" value="{{ form.fechaFechaparto.value }}" name="{{ form.fechaFechaparto.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fechaFechaparto.errors.as_text }}'   >
+			          	{% elif form.fechaFechaparto.value != none %}
+			      			<input id="fechaFechaparto" value="{{ form.fechaFechaparto.value }}" name="{{ form.fechaFechaparto.html_name }}" type="date" class="datepicker"  >
+			      		{% else %}
+			      			<input id="fechaFechaparto" name="{{ form.fechaFechaparto.html_name }}" type="date" class="datepicker"  >
+			          	{% endif %}
+
+						<label for="fechaFechaparto" class="active">Fecha</label>
+
 					</div>
 				</div>
 			</div>
@@ -55,8 +74,16 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="text" class="validate" id="fecha_parto_observaciones">
-						<label for="fecha_parto_observaciones">Observaciones</label>
+
+						{% if form.info_adicionalFechaparto.errors %}
+							<input id="info_adicionalFechaparto" value="{{ form.info_adicionalFechaparto.value }}" name="{{ form.info_adicionalFechaparto.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.info_adicionalFechaparto.errors.as_text }}'  >
+			          	{% elif form.info_adicionalFechaparto.value != none %}
+			      			<input id="info_adicionalFechaparto" value="{{ form.info_adicionalFechaparto.value }}" name="{{ form.info_adicionalFechaparto.html_name }}" type="text" class="validate" >
+			      		{% else %}
+			      			<input id="info_adicionalFechaparto" name="{{ form.info_adicionalFechaparto.html_name }}" type="text" class="validate" >
+			          	{% endif %}
+						<label class="active" for="info_adicionalFechaparto">Observaciones</label>
+
 					</div>
 				</div>
 			</div>
@@ -78,12 +105,22 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<select name="" id="recien_nacido_estado">
-							<option value="Ninguna" selected="selected">Ninguna</option>
-							<option value="Atendida">Atendida</option>
-							<option value="Pendiente">Pendiente</option>
-						</select>
-						<label for="recien_nacido_estado">Estado</label>
+
+						{% if form.estadoReciennacido.errors %}
+							<select id="estadoReciennacido" class="tooltipped" data-position="top" data-tooltip='{{ form.estadoReciennacido.errors.as_text }}' id="{{form.estadoReciennacido.id_for_label}}" name="{{form.estadoReciennacido.html_name}}">
+						{% else %}
+							<select id="estadoReciennacido" id="{{form.estadoReciennacido.id_for_label}}" name="{{form.estadoReciennacido.html_name}}">
+						{% endif %}
+						{% for estadoReciennacido_opcion in opciones_estado %}
+							{% if form.estadoReciennacido.value == estadoReciennacido_opcion.0 %}
+								<option value={{estadoReciennacido_opcion.0}} selected="selected">{{estadoReciennacido_opcion.1}}</option>
+							{% else %}
+								<option value={{estadoReciennacido_opcion.0}}>{{estadoReciennacido_opcion.1}}</option>
+							{% endif %}
+						{% endfor %}
+					    </select>
+					    <label for="estadoReciennacido">Estado</label>
+
 					</div>
 				</div>
 			</div>
@@ -91,8 +128,17 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="date" class="datepicker" id="recien_nacido_fecha">
-						<label for="recien_nacido_fecha" class="active">Estado</label>
+							
+						{% if form.fechaReciennacido.errors %}
+							<input id="fechaReciennacido" value="{{ form.fechaReciennacido.value }}" name="{{ form.fechaReciennacido.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fechaReciennacido.errors.as_text }}'   >
+			          	{% elif form.fechaReciennacido.value != none %}
+			      			<input id="fechaReciennacido" value="{{ form.fechaReciennacido.value }}" name="{{ form.fechaReciennacido.html_name }}" type="date" class="datepicker"  >
+			      		{% else %}
+			      			<input id="fechaReciennacido" name="{{ form.fechaReciennacido.html_name }}" type="date" class="datepicker"  >
+			          	{% endif %}
+
+						<label for="fechaReciennacido" class="active">Fecha</label>
+
 					</div>
 				</div>
 			</div>
@@ -100,8 +146,16 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="text" class="validate" id="recien_nacido_observaciones">
-						<label for="recien_nacido_observaciones">Observaciones</label>
+
+						{% if form.info_adicionalReciennacido.errors %}
+							<input id="info_adicionalReciennacido" value="{{ form.info_adicionalReciennacido.value }}" name="{{ form.info_adicionalReciennacido.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.info_adicionalReciennacido.errors.as_text }}'  >
+			          	{% elif form.info_adicionalReciennacido.value != none %}
+			      			<input id="info_adicionalReciennacido" value="{{ form.info_adicionalReciennacido.value }}" name="{{ form.info_adicionalReciennacido.html_name }}" type="text" class="validate" >
+			      		{% else %}
+			      			<input id="info_adicionalReciennacido" name="{{ form.info_adicionalReciennacido.html_name }}" type="text" class="validate" >
+			          	{% endif %}
+						<label class="active" for="info_adicionalReciennacido">Observaciones</label>
+
 					</div>
 				</div>
 			</div>
@@ -130,12 +184,22 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<select name="" id="puerperio_estado">
-							<option value="Ninguna" selected="selected">Ninguna</option>
-							<option value="Atendida">Atendida</option>
-							<option value="Pendiente">Pendiente</option>
-						</select>
-						<label for="puerperio_estado">Estado</label>
+
+						{% if form.estadoPuerperio.errors %}
+							<select id="estadoPuerperio" class="tooltipped" data-position="top" data-tooltip='{{ form.estadoPuerperio.errors.as_text }}' id="{{form.estadoPuerperio.id_for_label}}" name="{{form.estadoPuerperio.html_name}}">
+						{% else %}
+							<select id="estadoPuerperio" id="{{form.estadoPuerperio.id_for_label}}" name="{{form.estadoPuerperio.html_name}}">
+						{% endif %}
+						{% for estadoPuerperio_opcion in opciones_estado %}
+							{% if form.estadoPuerperio.value == estadoPuerperio_opcion.0 %}
+								<option value={{estadoPuerperio_opcion.0}} selected="selected">{{estadoPuerperio_opcion.1}}</option>
+							{% else %}
+								<option value={{estadoPuerperio_opcion.0}}>{{estadoPuerperio_opcion.1}}</option>
+							{% endif %}
+						{% endfor %}
+					    </select>
+					    <label for="estadoPuerperio">Estado</label>
+
 					</div>
 				</div>
 			</div>
@@ -143,8 +207,17 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="date" class="datepicker" id="puerperio_fecha">
-						<label for="puerperio_fecha" class="active">Estado</label>
+							
+						{% if form.fechaPuerperio.errors %}
+							<input id="fechaPuerperio" value="{{ form.fechaPuerperio.value }}" name="{{ form.fechaPuerperio.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fechaPuerperio.errors.as_text }}'   >
+			          	{% elif form.fechaPuerperio.value != none %}
+			      			<input id="fechaPuerperio" value="{{ form.fechaPuerperio.value }}" name="{{ form.fechaPuerperio.html_name }}" type="date" class="datepicker"  >
+			      		{% else %}
+			      			<input id="fechaPuerperio" name="{{ form.fechaPuerperio.html_name }}" type="date" class="datepicker"  >
+			          	{% endif %}
+
+						<label for="fechaPuerperio" class="active">Fecha</label>
+
 					</div>
 				</div>
 			</div>
@@ -152,8 +225,16 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="text" class="validate" id="puerperio_observaciones">
-						<label for="puerperio_observaciones">Observaciones</label>
+
+						{% if form.info_adicionalPuerperio.errors %}
+							<input id="info_adicionalPuerperio" value="{{ form.info_adicionalPuerperio.value }}" name="{{ form.info_adicionalPuerperio.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.info_adicionalPuerperio.errors.as_text }}'  >
+			          	{% elif form.info_adicionalPuerperio.value != none %}
+			      			<input id="info_adicionalPuerperio" value="{{ form.info_adicionalPuerperio.value }}" name="{{ form.info_adicionalPuerperio.html_name }}" type="text" class="validate" >
+			      		{% else %}
+			      			<input id="info_adicionalPuerperio" name="{{ form.info_adicionalPuerperio.html_name }}" type="text" class="validate" >
+			          	{% endif %}
+						<label class="active" for="info_adicionalPuerperio">Observaciones</label>
+
 					</div>
 				</div>
 			</div>
@@ -175,12 +256,22 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<select name="" id="crecimiento_desarrollo_estado">
-							<option value="Ninguna" selected="selected">Ninguna</option>
-							<option value="Atendida">Atendida</option>
-							<option value="Pendiente">Pendiente</option>
-						</select>
-						<label for="crecimiento_desarrollo_estado">Estado</label>
+
+						{% if form.estadoCrecimientoyDesarrollo.errors %}
+							<select id="estadoCrecimientoyDesarrollo" class="tooltipped" data-position="top" data-tooltip='{{ form.estadoCrecimientoyDesarrollo.errors.as_text }}' id="{{form.estadoCrecimientoyDesarrollo.id_for_label}}" name="{{form.estadoCrecimientoyDesarrollo.html_name}}">
+						{% else %}
+							<select id="estadoCrecimientoyDesarrollo" id="{{form.estadoCrecimientoyDesarrollo.id_for_label}}" name="{{form.estadoCrecimientoyDesarrollo.html_name}}">
+						{% endif %}
+						{% for estadoCrecimientoyDesarrollo_opcion in opciones_estado %}
+							{% if form.estadoCrecimientoyDesarrollo.value == estadoCrecimientoyDesarrollo_opcion.0 %}
+								<option value={{estadoCrecimientoyDesarrollo_opcion.0}} selected="selected">{{estadoCrecimientoyDesarrollo_opcion.1}}</option>
+							{% else %}
+								<option value={{estadoCrecimientoyDesarrollo_opcion.0}}>{{estadoCrecimientoyDesarrollo_opcion.1}}</option>
+							{% endif %}
+						{% endfor %}
+					    </select>
+					    <label for="estadoCrecimientoyDesarrollo">Estado</label>
+
 					</div>
 				</div>
 			</div>
@@ -188,8 +279,17 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="date" class="datepicker" id="crecimiento_desarrollo_fecha">
-						<label for="crecimiento_desarrollo_fecha" class="active">Estado</label>
+							
+						{% if form.fechaCrecimientoyDesarrollo.errors %}
+							<input id="fechaCrecimientoyDesarrollo" value="{{ form.fechaCrecimientoyDesarrollo.value }}" name="{{ form.fechaCrecimientoyDesarrollo.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fechaCrecimientoyDesarrollo.errors.as_text }}'   >
+			          	{% elif form.fechaCrecimientoyDesarrollo.value != none %}
+			      			<input id="fechaCrecimientoyDesarrollo" value="{{ form.fechaCrecimientoyDesarrollo.value }}" name="{{ form.fechaCrecimientoyDesarrollo.html_name }}" type="date" class="datepicker"  >
+			      		{% else %}
+			      			<input id="fechaCrecimientoyDesarrollo" name="{{ form.fechaCrecimientoyDesarrollo.html_name }}" type="date" class="datepicker"  >
+			          	{% endif %}
+
+						<label for="fechaCrecimientoyDesarrollo" class="active">Fecha</label>
+
 					</div>
 				</div>
 			</div>
@@ -197,8 +297,16 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="text" class="validate" id="crecimiento_desarrollo_observaciones">
-						<label for="crecimiento_desarrollo_observaciones">Observaciones</label>
+
+						{% if form.info_adicionalCrecimientoyDesarrollo.errors %}
+							<input id="info_adicionalCrecimientoyDesarrollo" value="{{ form.info_adicionalCrecimientoyDesarrollo.value }}" name="{{ form.info_adicionalCrecimientoyDesarrollo.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.info_adicionalCrecimientoyDesarrollo.errors.as_text }}'  >
+			          	{% elif form.info_adicionalCrecimientoyDesarrollo.value != none %}
+			      			<input id="info_adicionalCrecimientoyDesarrollo" value="{{ form.info_adicionalCrecimientoyDesarrollo.value }}" name="{{ form.info_adicionalCrecimientoyDesarrollo.html_name }}" type="text" class="validate" >
+			      		{% else %}
+			      			<input id="info_adicionalCrecimientoyDesarrollo" name="{{ form.info_adicionalCrecimientoyDesarrollo.html_name }}" type="text" class="validate" >
+			          	{% endif %}
+						<label class="active" for="info_adicionalCrecimientoyDesarrollo">Observaciones</label>
+
 					</div>
 				</div>
 			</div>
@@ -227,12 +335,22 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<select name="" id="planificacion_familiar_estado">
-							<option value="Ninguna" selected="selected">Ninguna</option>
-							<option value="Atendida">Atendida</option>
-							<option value="Pendiente">Pendiente</option>
-						</select>
-						<label for="planificacion_familiar_estado">Estado</label>
+
+						{% if form.estadoPlanificacionFamiliar.errors %}
+							<select id="estadoPlanificacionFamiliar" class="tooltipped" data-position="top" data-tooltip='{{ form.estadoPlanificacionFamiliar.errors.as_text }}' id="{{form.estadoPlanificacionFamiliar.id_for_label}}" name="{{form.estadoPlanificacionFamiliar.html_name}}">
+						{% else %}
+							<select id="estadoPlanificacionFamiliar" id="{{form.estadoPlanificacionFamiliar.id_for_label}}" name="{{form.estadoPlanificacionFamiliar.html_name}}">
+						{% endif %}
+						{% for estadoPlanificacionFamiliar_opcion in opciones_estado %}
+							{% if form.estadoPlanificacionFamiliar.value == estadoPlanificacionFamiliar_opcion.0 %}
+								<option value={{estadoPlanificacionFamiliar_opcion.0}} selected="selected">{{estadoPlanificacionFamiliar_opcion.1}}</option>
+							{% else %}
+								<option value={{estadoPlanificacionFamiliar_opcion.0}}>{{estadoPlanificacionFamiliar_opcion.1}}</option>
+							{% endif %}
+						{% endfor %}
+					    </select>
+					    <label for="estadoPlanificacionFamiliar">Estado</label>
+
 					</div>
 				</div>
 			</div>
@@ -240,8 +358,17 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="date" class="datepicker" id="planificacion_familiar_fecha">
-						<label for="planificacion_familiar_fecha" class="active">Estado</label>
+							
+						{% if form.fechaPlanificacionFamiliar.errors %}
+							<input id="fechaPlanificacionFamiliar" value="{{ form.fechaPlanificacionFamiliar.value }}" name="{{ form.fechaPlanificacionFamiliar.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fechaPlanificacionFamiliar.errors.as_text }}'   >
+			          	{% elif form.fechaPlanificacionFamiliar.value != none %}
+			      			<input id="fechaPlanificacionFamiliar" value="{{ form.fechaPlanificacionFamiliar.value }}" name="{{ form.fechaPlanificacionFamiliar.html_name }}" type="date" class="datepicker"  >
+			      		{% else %}
+			      			<input id="fechaPlanificacionFamiliar" name="{{ form.fechaPlanificacionFamiliar.html_name }}" type="date" class="datepicker"  >
+			          	{% endif %}
+
+						<label for="fechaPlanificacionFamiliar" class="active">Fecha</label>
+
 					</div>
 				</div>
 			</div>
@@ -249,8 +376,16 @@ citas
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field">
-						<input type="text" class="validate" id="planificacion_familiar_observaciones">
-						<label for="planificacion_familiar_observaciones">Observaciones</label>
+
+						{% if form.info_adicionalPlanificacionFamiliar.errors %}
+							<input id="info_adicionalPlanificacionFamiliar" value="{{ form.info_adicionalPlanificacionFamiliar.value }}" name="{{ form.info_adicionalPlanificacionFamiliar.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.info_adicionalPlanificacionFamiliar.errors.as_text }}'  >
+			          	{% elif form.info_adicionalPlanificacionFamiliar.value != none %}
+			      			<input id="info_adicionalPlanificacionFamiliar" value="{{ form.info_adicionalPlanificacionFamiliar.value }}" name="{{ form.info_adicionalPlanificacionFamiliar.html_name }}" type="text" class="validate" >
+			      		{% else %}
+			      			<input id="info_adicionalPlanificacionFamiliar" name="{{ form.info_adicionalPlanificacionFamiliar.html_name }}" type="text" class="validate" >
+			          	{% endif %}
+						<label class="active" for="info_adicionalPlanificacionFamiliar">Observaciones</label>
+
 					</div>
 				</div>
 			</div>
@@ -267,7 +402,7 @@ citas
 
 <div class="row">
 	<div class="col s12 center-align">
-		<a class="waves-effect waves-light btn">Guardar</a>
+		<button type="submit" class="waves-effect waves-light btn">Guardar</button>
 		&nbsp
 		<a class="waves-effect waves-light btn red lighten-2">Cancelar</a>
 	</div>
