@@ -625,7 +625,7 @@ class EditarTercerTrimestre(FormView):
 
         context['gestante_id'] = self.kwargs['gestante']
         context['nombre_gestante'] = gestante.nombre
-        context['opciones_parcial_horina'] = PARCIAL_ORINA
+        context['opciones_parcial_orina'] = PARCIAL_ORINA
         context['opciones_VDRL'] = VDRL
         context['opciones_VIH'] = VIH
         return context
@@ -642,7 +642,7 @@ class EditarTercerTrimestre(FormView):
         try:
             tercer_trimestre = TercerTrimestre.objects.get(gestante_id = gestante.id)
             tercer_trimestre.VDRL = form.cleaned_data['VDRL']
-            tercer_trimestre.parcial_orina = form.cleaned_data['parcial_horina']
+            tercer_trimestre.parcial_orina = form.cleaned_data['parcial_orina']
             tercer_trimestre.factores_riesgo_VIH  = factores_riesgo_VIH
             tercer_trimestre.fecha_VIH = form.cleaned_data['fecha_VIH']
             tercer_trimestre.reactivo_VIH = form.cleaned_data['reactivo_VIH']
@@ -651,7 +651,7 @@ class EditarTercerTrimestre(FormView):
             tercer_trimestre.micronutrientes = micronutrientes
         except ObjectDoesNotExist:
             tercer_trimestre = TercerTrimestre(VDRL = form.cleaned_data['VDRL'],
-                parcial_orina = form.cleaned_data['parcial_horina'],
+                parcial_orina = form.cleaned_data['parcial_orina'],
                 factores_riesgo_VIH  = factores_riesgo_VIH,
                 fecha_VIH = form.cleaned_data['fecha_VIH'],
                 reactivo_VIH = form.cleaned_data['reactivo_VIH'],
@@ -662,7 +662,7 @@ class EditarTercerTrimestre(FormView):
         tercer_trimestre.gestante = gestante 
         tercer_trimestre.save()
 
-        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_tercer_trimestre"'
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_tercer_trimestre'
 
         return super(EditarTercerTrimestre, self).form_valid(form)
 
@@ -673,12 +673,12 @@ class EditarTercerTrimestre(FormView):
         try:
             tercer_trimestre = TercerTrimestre.objects.get(gestante_id = gestante.id)
             initial['VDRL'] = tercer_trimestre.VDRL
-            initial['parcial_horina'] = tercer_trimestre.parcial_horina
+            initial['parcial_orina'] = tercer_trimestre.parcial_orina
             initial['factores_riesgo_VIH'] = tercer_trimestre.factores_riesgo_VIH
-            initial['fecha_VIH'] = tercer_trimestre.fecha_VIH
+            initial['fecha_VIH'] = tercer_trimestre.fecha_VIH.strftime('%Y-%m-%d')
             initial['reactivo_VIH'] = tercer_trimestre.reactivo_VIH
             initial['ecografia_unica_semanas'] = tercer_trimestre.ecografia_unica_semanas
-            initial['ecografia_unica_fecha'] = tercer_trimestre.ecografia_unica_fecha
+            initial['ecografia_unica_fecha'] = tercer_trimestre.ecografia_unica_fecha.strftime('%Y-%m-%d')
             initial['micronutrientes'] = tercer_trimestre.micronutrientes
             print(initial)
             return initial

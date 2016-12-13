@@ -1,11 +1,11 @@
 $(function(){
 
-	$("#fecha_factores_diabetes").pickadate({
+	$("#fecha_VIH").pickadate({
 		selectMonths: true,
 	    selectYears: 3
 	})
 
-	$("#fecha_ecografia_unica").pickadate({
+	$("#ecografia_unica_fecha").pickadate({
 		selectMonths: true,
 	    selectYears: 3
 	})

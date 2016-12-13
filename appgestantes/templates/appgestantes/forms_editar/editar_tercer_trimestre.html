@@ -16,20 +16,41 @@ tercer trimestre
 
 {% block form_content %}
 
+<form id="gest-terc-trim-update" action="" method="post" >{% csrf_token %}
+
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<select id="VDRL">
-				<option value="Si">Reactivo</option>
-				<option value="No">No reactivo</option>
+			
+			{% if form.VDRL.errors %}
+				<select id="{{ form.VDRL.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.VDRL.errors.as_text }}' id="{{form.VDRL.id_for_label}}" name="{{form.VDRL.html_name}}">
+			{% else %}
+				<select id="{{ form.VDRL.id_for_label }}" id="{{form.VDRL.id_for_label}}" name="{{form.VDRL.html_name}}">
+			{% endif %}
+			{% for VDRL_opcion in opciones_VDRL %}
+				{% if form.VDRL.value == VDRL_opcion.0 %}
+					<option value={{VDRL_opcion.0}} selected="selected">{{VDRL_opcion.1}}</option>
+				{% else %}
+					<option value={{VDRL_opcion.0}}>{{VDRL_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="VDRL">VDRL</label>
+		    <label for="{{ form.VDRL.id_for_label }}">VDRL</label>
+
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_ecografia_unica" type="text" class="datepicker">
-			<label for="fecha_ecografia_unica">Fecha de ecografía única</label>
+			
+			{% if form.ecografia_unica_fecha.errors %}
+				<input id="ecografia_unica_fecha" value="{{ form.ecografia_unica_fecha.value }}" name="{{ form.ecografia_unica_fecha.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.ecografia_unica_fecha.errors.as_text }}'  placeholder="Fecha de ecografía única" >
+          	{% elif form.ecografia_unica_fecha.value != none %}
+      			<input id="ecografia_unica_fecha" value="{{ form.ecografia_unica_fecha.value }}" name="{{ form.ecografia_unica_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de ecografía única" >
+      		{% else %}
+      			<input id="ecografia_unica_fecha" name="{{ form.ecografia_unica_fecha.html_name }}" type="date" class="datepicker" placeholder="Fecha de ecografía única" >
+          	{% endif %}
+			<label class="active" for="ecografia_unica_fecha">Fecha de ecografía única</label>
+
 		</div>
 	</div>
 </div>
@@ -37,14 +58,38 @@ tercer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<input type="checkbox" class="filled-in" id="VIH" checked>
-		    <label for="VIH">Factores de riesgo VIH</label>
+			
+			{% if form.factores_riesgo_VIH.errors %}
+				{% if form.factores_riesgo_VIH.value == 'Si' %}
+					<input type="checkbox" name="{{ form.factores_riesgo_VIH.html_name}}" value="{{ form.factores_riesgo_VIH.value }}" class="filled-in" id="factores_riesgo_VIH"  checked >
+				{% else %}
+					<input type="checkbox" class="filled-in" id="factores_riesgo_VIH" name="{{ form.factores_riesgo_VIH.html_name}}" value="No">
+				{% endif %}
+			{% else %}
+				{% if form.factores_riesgo_VIH.value != none and form.factores_riesgo_VIH.value == 'Si'%}
+					<input type="checkbox" name="{{ form.factores_riesgo_VIH.html_name}}" value="{{ form.factores_riesgo_VIH.value }}" class="filled-in" id="factores_riesgo_VIH"  checked >
+				{% else %}
+					<input type="checkbox" class="filled-in" id="factores_riesgo_VIH" name="{{ form.factores_riesgo_VIH.html_name}}" value="No">
+				{% endif %}
+			{% endif %}
+	        <label for="factores_riesgo_VIH">Factores de riesgo VIH</label>
+
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<input id="semanas_ecografia" type="text" class="validate">
-			<label for="semanas_ecografia">Semanas ecografía</label>
+			
+			{% if form.ecografia_unica_semanas.errors %}
+				<input id="{{ form.ecografia_unica_semanas.id_for_label }}" value="{{ form.ecografia_unica_semanas.value }}" name="{{ form.ecografia_unica_semanas.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.ecografia_unica_semanas.errors.as_text }}' >
+          	{% else %}
+          		{% if form.ecografia_unica_semanas.value != none %}
+          			<input id="{{ form.ecografia_unica_semanas.id_for_label }}" value="{{ form.ecografia_unica_semanas.value }}" name="{{ form.ecografia_unica_semanas.html_name }}" type="text" class="validate">
+          		{% else %}
+          			<input id="{{ form.ecografia_unica_semanas.id_for_label }}" name="{{ form.ecografia_unica_semanas.html_name }}" type="text" class="validate" >
+          		{% endif %}
+          	{% endif %}
+          	<label for="{{ form.ecografia_unica_semanas.id_for_label }}">Semanas ecografía única</label>
+
 		</div>
 	</div>
 </div>
@@ -52,15 +97,36 @@ tercer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<input id="fecha_VIH" type="text" class="datepicker">
-			<label for="fecha_VIH">Fecha VIH</label>
+			
+			{% if form.fecha_VIH.errors %}
+				<input id="fecha_VIH" value="{{ form.fecha_VIH.value }}" name="{{ form.fecha_VIH.html_name }}" type="date" class="datepicker tooltipped" data-position="top" data-tooltip='{{ form.fecha_VIH.errors.as_text }}'  placeholder="Fecha VIH" >
+          	{% elif form.fecha_VIH.value != none %}
+      			<input id="fecha_VIH" value="{{ form.fecha_VIH.value }}" name="{{ form.fecha_VIH.html_name }}" type="date" class="datepicker" placeholder="Fecha VIH" >
+      		{% else %}
+      			<input id="fecha_VIH" name="{{ form.fecha_VIH.html_name }}" type="date" class="datepicker" placeholder="Fecha VIH" >
+          	{% endif %}
+
+			<label for="fecha_VIH" class="active">Fecha VIH</label>
+
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
 			<p>
-		      <input type="checkbox" class="filled-in" id="micronutrientes"/>
-		      <label for="micronutrientes">Micronutrientes</label>
+		    	{% if form.micronutrientes.errors %}
+					{% if form.micronutrientes.value == 'Si' %}
+						<input type="checkbox" name="{{ form.micronutrientes.html_name}}" value="{{ form.micronutrientes.value }}" class="filled-in" id="micronutrientes"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="micronutrientes" name="{{ form.micronutrientes.html_name}}" value="No">
+					{% endif %}
+				{% else %}
+					{% if form.micronutrientes.value != none and form.micronutrientes.value == 'Si'%}
+						<input type="checkbox" name="{{ form.micronutrientes.html_name}}" value="{{ form.micronutrientes.value }}" class="filled-in" id="micronutrientes"  checked >
+					{% else %}
+						<input type="checkbox" class="filled-in" id="micronutrientes" name="{{ form.micronutrientes.html_name}}" value="No">
+					{% endif %}
+				{% endif %}
+		        <label for="micronutrientes">Micronutrientes</label>
 		    </p>
 		</div>
 	</div>
@@ -69,20 +135,42 @@ tercer trimestre
 <div class="row">
 	<div class="col s6">
 		<div class="input-field">
-			<select id="Resultado VIH">
-				<option value="Reactivo">Reactivo</option>
-				<option value="No reactivo">No reactivo</option>
+			
+			{% if form.reactivo_VIH.errors %}
+				<select id="{{ form.reactivo_VIH.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.reactivo_VIH.errors.as_text }}' id="{{form.reactivo_VIH.id_for_label}}" name="{{form.reactivo_VIH.html_name}}">
+			{% else %}
+				<select id="{{ form.reactivo_VIH.id_for_label }}" id="{{form.reactivo_VIH.id_for_label}}" name="{{form.reactivo_VIH.html_name}}">
+			{% endif %}
+			{% for reactivo_VIH_opcion in opciones_VIH %}
+				{% if form.reactivo_VIH.value == reactivo_VIH_opcion.0 %}
+					<option value={{reactivo_VIH_opcion.0}} selected="selected">{{reactivo_VIH_opcion.1}}</option>
+				{% else %}
+					<option value={{reactivo_VIH_opcion.0}}>{{reactivo_VIH_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="Resultado VIH">Resultado VIH</label>
+		    <label for="{{ form.reactivo_VIH.id_for_label }}">Resultado VIH</label>
+
 		</div>
 	</div>
 	<div class="col s6">
 		<div class="input-field">
-			<select id="parcial_orina">
-				<option value="Normal">Normal</option>
-				<option value="En tratamiento">En tratamiento</option>
+			
+			{% if form.parcial_orina.errors %}
+				<select id="{{ form.parcial_orina.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.parcial_orina.errors.as_text }}' id="{{form.parcial_orina.id_for_label}}" name="{{form.parcial_orina.html_name}}">
+			{% else %}
+				<select id="{{ form.parcial_orina.id_for_label }}" id="{{form.parcial_orina.id_for_label}}" name="{{form.parcial_orina.html_name}}">
+			{% endif %}
+			{% for parcial_orina_opcion in opciones_parcial_orina %}
+				{% if form.parcial_orina.value == parcial_orina_opcion.0 %}
+					<option value={{parcial_orina_opcion.0}} selected="selected">{{parcial_orina_opcion.1}}</option>
+				{% else %}
+					<option value={{parcial_orina_opcion.0}}>{{parcial_orina_opcion.1}}</option>
+				{% endif %}
+			{% endfor %}
 		    </select>
-		    <label for="parcial_orina">Parcial de orina</label>
+		    <label for="{{ form.parcial_orina.id_for_label }}">Parcial de orina</label>
+
 		</div>
 	</div>
 </div>
@@ -93,11 +181,13 @@ tercer trimestre
 
 <div class="row">
 	<div class="col s12 center-align">
-		<a class="waves-effect waves-light btn">Guardar</a>
+		<button type="submit" class="waves-effect waves-light btn">Guardar</button>
 		&nbsp
 		<a class="waves-effect waves-light btn red lighten-2">Cancelar</a>
 	</div>
 </div>
+
+</form>
 
 {% endblock %}
 
