@@ -687,6 +687,167 @@ class EditarTercerTrimestre(FormView):
         except ObjectDoesNotExist:
             return initial
 
+class EditarCitas(FormView):
+    template_name = 'appgestantes/forms_editar/editar_citas.html'
+    form_class = forms.EditarCitas
+    success_url = '/detalle/'
+
+    def get_context_data(self, **kwargs):
+        context = super(EditarCitas, self).get_context_data(**kwargs)
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            context['cita_parto'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Fechaparto')
+        except ObjectDoesNotExist:
+            context['cita_parto'] = None
+
+        try:
+            context['cita_recien_nacido'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Reciennacido')
+        except ObjectDoesNotExist:
+            context['cita_recien_nacido'] = None
+
+        try:
+            context['cita_puerperio'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Puerperio')
+        except ObjectDoesNotExist:
+            context['cita_puerperio'] = None
+
+        try:
+            context['cita_crecimiento'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'CrecimientoyDesarrollo')
+        except ObjectDoesNotExist:
+            context['cita_crecimiento'] = None
+
+        try:
+            context['cita_planificacion'] = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificaciónFamiliar')
+        except ObjectDoesNotExist:
+            context['cita_planificacion'] = None
+
+        context['gestante_id'] = self.kwargs['gestante']
+        context['nombre_gestante'] = gestante.nombre
+        return context
+
+    def form_valid(self, form):
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            cita_parto = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Fechaparto')
+            cita_parto.estado = form.cleaned_data["estadoFechaparto"]
+            cita_parto.fecha = form.cleaned_data["fechaFechaparto"]
+            cita_parto.info_adicional = form.cleaned_data["info_adicionalFechaparto"]
+        except ObjectDoesNotExist:
+            cita_parto = Cita(tipo_cita = 'Fechaparto',
+                estado = form.cleaned_data["estadoFechaparto"],
+                fecha = form.cleaned_data["fechaFechaparto"],
+                info_adicional = form.cleaned_data["info_adicionalFechaparto"]
+            )
+        cita_parto.gestante = gestante
+        cita_parto.save()
+
+        try:
+            cita_recien_nacido = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Reciennacido')
+            cita_recien_nacido.estado = form.cleaned_data["estadoReciennacido"]
+            cita_recien_nacido.fecha = form.cleaned_data["fechaReciennacido"]
+            cita_recien_nacido.info_adicional = form.cleaned_data["info_adicionalReciennacido"]
+        except ObjectDoesNotExist:
+            cita_recien_nacido = Cita(tipo_cita = 'Reciennacido',
+                estado = form.cleaned_data["estadoReciennacido"],
+                fecha = form.cleaned_data["fechaReciennacido"],
+                info_adicional = form.cleaned_data["info_adicionalReciennacido"]
+            )
+
+        cita_recien_nacido.gestante = gestante
+        cita_recien_nacido.save()
+        try:
+            cita_puerperio = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Puerperio')
+            cita_puerperio.estado = form.cleaned_data["estadoPuerperio"]
+            cita_puerperio.fecha = form.cleaned_data["fechaPuerperio"]
+            cita_puerperio.info_adicional = form.cleaned_data["info_adicionalPuerperio"]
+        except ObjectDoesNotExist:
+            cita_puerperio = Cita(tipo_cita = 'Puerperio',
+                estado = form.cleaned_data["estadoPuerperio"],
+                fecha = form.cleaned_data["fechaPuerperio"],
+                info_adicional = form.cleaned_data["info_adicionalPuerperio"]
+            )
+
+        cita_puerperio.gestante = gestante
+        cita_puerperio.save()
+        try:
+            cita_crecimiento = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'CrecimientoyDesarrollo')
+            cita_crecimiento.estado = form.cleaned_data["estadoCrecimientoyDesarrollo"]
+            cita_crecimiento.fecha = form.cleaned_data["fechaCrecimientoyDesarrollo"]
+            cita_crecimiento.info_adicional = form.cleaned_data["info_adicionalCrecimientoyDesarrollo"]
+        except ObjectDoesNotExist:
+            cita_crecimiento = Cita(tipo_cita = 'CrecimientoyDesarrollo',
+                estado = form.cleaned_data["estadoCrecimientoyDesarrollo"],
+                fecha = form.cleaned_data["fechaCrecimientoyDesarrollo"],
+                info_adicional = form.cleaned_data["info_adicionalCrecimientoyDesarrollo"]
+            )
+        cita_crecimiento.gestante = gestante
+        cita_crecimiento.save()
+
+        try:
+            cita_planificacion = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificaciónFamiliar')
+            cita_planificacion.estado =form.cleaned_data["estadoPlanificaciónFamiliar"]
+            cita_planificacion.fecha = form.cleaned_data["fechaPlanificaciónFamiliar"]
+            cita_planificacion.info_adicional = form.cleaned_data["info_adicionalPlanificaciónFamiliar"]
+        except ObjectDoesNotExist:
+            cita_planificacion = Cita(tipo_cita = 'PlanificaciónFamiliar',
+                estado = form.cleaned_data["estadoPlanificaciónFamiliar"],
+                fecha =form.cleaned_data["fechaPlanificaciónFamiliar"],
+                info_adicional = form.cleaned_data["info_adicionalPlanificaciónFamiliar"]
+            )
+
+        cita_planificacion.gestante = gestante
+        cita_planificacion.save()
+
+
+        self.success_url = self.success_url + str(self.kwargs['gestante']) + '/#tab_citas'
+
+        return super(EditarCitas, self).form_valid(form)
+
+
+    def get_initial(self):
+        initial = super(EditarCitas, self).get_initial()
+        gestante = Gestante.objects.get(id = self.kwargs['gestante'])
+        try:
+            cita_parto = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Fechaparto')
+            initial["estadoFechaparto"] = cita_parto.estado 
+            initial["fechaFechaparto"] = cita_parto.fecha 
+            initial["info_adicionalFechaparto"] = cita_parto.info_adicional 
+        except ObjectDoesNotExist:
+           pass
+
+        try:
+            cita_recien_nacido = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Reciennacido')
+            initial["estadoReciennacido"] = cita_recien_nacido.estado
+            initial["fechaReciennacido"] = cita_recien_nacido.fecha
+            initial["info_adicionalReciennacido"] = cita_recien_nacido.info_adicional
+        except ObjectDoesNotExist:
+            pass
+
+        try:
+            cita_puerperio = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'Puerperio')
+            initial["estadoPuerperio"] = cita_puerperio.estado
+            initial["fechaPuerperio"] = cita_puerperio.fecha
+            initial["info_adicionalPuerperio"] = cita_puerperio.info_adicional 
+        except ObjectDoesNotExist:
+            pass
+
+        try:
+            cita_crecimiento = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'CrecimientoyDesarrollo')
+            initial["estadoCrecimientoyDesarrollo"] = cita_crecimiento.estado 
+            initial["fechaCrecimientoyDesarrollo"] = cita_crecimiento.fecha 
+            initial["info_adicionalCrecimientoyDesarrollo"] = cita_crecimiento.info_adicional
+        except ObjectDoesNotExist:
+            pass
+
+        try:
+            cita_planificacion = Cita.objects.get(gestante_id = gestante.id, tipo_cita = 'PlanificaciónFamiliar')
+            initial["estadoPlanificacionFamiliar"] = cita_planificacion.estado 
+            initial["fechaPlanificacionFamiliar"] = cita_planificacion.fecha 
+            initial["info_adicionalPlanificacionFamiliar"] = cita_planificacion.info_adicional
+        except ObjectDoesNotExist:
+            pass
+
+        return initial
+
 
 def editar_segundo_trimestre(request):
     return render(request, 'appgestantes/forms_editar/editar_segundo_trimestre.html')

@@ -8,78 +8,6 @@ errores_defecto = {
     'invalid': 'Ingresar un dato válido'
 }
 
-class ModelGestanteForm(forms.ModelForm):
-	class Meta:
-		model = Gestante
-		fields = ('nombre', 'fecha_ingreso_programa', 'fecha_nacimiento', 'identificacion', 'captacion', 'semana_ingreso', 'fecha_ultima_menstruacion', 'fecha_probable_parto', 'confiable')
-		error_messages = {
-			'nombre':{
-				'required' : _('Por favor llene el campo')
-			},
-			'fecha_ingreso_programa':{
-				'required' : _('Por favor llene el campo')
-			},
-			'fecha_nacimiento':{
-				'required' : _('Por favor seleccione una imagen'),
-				'invalid' : _('Por favor seleccione un archivo de imagen')
-			},
-			'identificacion':{
-				'required' : _('Por favor llene el campo')
-			},
-			'captacion':{
-				'required' : _('Por favor llene el campo')
-			},
-			'semana_ingreso':{
-				'required' : _('Por favor llene el campo')
-			},
-			'fecha_ultima_menstruacion':{
-				'required' : _('Por favor llene el campo')
-			},
-			'fecha_probable_parto':{
-				'required' : _('Por favor llene el campo')
-			},
-			'confiable':{
-				'required' : _('Por favor llene el campo')
-			},
-
-		}
-
-class ModelPrimerControlForm(forms.ModelForm):
-	class Meta:
-		model = PrimerControl
-		fields = ('fecha_paraclinicos', 'micronutrientes', 'pretest_fecha', 'fecha_postest', 'iami', 'odontologia_fecha', 'citologia_fecha', 'citologia_resultado', 'DPTa')
-		error_messages = {
-			'fecha_paraclinicos':{
-				'required' : _('Por favor llene el campo')
-			},
-			'micronutrientes':{
-				'required' : _('Por favor seleccione una imagen'),
-				'invalid' : _('Por favor seleccione un archivo de imagen')
-			},
-			'pretest_fecha':{
-				'required' : _('Por favor llene el campo')
-			},
-			'fecha_postest':{
-				'required' : _('Por favor llene el campo')
-			},
-			'iami':{
-				'required' : _('Por favor llene el campo')
-			},
-			'odontologia_fecha':{
-				'required' : _('Por favor llene el campo')
-			},
-			'citologia_fecha':{
-				'required' : _('Por favor llene el campo')
-			},
-			'citologia_resultado':{
-				'required' : _('Por favor llene el campo')
-			},
-			'DPTa':{
-				'required' : _('Por favor llene el campo')
-			},
-		}
-
-
 class GestanteForm(forms.Form):
 	nombre = forms.CharField(error_messages = errores_defecto)
 	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto) #verificar
@@ -167,3 +95,28 @@ class EditarTercerTrimestre(forms.Form):
 	ecografia_unica_semanas = forms.CharField(error_messages = errores_defecto, required = False)
 	ecografia_unica_fecha = forms.DateField(error_messages = errores_defecto, required = False)
 	micronutrientes = forms.CharField(error_messages = errores_defecto, required = False)
+
+class EditarCitas(forms.Form):
+	estadoFechaparto = forms.CharField(error_messages = errores_defecto, required = False)
+	fechaFechaparto = forms.DateField(error_messages = errores_defecto, required = False)
+	info_adicionalFechaparto = forms.CharField(error_messages = errores_defecto, required = False)
+
+	estadoReciennacido = forms.CharField(error_messages = errores_defecto, required = False)
+	fechaReciennacido= forms.DateField(error_messages = errores_defecto, required = False)
+	info_adicionalReciennacido = forms.CharField(error_messages = errores_defecto, required = False)
+
+	estadoPuerperio = forms.CharField(error_messages = errores_defecto, required = False)
+	fechaPuerperio = forms.DateField(error_messages = errores_defecto, required = False)
+	info_adicionalPuerperio = forms.CharField(error_messages = errores_defecto, required = False)
+
+	estadoCrecimientoyDesarrollo = forms.CharField(error_messages = errores_defecto, required = False)
+	fechaCrecimientoyDesarrollo = forms.DateField(error_messages = errores_defecto, required = False)
+	info_adicionalCrecimientoyDesarrollo = forms.CharField(error_messages = errores_defecto, required = False)
+
+	estadoPlanificacionFamiliar = forms.CharField(error_messages = errores_defecto, required = False)
+	fechaPlanificacionFamiliar = forms.DateField(error_messages = errores_defecto, required = False)
+	info_adicionalPlanificacionFamiliar = forms.CharField(error_messages = errores_defecto, required = False)
+
+
+
+
