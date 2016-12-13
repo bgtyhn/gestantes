@@ -18,8 +18,7 @@ $(function(){
 
     $('#fecha_ingreso_programa').pickadate({
 	    selectMonths: true,
-	    selectYears: 20,
-	    max: true
+	    selectYears: 20
 	});
 
 	$("#fecha_nacimiento").pickadate({
@@ -30,41 +29,37 @@ $(function(){
 
 	$("#fecha_ultima_menstruacion").pickadate({
 	    selectMonths: true,
-		selectYears: 2,
-		max: true
+		selectYears: 10
 	})
 
 	$("#fecha_probable_parto").pickadate({
 	    selectMonths: true,
-		selectYears: 2,
-		min: true
+		selectYears: 10
 	})
 
 	$("#fecha_paraclinicos").pickadate({
 		selectMonths: true,
-		selectYears: 4
+		selectYears: 10
 	})
 
 	$("#fecha_pretest").pickadate({
 		selectMonths: true,
-		selectYears: 4,
-		min: true
+		selectYears: 10
 	})
 
 	$("#fecha_postest").pickadate({
 	    selectMonths: true,
-		selectYears: 2,
-		min: true
+		selectYears: 10
 	})
 
 	$("#fecha_citologia").pickadate({
 		selectMonths: true,
-		selectYears: 4
+		selectYears: 10
 	})
 
 	$("#fecha_odontologia").pickadate({
 		selectMonths: true,
-		selectYears: 2
+		selectYears: 10
 	})
 
 	$('select').material_select();

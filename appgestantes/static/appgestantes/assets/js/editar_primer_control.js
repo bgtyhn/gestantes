@@ -24,8 +24,7 @@ $(function(){
 
 	$("#pretest_fecha").pickadate({
 		selectMonths: true,
-		selectYears: 4,
-		min: true
+		selectYears: 4
 	})
 
 	rie_rows = $("#rie-container").children(".rie-row")
