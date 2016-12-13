@@ -36,11 +36,13 @@ VDRL = (
 )
 
 VIH = (
+	('Pendiente', 'Pendiente'),
 	('Reactivo', 'Reactivo'),
 	('NoReactivo', 'No reactivo')
 )
 
 FROTIS = (
+	('Pendiente', 'Pendiente'),
 	('Normal', 'Normal'),
 	('Alterado', 'Alterado')
 )

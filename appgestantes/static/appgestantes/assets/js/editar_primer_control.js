@@ -1,8 +1,20 @@
 $(function(){
 
+	function checkCitRes(){
+		if($("#citologia_fecha").val() === ""){
+			$("#citologia_resultado").val('')
+			$("#citologia_resultado").attr("disabled", "disabled")
+		} else {
+			$("#citologia_resultado").removeAttr("disabled")
+		}
+	}
+
 	$("#citologia_fecha").pickadate({
 		selectMonths: true,
-		selectYears: 4
+		selectYears: 4,
+		onClose: function(){
+			checkCitRes()
+		}
 	})
 
 	$("#odontologia_fecha").pickadate({
@@ -66,5 +78,7 @@ $(function(){
 		})
 		check_ries()
 	})
+
+
 
 })

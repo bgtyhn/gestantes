@@ -66,9 +66,9 @@ segundo trimestre
 		<div class="input-field">
 			
 			{% if form.factores_riesgo_diabetes_gestacional.errors %}
-				<select id="{{ form.factores_riesgo_diabetes_gestacional.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.factores_riesgo_diabetes_gestacional.errors.as_text }}' id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
+				<select id="factores_riesgo_diabetes_gestacional" class="tooltipped" data-position="top" data-tooltip='{{ form.factores_riesgo_diabetes_gestacional.errors.as_text }}' id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
 			{% else %}
-				<select id="{{ form.factores_riesgo_diabetes_gestacional.id_for_label }}" id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
+				<select id="factores_riesgo_diabetes_gestacional" id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
 			{% endif %}
 			{% for factores_riesgo_diabetes_gestacional_opcion in si_opciones %}
 				{% if form.factores_riesgo_diabetes_gestacional.value == factores_riesgo_diabetes_gestacional_opcion.0 %}
@@ -118,10 +118,10 @@ segundo trimestre
 		<div class="input-field">
 			
 			{% if form.ecografia_semanas.errors %}
-				<input id="{{ form.ecografia_semanas.id_for_label }}" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.ecografia_semanas.errors.as_text }}' >
+				<input id="ecografia_semanas" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.ecografia_semanas.errors.as_text }}' >
           	{% else %}
           		{% if form.ecografia_semanas.value != none %}
-          			<input id="{{ form.ecografia_semanas.id_for_label }}" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate">
+          			<input id="ecografia_semanas" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate">
           		{% else %}
           			<input id="{{ form.ecografia_semanas.id_for_label }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate" >
           		{% endif %}
@@ -137,9 +137,9 @@ segundo trimestre
 		<div class="input-field">
 
 			{% if form.estado_factores_diabetes.errors %}
-				<select id="{{ form.estado_factores_diabetes.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.estado_factores_diabetes.errors.as_text }}' id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
+				<select id="estado_factores_diabetes" class="tooltipped" data-position="top" data-tooltip='{{ form.estado_factores_diabetes.errors.as_text }}' id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
 			{% else %}
-				<select id="{{ form.estado_factores_diabetes.id_for_label }}" id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
+				<select id="estado_factores_diabetes" id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
 			{% endif %}
 			{% for estado_factores_diabetes_opcion in opciones_frotis %}
 				{% if form.estado_factores_diabetes.value == estado_factores_diabetes_opcion.0 %}

@@ -23,9 +23,9 @@ primer trimestre
 		<div class="input-field">
 
 			{% if form.cuadro_hematico.errors %}
-				<select id="{{ form.cuadro_hematico.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.cuadro_hematico.errors.as_text }}' id="{{form.cuadro_hematico.id_for_label}}" name="{{form.cuadro_hematico.html_name}}">
+				<select id="cuadro_hematico" class="tooltipped" data-position="top" data-tooltip='{{ form.cuadro_hematico.errors.as_text }}' id="{{form.cuadro_hematico.id_for_label}}" name="{{form.cuadro_hematico.html_name}}">
 			{% else %}
-				<select id="{{ form.cuadro_hematico.id_for_label }}" id="{{form.cuadro_hematico.id_for_label}}" name="{{form.cuadro_hematico.html_name}}">
+				<select id="cuadro_hematico" id="{{form.cuadro_hematico.id_for_label}}" name="{{form.cuadro_hematico.html_name}}">
 			{% endif %}
 			{% for cuadro_hematico_opcion in opciones_cuadro_hematico %}
 				{% if form.cuadro_hematico.value == cuadro_hematico_opcion.0 %}
@@ -59,10 +59,8 @@ primer trimestre
 <div class="row">
 	<div class="col s6 inner-list">
 		<!--To do: disabled y ninguno si cuadro hematico normal-->
-		<p>Motivos cuadro hemático</p>
+		<p><strong>Motivos cuadro hemático</strong></p>
 		
-		<br><br>
-
 		{% if not lista_motivosCH %}
 
 		<p id="no-hems" class="center-align">No hay motivos, presione el botón para agregar uno</p class="center-align">
@@ -111,9 +109,9 @@ primer trimestre
 		<div class="input-field">
 
 			{% if form.frotis_tipo.errors %}
-				<select id="{{ form.frotis_tipo.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.frotis_tipo.errors.as_text }}' id="{{form.frotis_tipo.id_for_label}}" name="{{form.frotis_tipo.html_name}}">
+				<select id="frotis_tipo" class="tooltipped" data-position="top" data-tooltip='{{ form.frotis_tipo.errors.as_text }}' id="{{form.frotis_tipo.id_for_label}}" name="{{form.frotis_tipo.html_name}}">
 			{% else %}
-				<select id="{{ form.frotis_tipo.id_for_label }}" id="{{form.frotis_tipo.id_for_label}}" name="{{form.frotis_tipo.html_name}}">
+				<select id="frotis_tipo" id="{{form.frotis_tipo.id_for_label}}" name="{{form.frotis_tipo.html_name}}">
 			{% endif %}
 			{% for frotis_tipo_opcion in opciones_frotis %}
 				{% if form.frotis_tipo.value == frotis_tipo_opcion.0 %}
@@ -123,7 +121,7 @@ primer trimestre
 				{% endif %}
 			{% endfor %}
 		    </select>
-		    <label for="{{ form.frotis_tipo.id_for_label }}">Resultado frotis</label>
+		    <label for="frotis_tipo">Resultado frotis</label>
 
 		</div>
 	</div>
@@ -218,9 +216,9 @@ primer trimestre
 		<div class="input-field">
 
 			{% if form.factores_riesgo_diabetes_gestacional.errors %}
-				<select id="{{ form.factores_riesgo_diabetes_gestacional.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.factores_riesgo_diabetes_gestacional.errors.as_text }}' id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
+				<select id="factores_riesgo_diabetes_gestacional" class="tooltipped" data-position="top" data-tooltip='{{ form.factores_riesgo_diabetes_gestacional.errors.as_text }}' id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
 			{% else %}
-				<select id="{{ form.factores_riesgo_diabetes_gestacional.id_for_label }}" id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
+				<select id="factores_riesgo_diabetes_gestacional" id="{{form.factores_riesgo_diabetes_gestacional.id_for_label}}" name="{{form.factores_riesgo_diabetes_gestacional.html_name}}">
 			{% endif %}
 			{% for factores_riesgo_diabetes_gestacional_opcion in si_opciones %}
 				{% if form.factores_riesgo_diabetes_gestacional.value == factores_riesgo_diabetes_gestacional_opcion.0 %}
@@ -298,9 +296,9 @@ primer trimestre
 		<div class="input-field">
 
 			{% if form.estado_factores_diabetes.errors %}
-				<select id="{{ form.estado_factores_diabetes.id_for_label }}" class="tooltipped" data-position="top" data-tooltip='{{ form.estado_factores_diabetes.errors.as_text }}' id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
+				<select id="estado_factores_diabetes" class="tooltipped" data-position="top" data-tooltip='{{ form.estado_factores_diabetes.errors.as_text }}' id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
 			{% else %}
-				<select id="{{ form.estado_factores_diabetes.id_for_label }}" id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
+				<select id="estado_factores_diabetes" id="{{form.estado_factores_diabetes.id_for_label}}" name="{{form.estado_factores_diabetes.html_name}}">
 			{% endif %}
 			{% for estado_factores_diabetes_opcion in opciones_frotis %}
 				{% if form.estado_factores_diabetes.value == estado_factores_diabetes_opcion.0 %}
@@ -417,12 +415,12 @@ primer trimestre
 		<div class="input-field">
 
 			{% if form.ecografia_semanas.errors %}
-				<input id="{{ form.ecografia_semanas.id_for_label }}" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.ecografia_semanas.errors.as_text }}' >
+				<input id="ecografia_semanas" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.ecografia_semanas.errors.as_text }}' >
           	{% else %}
           		{% if form.ecografia_semanas.value != none %}
-          			<input id="{{ form.ecografia_semanas.id_for_label }}" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate">
+          			<input id="ecografia_semanas" value="{{ form.ecografia_semanas.value }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate">
           		{% else %}
-          			<input id="{{ form.ecografia_semanas.id_for_label }}" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate" >
+          			<input id="ecografia_semanas" name="{{ form.ecografia_semanas.html_name }}" type="text" class="validate" >
           		{% endif %}
           	{% endif %}
           	<label for="{{ form.ecografia_semanas.id_for_label }}">Semanas ecografía</label>
