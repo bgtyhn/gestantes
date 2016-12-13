@@ -218,6 +218,21 @@ class Nueva(FormView):
     def form_valid(self, form):
         
         print(form)
+        confiable = 'No'
+        micronutrientes = 'No'
+        DPTa = 'No'
+        iami = 'No'
+        if form.cleaned_data['confiable']:
+            confiable = 'Si'
+
+        if form.cleaned_data['micronutrientes']:
+            micronutrientes = 'Si'
+
+        if form.cleaned_data['DPTa']:
+            DPTa = 'Si'
+
+        if form.cleaned_data['iami']:
+            iami = 'Si'
         gestante = Gestante(nombre = form.cleaned_data['nombre'],
             fecha_ingreso_programa = form.cleaned_data['fecha_ingreso_programa'],
             fecha_nacimiento = form.cleaned_data['fecha_nacimiento'],
@@ -226,21 +241,21 @@ class Nueva(FormView):
             semana_ingreso = form.cleaned_data['semana_ingreso'],
             fecha_ultima_menstruacion = form.cleaned_data['fecha_ultima_menstruacion'],
             fecha_probable_parto = form.cleaned_data['fecha_probable_parto'],
-            confiable = form.cleaned_data['confiable']
+            confiable = confiable
         )
         gestante.save()
 
         primer_control = PrimerControl(
             gestante = gestante,
             fecha_paraclinicos = form.cleaned_data['fecha_paraclinicos'],
-            micronutrientes = form.cleaned_data['micronutrientes'],
+            micronutrientes = micronutrientes,
             pretest_fecha = form.cleaned_data['pretest_fecha'],
             fecha_postest =form.cleaned_data['fecha_postest'],
-            iami = form.cleaned_data['iami'],
+            iami = iami,
             odontologia_fecha = form.cleaned_data['odontologia_fecha'],
             citologia_fecha = form.cleaned_data['citologia_fecha'],
             citologia_resultado = form.cleaned_data['citologia_resultado'],
-            DPTa = form.cleaned_data['DPTa']
+            DPTa = DPTa
         )
         primer_control.save()
         self.success_url = self.success_url + str(gestante.pk) + '/'
@@ -295,6 +310,9 @@ class EditarGeneral(FormView):
         return context
 
     def form_valid(self, form):
+        confiable = 'No'
+        if form.cleaned_data['confiable']:
+            confiable = 'Si'
         g = Gestante.objects.get(id = self.kwargs['gestante'])
         g.nombre = form.cleaned_data['nombre']
         g.fecha_ingreso_programa = form.cleaned_data['fecha_ingreso_programa']
@@ -304,7 +322,7 @@ class EditarGeneral(FormView):
         g.semana_ingreso = form.cleaned_data['semana_ingreso']
         g.fecha_ultima_menstruacion = form.cleaned_data['fecha_ultima_menstruacion']
         g.fecha_probable_parto = form.cleaned_data['fecha_probable_parto']
-        g.confiable = form.cleaned_data['confiable']
+        g.confiable = confiable
         g.save()
 
         Observacion.objects.filter(gestante_id = g.id).delete()
