@@ -77,7 +77,7 @@ información general
 					<input type="checkbox" class="filled-in" id="confiable" name="{{ form.confiable.html_name}}" value="No">
 				{% endif %}
 			{% else %}
-				{% if form.value != none and form.value == 'Si' %}
+				{% if form.confiable.value != none and form.confiable.value == 'Si'%}
 					<input type="checkbox" name="{{ form.confiable.html_name}}" value="{{ form.confiable.value }}" class="filled-in" id="confiable"  checked >
 				{% else %}
 					<input type="checkbox" class="filled-in" id="confiable" name="{{ form.confiable.html_name}}" value="No">

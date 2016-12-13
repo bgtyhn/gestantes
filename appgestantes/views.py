@@ -354,6 +354,70 @@ class EditarGeneral(FormView):
         except ObjectDoesNotExist:
             return initial
 
+class EditarPrimerControl(FormView):
+    template_name = 'appgestantes/forms_editar/editar_primer_control.html'
+    form_class = forms.EditarPrimerControl
+    success_url = '/detalle/'
+
+    def get_context_data(self, **kwargs):
+        context = super(EditarPrimerControl, self).get_context_data(**kwargs)
+        context['riesgos'] = Riesgo.objects.filter(primerControl = self.kwargs['control'])
+        context['gestante_id'] = self.kwargs['gestante']
+        return context
+
+    def form_valid(self, form):
+        micronutrientes = 'No'
+        DPTa = 'No'
+        iami = 'No'
+        if form.cleaned_data['micronutrientes']:
+            micronutrientes = 'Si'
+
+        if form.cleaned_data['DPTa']:
+            DPTa = 'Si'
+
+        if form.cleaned_data['iami']:
+            iami = 'Si'
+        pc = PrimerControl.objects.get(id = self.kwargs['control'])
+        pc.fecha_paraclinicos = form.cleaned_data['fecha_paraclinicos']
+        pc.micronutrientes = micronutrientes
+        pc.pretest_fecha = form.cleaned_data['pretest_fecha']
+        pc.fecha_postest = form.cleaned_data['fecha_postest']
+        pc.iami = iami
+        pc.odontologia_fecha = form.cleaned_data['odontologia_fecha']
+        pc.citologia_fecha = form.cleaned_data['citologia_fecha']
+        pc.citologia_resultado = form.cleaned_data['citologia_resultado']
+        pc.DPTa = DPTa
+        pc.save()
+
+        Riesgo.objects.filter(primerControl_id = self.kwargs['gestante']).delete()
+
+        for r in self.request.POST.getlist("riesgo"):
+            if r:
+                Riesgo.objects.create(primerControl=pc, motivo=r)
+
+        self.success_url = self.success_url + str(g.pk) + '/'
+
+        return super(EditarPrimerControl, self).form_valid(form)
+
+    def get_initial(self):
+        initial = super(EditarPrimerControl, self).get_initial()
+
+        try:
+            pc = PrimerControl.objects.get(id = self.kwargs['control'])
+            initial['fecha_paraclinicos'] = pc.fecha_paraclinicos
+            initial['micronutrientes'] = pc.micronutrientes
+            initial['pretest_fecha'] = pc.pretest_fecha.strftime('%Y-%m-%d')
+            initial['fecha_postest'] = pc.fecha_postest.strftime('%Y-%m-%d')
+            initial['iami'] = pc.iami
+            initial['odontologia_fecha'] = pc.odontologia_fecha.strftime('%Y-%m-%d')
+            initial['citologia_fecha'] = pc.citologia_fecha.strftime('%Y-%m-%d')
+            initial['citologia_resultado'] = pc.citologia_resultado
+            initial['DPTa'] = pc.DPTa
+            print(initial)
+            return initial
+        except ObjectDoesNotExist:
+            return initial
+
 def editar_general(request):
     return render(request, 'appgestantes/forms_editar/editar_general.html')
 
