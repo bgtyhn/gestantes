@@ -117,7 +117,7 @@ class Prioritarias(ListView):
             gestantes_toxoplasmosis_IGM = lista_gestantes.filter(pk__in = gestantes_toxoplasmosis_IGM).annotate(causa=Value('IGM', output_field=CharField()))
             gestantes_hepatitisB = lista_gestantes.filter(pk__in = gestantes_hepatitisB).annotate(causa=Value('Hepatitis', output_field=CharField()))
 
-            lista_gestantes = gestantes_VIH | gestantes_VDRL | gestantes_toxoplasmosis_IGM | gestantes_toxoplasmosis_IGG | gestantes_hepatitisB
+            #lista_gestantes = gestantes_VIH | gestantes_VDRL | gestantes_toxoplasmosis_IGM | gestantes_toxoplasmosis_IGG | gestantes_hepatitisB
             context['search'] = self.request.GET['q']
         else:
             gestantes_VIH_L = Gestante.objects.filter(pk__in = gestantes_VIH).annotate(causa=Value('VIH', output_field=CharField()))
@@ -126,9 +126,24 @@ class Prioritarias(ListView):
             gestantes_toxoplasmosis_IGM_L = Gestante.objects.filter(pk__in = gestantes_toxoplasmosis_IGM).annotate(causa=Value('IGM', output_field=CharField()))
             gestantes_hepatitisB_L = Gestante.objects.filter(pk__in = gestantes_hepatitisB).annotate(causa=Value('Hepatitis B', output_field=CharField()))
 
-            lista_gestantes = gestantes_VIH_L | gestantes_VDRL_L | gestantes_toxoplasmosis_IGM_L | gestantes_toxoplasmosis_IGG_L | gestantes_hepatitisB_L
+            #lista_gestantes = gestantes_VIH_L | gestantes_VDRL_L | gestantes_toxoplasmosis_IGM_L | gestantes_toxoplasmosis_IGG_L | gestantes_hepatitisB_L
+
+        lista_gestantes = []
+        lista_gestantes.extend(gestantes_VIH_L)
+        lista_gestantes.extend(gestantes_VDRL_L)
+        lista_gestantes.extend(gestantes_toxoplasmosis_IGG_L)
+        lista_gestantes.extend(gestantes_toxoplasmosis_IGM_L)
+        lista_gestantes.extend(gestantes_hepatitisB_L)
+        print(gestantes_VIH)
+        print(gestantes_VDRL)
+        print(gestantes_toxoplasmosis_IGG)
+        print(gestantes_toxoplasmosis_IGM)
+        print(gestantes_hepatitisB)
+        print(lista_gestantes)
 
         context['lista_gestantes'] = lista_gestantes
+
+        return context
 
         '''paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca')
@@ -163,6 +178,7 @@ class Completa(ListView):
             lista_gestantes = Gestante.objects.all()
 
         context['lista_gestantes'] = lista_gestantes
+        return context
         '''paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca')
 
@@ -196,6 +212,7 @@ class Pasadas(ListView):
             lista_gestantes = Gestante.objects.filter(Q(fecha_probable_parto=datetime.now().date()) | Q(fecha_probable_parto__lt=datetime.now().date()))
 
         context['lista_gestantes'] = lista_gestantes
+        return context
         '''paginator = Paginator(lista_gestantes, self.paginate_by)
         print('aca') 
 
