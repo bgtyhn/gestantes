@@ -23,11 +23,11 @@ información general
 	<div class="col s12">
 		<div class="input-field">
 			{% if form.nombre.errors %}
-				<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.nombre.errors.as_text }}'  placeholder="Nombre" >
+				<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.nombre.errors.as_text }}'  placeholder="Nombre" >
           	{% elif form.nombre.value != none %}
-      			<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="date" class="validate" placeholder="Nombre" >
+      			<input id="nombre" value="{{ form.nombre.value }}" name="{{ form.nombre.html_name }}" type="text" class="validate" placeholder="Nombre" >
       		{% else %}
-      			<input id="nombre" name="{{ form.nombre.html_name }}" type="date" class="validate" placeholder="Nombre" >
+      			<input id="nombre" name="{{ form.nombre.html_name }}" type="text" class="validate" placeholder="Nombre" >
           	{% endif %}
 			<label class="active" for="nombre">Nombre</label>
 		</div>
@@ -196,7 +196,7 @@ información general
 
 		<div class="row obs-row">
 			<div class="col s10">
-				<input value="{{ observacion.texto }}" name="observacion" type="text" placeholder="Observación" class="validate">
+				<input value="{{ observacion.texto }}" name="observacion" type="text" placeholder="Observacion" class="validate">
 			</div>
 			<div class="col s2">
 				<button type="button" class="obs-del btn-floating waves-effect waves-light red lighten-2"><i class="material-icons">delete</i></button>
