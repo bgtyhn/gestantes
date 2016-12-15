@@ -71,11 +71,11 @@ primer control
 		<div class="input-field">
 
 			{% if form.citologia_resultado.errors %}
-				<input id="citologia_resultado" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="date" class="validate tooltipped" data-position="top" data-tooltip='{{ form.citologia_resultado.errors.as_text }}'  >
+				<input id="citologia_resultado" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.citologia_resultado.errors.as_text }}'  >
           	{% elif form.citologia_resultado.value != none %}
-      			<input id="citologia_resultado" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="date" class="validate" >
+      			<input id="citologia_resultado" value="{{ form.citologia_resultado.value }}" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate" >
       		{% else %}
-      			<input id="citologia_resultado" name="{{ form.citologia_resultado.html_name }}" type="date" class="validate" >
+      			<input id="citologia_resultado" name="{{ form.citologia_resultado.html_name }}" type="text" class="validate" >
           	{% endif %}
 
 			<label for="citologia_resultado" class="active">Resultado de citología</label>
