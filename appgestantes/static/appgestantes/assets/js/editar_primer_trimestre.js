@@ -112,7 +112,6 @@ $(function(){
 	checkFrotisFields()
 	checkFrotisRes()
 	checkHemFields()
-	checkEcoSem()
 
 
 	frot_rows = $("#frot-container").children(".frot-row")
