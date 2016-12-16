@@ -168,6 +168,25 @@ información general
           	{% endif %}
 			<label class="active" for="fecha_ingreso_programa">Fecha de ingreso al programa</label>
 		</div>
+
+		
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s6">
+		<div class="input-field">
+			{% if form.EPS.errors %}
+				<input id="EPS" value="{{ form.EPS.value }}" name="{{ form.EPS.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.EPS.errors.as_text }}'  placeholder="EPS" >
+          	{% else %}
+          		{% if form.EPS.value != none %}
+          			<input id="EPS" value="{{ form.EPS.value }}" name="{{ form.EPS.html_name }}" type="text" class="validate"  placeholder="EPS" >
+          		{% else %}
+          			<input id="EPS" name="{{ form.EPS.html_name }}" placeholder="EPS"  type="text" class="validate" >
+          		{% endif %}
+          	{% endif %}
+			<label class="active" for="EPS">EPS</label>
+		</div>
 	</div>
 </div>
 

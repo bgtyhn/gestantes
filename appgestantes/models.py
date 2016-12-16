@@ -89,6 +89,7 @@ class Gestante(models.Model):
 	fecha_ultima_menstruacion = models.DateField(null=True, blank=True) #verificar <= hoy
 	fecha_probable_parto = models.DateField(null=True, blank=True)
 	confiable = models.CharField(max_length = 20, default = 'No')
+	EPS = models.CharField(max_length = 40, null = True, blank = True)
 
 class PrimerControl(models.Model):
 	gestante = models.ForeignKey(Gestante, on_delete = models.CASCADE)

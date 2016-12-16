@@ -27,6 +27,7 @@ class GestanteForm(forms.Form):
 	citologia_fecha = forms.DateField(error_messages = errores_defecto, required = False)
 	citologia_resultado = forms.CharField(error_messages = errores_defecto, required = False)
 	DPTa = forms.CharField(error_messages = errores_defecto, required = False)
+	EPS = forms.CharField(error_messages = errores_defecto, required = False)
 
 class EditarGeneralForm(forms.Form):
 	nombre = forms.CharField(error_messages = errores_defecto)
@@ -39,6 +40,7 @@ class EditarGeneralForm(forms.Form):
 	fecha_ultima_menstruacion = forms.DateField(error_messages = errores_defecto, required = False) #verificar <= hoy
 	fecha_ingreso_programa = forms.DateField(error_messages = errores_defecto, required = False) #verificar
 	observacion = forms.CharField(error_messages = errores_defecto, required = False)
+	EPS = forms.CharField(error_messages = errores_defecto, required = False)
 
 class EditarPrimerControl(forms.Form):
 	fecha_paraclinicos = forms.DateField(error_messages = errores_defecto, required = False) # > hoy

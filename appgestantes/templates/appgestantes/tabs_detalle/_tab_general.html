@@ -86,6 +86,16 @@
 		{% endif %}
 		</h5>
 	</div>
+	<div class="detail-field">
+		<p> EPS </p>
+		<h5 class="light">
+		{% if gestante.EPS %}
+			{{gestante.EPS}}
+		{% else %}
+			&nbsp
+		{% endif %}
+		</h5>
+	</div>
 
 {% endblock %}
 

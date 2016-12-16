@@ -68,7 +68,7 @@ class Index(ListView):
         if ('q' in self.request.GET) and self.request.GET['q'].strip():
             query_string = self.request.GET['q']
 
-            product_query = get_query(query_string, ['nombre', 'identificacion'])
+            product_query = get_query(query_string, ['nombre', 'identificacion', 'EPS'])
 
             lista_gestantes = Gestante.objects.filter(product_query).filter(Q(fecha_probable_parto__gt=datetime.now().date()))
             context['search'] = self.request.GET['q']
@@ -263,6 +263,7 @@ class Nueva(FormView):
             semana_ingreso = form.cleaned_data['semana_ingreso'],
             fecha_ultima_menstruacion = form.cleaned_data['fecha_ultima_menstruacion'],
             fecha_probable_parto = form.cleaned_data['fecha_probable_parto'],
+            EPS = form.cleaned_data['EPS'],
             confiable = confiable
         )
         gestante.save()
@@ -356,6 +357,7 @@ class EditarGeneral(FormView):
         g.semana_ingreso = form.cleaned_data['semana_ingreso']
         g.fecha_ultima_menstruacion = form.cleaned_data['fecha_ultima_menstruacion']
         g.fecha_probable_parto = form.cleaned_data['fecha_probable_parto']
+        g.EPS = form.cleaned_data['EPS']
         g.confiable = confiable
         g.save()
 
@@ -382,6 +384,7 @@ class EditarGeneral(FormView):
             initial['edad'] = gestante.edad
             initial['semana_ingreso'] = gestante.semana_ingreso
             initial['captacion'] = gestante.captacion
+            initial['EPS'] = gestante.EPS
             if gestante.fecha_ultima_menstruacion:
                 initial['fecha_ultima_menstruacion'] = gestante.fecha_ultima_menstruacion.strftime('%Y-%m-%d')
             if gestante.fecha_ingreso_programa:

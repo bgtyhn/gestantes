@@ -8,9 +8,17 @@
 
 {% block search %}
 
+<form action="{% url 'prioritarias' %}" method="GET">
 <div class="search-table input-field col s4">
-	<input id="first_name" type="text" class="validate">
+
+	{% if search %}
+	<input id="first_name" type="text" name="q" class="validate" value = "{{search}}">
+	{% else %}
+	<input id="first_name" type="text" name="q" class="validate">
+	{% endif %}
     <label for="first_name">Buscar</label>
 </div>
+<input type="submit" style="display: none" />
+</form>
 
 {% endblock %}

@@ -146,8 +146,19 @@
 						<input type="checkbox" value="Si" class="filled-in" id="confiable" name="{{ form.confiable.html_name}}" value="No">
 					{% endif %}
 				{% endif %}
-      			<label for="confiable">Confiable</label>
+      			<label for="confiable">Fecha de parto confiable</label>
       			<div class="section"></div>
+			</div>
+			<div class="input-field">
+				{% if form.EPS.errors %}
+					<input id="EPS" value="{{ form.EPS.value }}" name="{{ form.EPS.html_name }}" type="text" class="validate tooltipped" data-position="top" data-tooltip='{{ form.EPS.errors.as_text }}'  placeholder="EPS" >
+	          	{% else %}
+	          		{% if form.EPS.value != none %}
+	          			<input id="EPS" value="{{ form.EPS.value }}" name="{{ form.EPS.html_name }}" type="text" class="validate" placeholder="EPS" >
+	          		{% else %}
+	          			<input id="EPS" name="{{ form.EPS.html_name }}" type="text" class="validate" placeholder="EPS" >
+	          		{% endif %}
+	          	{% endif %}
 			</div>
 		</div>
 	</div>
